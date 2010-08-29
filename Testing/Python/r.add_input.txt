@@ -1,0 +1,49 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GRASS_ADDON_PATH=/home/soeren/src/vtk-grass-bridge/WPS/Testing/Python/GrassAddons
+ GRASS_VERSION=7.0.svn
+ Module=r.add
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=inputs
+ MaxOccurs=1024
+ PathToFile=TestData/basin_50K_nc.gif
+ MimeType=image/gif
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=inputs
+ MaxOccurs=1024
+ PathToFile=TestData/basin_50K_nc.jpg
+ MimeType=image/jpeg
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=inputs
+ MaxOccurs=1024
+ PathToFile=TestData/basin_50K_nc.png
+ MimeType=image/png
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=grass_band_number
+ DataType=integer
+ Value=1
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/r_add_output.png
+ MimeType=image/png
+ Encoding=
+ Schema=

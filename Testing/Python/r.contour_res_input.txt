@@ -1,0 +1,69 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=r.contour
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=input
+ MaxOccurs=1
+ PathToFile=elev_srtm_30m.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=grass_band_number
+ DataType=integer
+ Value=1
+
+[LiteralData]
+ Identifier=grass_resolution_ew
+ DataType=double
+ Value=15
+
+[LiteralData]
+ Identifier=grass_resolution_ns
+ DataType=double
+ Value=25
+
+[LiteralData]
+ Identifier=levels
+ DataType=double
+ Value=0
+
+[LiteralData]
+ Identifier=levels
+ DataType=double
+ Value=1100
+
+[LiteralData]
+ Identifier=levels
+ DataType=double
+ Value=1300
+
+[LiteralData]
+ Identifier=levels
+ DataType=double
+ Value=1500
+
+[LiteralData]
+ Identifier=levels
+ DataType=double
+ Value=1700
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/elev_srtm_30m.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/3.1.0/polygon.xsd
+

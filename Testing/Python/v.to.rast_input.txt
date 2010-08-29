@@ -1,0 +1,49 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=v.to.rast
+ LOCATION=
+ LinkInput=FALSE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=input
+ MaxOccurs=1
+ PathToFile=roads.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/3.1.0/polygon.xsd
+
+[LiteralData]
+ Identifier=type
+ DataType=string
+ Value=line
+
+[LiteralData]
+ Identifier=use
+ DataType=string
+ Value=cat
+
+[LiteralData]
+ Identifier=grass_resolution_ns
+ DataType=double
+ Value=10
+
+[LiteralData]
+ Identifier=grass_resolution_ew
+ DataType=double
+ Value=10
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/roads_raster.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+

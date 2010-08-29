@@ -1,0 +1,27 @@
+# This script tests single input of multi - channel data without band number
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=r.univar
+ LOCATION=
+ LinkInput=FALSE
+ IgnoreProjection=TRUE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=map
+ MaxOccurs=1024
+ PathToFile=SoilsMultiChannel.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=-g
+ DataType=boolean
+ Value=true
