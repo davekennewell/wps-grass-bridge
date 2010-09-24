@@ -75,8 +75,8 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
 
             ModuleLogging.__init__(self, logfile, module_stdout, module_stderr)
 
-            #self.LogInfo(str(inputs))
-            #self.LogInfo(str(outputs))
+            self.LogInfo(str(inputs))
+            self.LogInfo(str(outputs))
         except:
             print "ERROR: Unable to start logging. break"
             raise
@@ -107,7 +107,7 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
             except:
                 raise
             # Create input and output maps
-            self._createMaps()
+            self._createInputOutputMaps()
             # Import/link the data, run the module and export the data
             self._importRunExport()
             # Attach the results to the outputs list

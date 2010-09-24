@@ -547,7 +547,7 @@ class GrassModuleStarter(ModuleLogging):
 
         inputName = "input_" + str(self.inputCounter)
 
-        if self._isRaster(input) != "":
+        if self._isRaster(input) != None:
             parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "r.external"), "input=" + input.pathToFile, "output=" + inputName]
             if self.inputParameter.ignoreProjection == "TRUE":
                 parameter.append("-o")
@@ -576,7 +576,7 @@ class GrassModuleStarter(ModuleLogging):
                     parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "r.info"), i ]
                     errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
-        elif self._isVector(input) != "":
+        elif self._isVector(input) != None:
             # Linking does not work properly right now for GML -> no random access, so we import the vector data
             self._importInput(input)
             return
@@ -596,7 +596,7 @@ class GrassModuleStarter(ModuleLogging):
         inputName = "input_" + str(self.inputCounter)
 
         # import the raster data via gdal
-        if self._isRaster(input) != "":
+        if self._isRaster(input) != None:
             parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "r.in.gdal"), "input=" + input.pathToFile, "output=" + inputName]
             if self.inputParameter.ignoreProjection == "TRUE":
                 parameter.append("-o")
@@ -623,7 +623,7 @@ class GrassModuleStarter(ModuleLogging):
                     errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
             
         # import the vector data via ogr
-        elif self._isVector(input) != "":
+        elif self._isVector(input) != None:
             parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "v.in.ogr"), "dsn=" + input.pathToFile, "output=" + inputName]
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
@@ -739,7 +739,7 @@ class GrassModuleStarter(ModuleLogging):
             outputName = self.outputMap[output.identifier]
 
             # export the data via gdal
-            if self._isRaster(output) != "":
+            if self._isRaster(output) != None:
                 parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "r.out.gdal"), "-c", "input=" + outputName, "format=" + self._isRaster(output), "output=" + output.pathToFile]
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
@@ -749,7 +749,7 @@ class GrassModuleStarter(ModuleLogging):
                     raise GMSError(log)
 
             # export the data via ogr
-            elif self._isVector(output) != "":
+            elif self._isVector(output) != None:
                 parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "v.out.ogr"), "input=" + outputName, "format=" + self._isVector(output),"dsn=" + output.pathToFile]
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
