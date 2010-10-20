@@ -3,8 +3,8 @@
  OutputDir=/tmp
 
 [GRASS]
- GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
- GRASS_ADDON_PATH=/home/soeren/src/vtk-grass-bridge/WPS/Testing/Python/GrassAddons
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=/home/soeren/src/wps-grass-bridge/Testing/Python/GrassAddons
  GRASS_VERSION=7.0.svn
  Module=r.add
  LOCATION=

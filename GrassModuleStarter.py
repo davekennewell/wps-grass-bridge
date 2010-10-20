@@ -70,6 +70,9 @@ from optparse import OptionParser
 import os
 import os.path
 import tempfile
+
+import zipfile
+
 from ParameterParser import *
 from GrassSettings import *
 from ProcessLogging import *
@@ -81,7 +84,7 @@ GRASS_MAPSET_NAME = "PERMANENT"
 # This keyword list contains all grass related WPS keywords
 GRASS_WPS_KEYWORD_LIST = ["grass_resolution_ns", "grass_resolution_ew", "grass_band_number"]
 # All supported import raster formats
-RASTER_MIMETYPES = [{"MIMETYPE":"IMAGE/TIFF", "GDALID":"GTiff"},
+RASTER_MIMETYPES =        [{"MIMETYPE":"IMAGE/TIFF", "GDALID":"GTiff"},
                            {"MIMETYPE":"IMAGE/PNG", "GDALID":"PNG"}, \
                            {"MIMETYPE":"IMAGE/GIF", "GDALID":"GIF"}, \
                            {"MIMETYPE":"IMAGE/JPEG", "GDALID":"JPEG"}, \
@@ -91,9 +94,10 @@ RASTER_MIMETYPES = [{"MIMETYPE":"IMAGE/TIFF", "GDALID":"GTiff"},
                            {"MIMETYPE":"APPLICATION/GEOTIFF", "GDALID":"GTiff"}]
 # All supported input vector formats [mime type, schema]
 # TODO: Add more vector types (zipped shapefiles, KML, ...)
-VECTOR_MIMETYPES = [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML"}, \
+VECTOR_MIMETYPES =        [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML"}, \
                            {"MIMETYPE":"TEXT/XML", "SCHEMA":"KML", "GDALID":"KML"}, \
                            {"MIMETYPE":"APPLICATION/DGN", "SCHEMA":"", "GDALID":"DGN"}, \
+                           {"MIMETYPE":"APPLICATION/X-ZIPPED-SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}, \
                            {"MIMETYPE":"APPLICATION/SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}]
 
 
@@ -162,9 +166,6 @@ class GrassModuleStarter(ModuleLogging):
         # the pid of the process which is currently executed, to be used for suspending
         self.runPID = -1
 
-
-
-
     ############################################################################
     ############# THIS METHOD DOES ALL THE WORK ################################
     ############################################################################
@@ -189,9 +190,19 @@ class GrassModuleStarter(ModuleLogging):
                 raise
             self._createInputOutputMaps()
             try:
+                # Temporal directory must be created at the beginning
                 self._createTemporalDir(self.inputParameter.workDir)
                 self._setUpGrassLocation(self.inputParameter.grassGisBase, self.inputParameter.grassAddonPath)
-                self._importRunExport()
+                # Import all data, run the module and export the data
+                # Before import check if zipped shape files are present in input and
+                # Extract them and update the input map
+                self._checkForZippedShapeFiles()
+                # Create the new location based on the first valid input and import all maps
+                self._importData()
+                # start the grass module one or multiple times, depending on the multiple import parameter
+                self._startGrassModule()
+                # now export the results
+                self._exportOutput()
             except:
                 raise
             finally:
@@ -200,9 +211,6 @@ class GrassModuleStarter(ModuleLogging):
             raise
         finally:
             self._closeLogfiles()
-
-
-
 
     ############################################################################
     def _createInputOutputMaps(self):
@@ -276,19 +284,52 @@ class GrassModuleStarter(ModuleLogging):
         except:
             raise
 
-            
     ############################################################################
-    def _importRunExport(self):
-        try:
-            # Create the new location based on the first valid input and import all maps
-            self._importData()
-            # start the grass module one or multiple times, depending on the multiple import parameter
-            self._startGrassModule()
-            # now export the results
-            self._exportOutput()
-        except:
-            raise
-
+    def _checkForZippedShapeFiles(self):
+        """ Zipped shape files can not be read by r.in.gdal directly, so we must unzip them
+            and set the path and mime type accordingly """
+        self.LogInfo("inputs")
+        count = 0
+        for cd in self.inputParameter.complexDataList:
+            self.LogInfo("Input file: " + str(cd.pathToFile) + "\nMime type: " + str(cd.mimeType).upper())
+            # Check for zipped shape files
+            if cd.mimeType.upper() == "APPLICATION/X-ZIPPED-SHP":
+                self.LogInfo("Found zipped shape file " + str(cd.pathToFile))
+                
+                if zipfile.is_zipfile(cd.pathToFile) == False:
+                    log = "Input: " + cd.pathToFile + " is not a zip file"
+                    self.LogError(log)
+                    raise GMSError(log)
+                
+                # Create a new path for each zipped shape file to avoid overwriting
+                zpath = os.path.join(self.gisdbase, "input_" + str(count))
+                
+                # Create the zfile object
+                zfile = zipfile.ZipFile(cd.pathToFile)
+                # Get the names of the zip file
+                namelist =  zfile.namelist()
+                
+                # Unzip all
+                self.LogInfo("Extract zipped shape file to: " + zpath + ".")
+                zfile.extractall(zpath)
+                zfound = False
+                # Set the shape file name for gdal import
+                for name in namelist:
+                    if name.upper().find(".SHP") >= 0:
+                        cd.pathToFile = os.path.join(zpath, name)
+                        self.LogInfo("Extracted shape file path: " + cd.pathToFile)
+                        zfound = True
+                        break
+                # Set the mime type
+                cd.mimeType = "APPLICATION/SHP"
+                
+                if zfound == False:
+                    log = "Shape file not found in zip file. Namelist: " + str(namelist)
+                    self.LogError(log)
+                    raise GMSError(log)
+                
+                # Directory counter
+                count += 1
 
     ############################################################################
     def _checkModuleForMultipleRasterInputs(self):
@@ -429,14 +470,14 @@ class GrassModuleStarter(ModuleLogging):
         # In case of textual input, use the default location
         if success == False:
             for input in list:
-                if self._isText(input):
+                if self._isTextFile(input):
                     self._createInputLocation(input)
                     success = True
                     break
 
         # Error if location creation did not work
         if success == False:
-            log = "Unsupported MimeType. Unable to create input location from input " + str(input.pathToFile)
+            log = "Unsupported MimeType: " + str(input.mimeType) + ". Unable to create input location from input " + str(input.pathToFile)
             self.LogError(log)
             raise GMSError(log)
         
@@ -467,7 +508,7 @@ class GrassModuleStarter(ModuleLogging):
 
     ############################################################################
     def _isVector(self, input):
-        """Check for vector input"""
+        """Check for vector input. Zipped shapefiles must be extracted"""
         for vectorType in VECTOR_MIMETYPES:
             if input.mimeType.upper() == vectorType["MIMETYPE"] \
                and input.schema.upper().find(vectorType["SCHEMA"]) != -1:

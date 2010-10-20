@@ -20,6 +20,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+import time
+
 class ProcessLogging():
     """This class initiates the logging mechanism and is the base class for all
     other classes, which have information to be logged.
@@ -42,7 +44,9 @@ class ProcessLogging():
     def LogInfo(self, message):
         """Write an info message into the logfile"""
         if message != None and message != "":
-            self.logfile.write("\n<INFO>\n")
+            lt = time.localtime()
+            localtime = str(lt.tm_hour) + ":" + str(lt.tm_min) + ":" + str(lt.tm_sec)
+            self.logfile.write("\n<INFO timestamp=\"" + localtime + "\">\n")
             self.logfile.write(message)
             self.logfile.write("\n</INFO>\n")
             self.logfile.flush()
@@ -51,7 +55,9 @@ class ProcessLogging():
     def LogWarning(self, message):
         """Write a warning message into the logfile"""
         if message != None and message != "":
-            self.logfile.write("\n<WARNING>\n")
+            lt = time.localtime()
+            localtime = str(lt.tm_hour) + ":" + str(lt.tm_min) + ":" + str(lt.tm_sec)
+            self.logfile.write("\n<WARNING timestamp=\"" + localtime + "\">\n")
             self.logfile.write(message)
             self.logfile.write("\n</WARNING>\n")
             self.logfile.flush()
@@ -59,7 +65,9 @@ class ProcessLogging():
     def LogError(self, message):
         """Write an error message into the logfile"""
         if message != None and message != "":
-            self.logfile.write("\n<ERROR>\n")
+            lt = time.localtime()
+            localtime = str(lt.tm_hour) + ":" + str(lt.tm_min) + ":" + str(lt.tm_sec)
+            self.logfile.write("\n<ERROR timestamp=\"" + localtime + "\">\n")
             self.logfile.write(message)
             self.logfile.write("\n</ERROR>\n")
             self.logfile.flush()
