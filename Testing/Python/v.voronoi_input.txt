@@ -15,15 +15,15 @@
 [ComplexData]
  Identifier=input
  MaxOccurs=1
- PathToFile=TestData/random_points.gml
+ PathToFile=TestData/random_points.kml
  MimeType=text/xml
  Encoding=UTF-8
- Schema=http://schemas.opengis.net/gml/3.1.0/polygon.xsd
+ Schema=hhttp://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/voronoi_diagram.gml
+ PathToFile=/tmp/voronoi_diagram.kml
  MimeType=text/xml
  Encoding=UTF-8
- Schema=http://schemas.opengis.net/gml/3.1.0/polygon.xsd
+ Schema=http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
 

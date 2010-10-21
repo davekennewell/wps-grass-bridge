@@ -1,7 +1,7 @@
-# ./WPS_1_0_0/_xlink.py
+# ./_xlink.py
 # PyXB bindings for NamespaceModule
 # NSM:b43cd366527ddb6a0e58594876e07421e0148f30
-# Generated 2010-04-24 12:16:11.758124 by PyXB version 1.1.1
+# Generated 2010-10-21 16:22:53.558918 by PyXB version 1.1.2
 import pyxb
 import pyxb.binding
 import pyxb.binding.saxer
@@ -11,7 +11,7 @@ import pyxb.utils.domutils
 import sys
 
 # Unique identifier for bindings created at the same time
-_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:6153a7ca-4f8a-11df-beaf-001fd0b3e7f9')
+_GenerationUID = pyxb.utils.utility.UniqueIdentifier('urn:uuid:aaeb86ce-dd1e-11df-bb63-485b39ca0591')
 
 # Import bindings for namespaces imported into schema
 import pyxb.binding.datatypes
@@ -43,30 +43,30 @@ def CreateFromDOM (node, default_namespace=None):
 
 
 # Atomic SimpleTypeDefinition
-class STD_ANON_1 (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
+class STD_ANON (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
 
     """An atomic simple type."""
 
     _ExpandedName = None
     _Documentation = None
-STD_ANON_1._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON_1, enum_prefix=None)
-STD_ANON_1.new = STD_ANON_1._CF_enumeration.addEnumeration(unicode_value=u'new')
-STD_ANON_1.replace = STD_ANON_1._CF_enumeration.addEnumeration(unicode_value=u'replace')
-STD_ANON_1.embed = STD_ANON_1._CF_enumeration.addEnumeration(unicode_value=u'embed')
-STD_ANON_1.other = STD_ANON_1._CF_enumeration.addEnumeration(unicode_value=u'other')
-STD_ANON_1.none = STD_ANON_1._CF_enumeration.addEnumeration(unicode_value=u'none')
-STD_ANON_1._InitializeFacetMap(STD_ANON_1._CF_enumeration)
+STD_ANON._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON, enum_prefix=None)
+STD_ANON.onLoad = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'onLoad')
+STD_ANON.onRequest = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'onRequest')
+STD_ANON.other = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'other')
+STD_ANON.none = STD_ANON._CF_enumeration.addEnumeration(unicode_value=u'none')
+STD_ANON._InitializeFacetMap(STD_ANON._CF_enumeration)
 
 # Atomic SimpleTypeDefinition
-class STD_ANON_2 (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
+class STD_ANON_ (pyxb.binding.datatypes.string, pyxb.binding.basis.enumeration_mixin):
 
     """An atomic simple type."""
 
     _ExpandedName = None
     _Documentation = None
-STD_ANON_2._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON_2, enum_prefix=None)
-STD_ANON_2.onLoad = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'onLoad')
-STD_ANON_2.onRequest = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'onRequest')
-STD_ANON_2.other = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'other')
-STD_ANON_2.none = STD_ANON_2._CF_enumeration.addEnumeration(unicode_value=u'none')
-STD_ANON_2._InitializeFacetMap(STD_ANON_2._CF_enumeration)
+STD_ANON_._CF_enumeration = pyxb.binding.facets.CF_enumeration(value_datatype=STD_ANON_, enum_prefix=None)
+STD_ANON_.new = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'new')
+STD_ANON_.replace = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'replace')
+STD_ANON_.embed = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'embed')
+STD_ANON_.other = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'other')
+STD_ANON_.none = STD_ANON_._CF_enumeration.addEnumeration(unicode_value=u'none')
+STD_ANON_._InitializeFacetMap(STD_ANON_._CF_enumeration)

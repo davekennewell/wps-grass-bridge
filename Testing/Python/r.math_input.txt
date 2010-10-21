@@ -60,7 +60,7 @@
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/r_math_output.tif
- MimeType=image/geotiff
+ PathToFile=/tmp/r_math_output.img
+ MimeType=application/x-netcdf
  Encoding=
  Schema=

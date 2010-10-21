@@ -60,5 +60,5 @@
  PathToFile=/tmp/elev_srtm_30m.gml
  MimeType=text/xml
  Encoding=UTF-8
- Schema=http://schemas.opengis.net/gml/3.1.0/polygon.xsd
+ Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
 

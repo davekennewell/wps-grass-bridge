@@ -28,7 +28,7 @@
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/r_math2_output.tif
+ PathToFile=/tmp/r_math2_output.netCDF
  MimeType=image/geotiff
  Encoding=
  Schema=

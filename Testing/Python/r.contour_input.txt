@@ -57,8 +57,8 @@
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/elev_srtm_30m.gml
+ PathToFile=/tmp/elev_srtm_30m.kml
  MimeType=text/xml
  Encoding=UTF-8
- Schema=http://schemas.opengis.net/gml/3.1.0/polygon.xsd
+ Schema=http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
 
