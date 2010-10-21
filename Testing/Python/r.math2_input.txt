@@ -1,0 +1,34 @@
+# Create a raster map with inputs using r.mapcalc
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=/home/soeren/src/wps-grass-bridge/Testing/Python/GrassAddons
+ GRASS_VERSION=7.0.svn
+ Module=r.math
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=math
+ PathToFile=r.math2_expressions.txt
+ MimeType=text/plain
+ MaxOccurs=1
+ Encoding=UTF-8
+ Schema=
+
+[LiteralData]
+ Identifier=grass_band_number
+ DataType=integer
+ Value=1
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/r_math2_output.tif
+ MimeType=image/geotiff
+ Encoding=
+ Schema=

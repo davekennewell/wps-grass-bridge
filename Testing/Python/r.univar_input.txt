@@ -4,22 +4,14 @@
  OutputDir=/tmp
 
 [GRASS]
- GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
  GRASS_ADDON_PATH=
  GRASS_VERSION=7.0.svn
  Module=r.univar
  LOCATION=
- LinkInput=FALSE
- IgnoreProjection=TRUE
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
  UseXYLocation=FALSE
-
-[ComplexData]
- Identifier=map
- MaxOccurs=1
- PathToFile=elev_srtm_30m.tiff
- MimeType=image/tiff
- Encoding=
- Schema=
 
 [LiteralData]
  Identifier=grass_band_number
@@ -28,15 +20,25 @@
 
 [ComplexData]
  Identifier=map
- PathToFile=elev_srtm_30m.tiff
- MimeType=image/tiff
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=application/geotiff
+ MaxOccurs=1
  Encoding=
  Schema=
 
 [ComplexData]
  Identifier=map
- PathToFile=elev_srtm_30m.tiff
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=application/geotiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=map
+ PathToFile=TestData/lsat7_nc.tif
  MimeType=image/tiff
+ MaxOccurs=1
  Encoding=
  Schema=
 
@@ -44,3 +46,4 @@
  Identifier=-g
  DataType=boolean
  Value=true
+

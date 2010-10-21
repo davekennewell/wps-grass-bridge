@@ -15,8 +15,8 @@
 [ComplexData]
  Identifier=input
  MaxOccurs=1
- PathToFile=TestData/elev_srtm_30m.tif
- MimeType=image/tiff
+ PathToFile=TestData/elev_srtm_30m.img
+ MimeType=application/x-erdas-hfa
  Encoding=
  Schema=
 

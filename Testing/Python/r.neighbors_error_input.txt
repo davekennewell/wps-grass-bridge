@@ -3,7 +3,7 @@
  OutputDir=/tmp
 
 [GRASS]
- GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
  GRASS_ADDON_PATH=
  GRASS_VERSION=7.0.svn
  Module=r.neighbors
@@ -15,8 +15,8 @@
 [ComplexData]
  Identifier=input
  MaxOccurs=1
- PathToFile=SoilsMultiChannel.tiff
- MimeType=image/tiff
+ PathToFile=TestData/lsat7_nc.img
+ MimeType=application/x-erdas-hfa
  Encoding=
  Schema=
 
@@ -32,7 +32,7 @@
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/elev_srtm_30m_variance.tiff
+ PathToFile=/tmp/lsat7_nc_neighbours.tiff
  MimeType=image/tiff
  Encoding=
  Schema=

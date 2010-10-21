@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+
+# written by Soeren Gebbert
+#
+# COPYRIGHT:    (C) 1999,2007,2008 by the GRASS Development Team
+#
+#               This program is free software under the GNU General Public
+#               License (>=v2). Read the file COPYING that comes with GRASS
+#               for details.
+#
+
+
+#% Module
+#%  description: WPS compatibel frontend for r.mapcalc to process up to 8 raster maps
+#%  keywords: raster
+#%  keywords: math
+#% End
+#% option
+#% key: a
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 1. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: b
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 2. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: c
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 3. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: d
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 4. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: e
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 5. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: f
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 6. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: g
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster maps 7. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: h
+#% type: string
+#% gisprompt: old,cell,raster
+#% description: Raster map 8. 
+#% required: no
+#% multiple: no
+#% end
+#% option
+#% key: math
+#% type: string
+#% gisprompt: old,file,file
+#% description: File containing r.mapcalc expression(s) to evaluate, referencing the inputs and the output by name: output = sin(a) + cos(b))
+#% required: yes
+#% multiple: no
+#% end
+#%option
+#% key: output
+#% type: string
+#% gisprompt: new,cell,raster
+#% description: The result of the mathematical operation
+#% required : yes
+#%END
+
+import sys
+import os
+import grass.script as grass
+
+def main():
+    output = options['output']
+    efile  = options['math']
+
+    grass.run_command('r.mapcalc', file=efile)
+
+    # write cmd history:
+    grass.raster_history(output)
+
+if __name__ == "__main__":
+    options, flags = grass.parser()
+    main()

@@ -89,15 +89,16 @@ RASTER_MIMETYPES =        [{"MIMETYPE":"IMAGE/TIFF", "GDALID":"GTiff"},
                            {"MIMETYPE":"IMAGE/GIF", "GDALID":"GIF"}, \
                            {"MIMETYPE":"IMAGE/JPEG", "GDALID":"JPEG"}, \
                            {"MIMETYPE":"IMAGE/GEOTIFF", "GDALID":"GTiff"}, \
-                           {"MIMETYPE":"APPLICATION/HDF4Image", "GDALID":"HDF4Image"}, \
-                           {"MIMETYPE":"APPLICATION/HFA", "GDALID":"HFA"}, \
-                           {"MIMETYPE":"APPLICATION/GEOTIFF", "GDALID":"GTiff"}]
+                           {"MIMETYPE":"APPLICATION/X-ERDAS-HFA", "GDALID":"HFA"}, \
+                           {"MIMETYPE":"APPLICATION/NETCDF", "GDALID":"netCDF"}, \
+                           {"MIMETYPE":"APPLICATION/X-NETCDF", "GDALID":"netCDF"}, \
+                           {"MIMETYPE":"APPLICATION/GEOTIFF", "GDALID":"GTiff"}, \
+                           {"MIMETYPE":"APPLICATION/X-GEOTIFF", "GDALID":"GTiff"}]
 # All supported input vector formats [mime type, schema]
-# TODO: Add more vector types (zipped shapefiles, KML, ...)
 VECTOR_MIMETYPES =        [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML"}, \
                            {"MIMETYPE":"TEXT/XML", "SCHEMA":"KML", "GDALID":"KML"}, \
                            {"MIMETYPE":"APPLICATION/DGN", "SCHEMA":"", "GDALID":"DGN"}, \
-                           {"MIMETYPE":"APPLICATION/X-ZIPPED-SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}, \
+                           #{"MIMETYPE":"APPLICATION/X-ZIPPED-SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}, \
                            {"MIMETYPE":"APPLICATION/SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}]
 
 
@@ -224,13 +225,12 @@ class GrassModuleStarter(ModuleLogging):
         # In case no band number was provided, we check if the module supports multiple
         # files for each input parameter. If this is not the case, a switch will be set
         # to call the module for each band which was imported
-        if self.multipleRasterImport == True:
-            try:
-                self._checkModuleForMultipleRasterInputs()
-            except:
-                log = "Unable to check for multiple raster inputs"
-                self.LogError(log)
-                raise
+        try:
+            self._checkModuleForMultipleRasterInputs()
+        except:
+            log = "Unable to check for multiple raster inputs"
+            self.LogError(log)
+            raise
 
     ############################################################################
     def _createTemporalDir(self, workDir=None):
@@ -346,18 +346,21 @@ class GrassModuleStarter(ModuleLogging):
 
         if MultipleInputCount > 0 and SingleInputCount > 0:
             self.multipleRasterProcessing = True
-            self.LogInfo("Multiple and single inputs: Enable multiple processing")
+            self.multipleRasterImport = True
+            self.LogInfo("Found Multiple and single inputs")
         elif MultipleInputCount == 0 and SingleInputCount > 0:
             self.multipleRasterProcessing = True
-            self.LogInfo("Only single inputs: Enable multiple processing")
+            self.multipleRasterImport = False
+            self.LogInfo("Found only single inputs")
         elif MultipleInputCount > 0 and SingleInputCount == 0:
             self.multipleRasterProcessing = False
-            self.LogInfo("Only multiple inputs: Disable multiple processing")
+            self.multipleRasterImport = True
+            self.LogInfo("Found only multiple inputs")
         else:
             self.multipleRasterProcessing = False
             self.multipleRasterImport = False
             self.bandNumber = 0
-            self.LogInfo("No inputs: Disable multiple processing")
+            self.LogInfo("No inputs found")
 
 
     ############################################################################
@@ -365,12 +368,10 @@ class GrassModuleStarter(ModuleLogging):
         """ Check if a band number is provided as literal data, if not multiple
         import is enabled even the input file contains only one band """
         self.LogInfo("Check if a band number is present")
-        self.multipleRasterImport = True
         self.bandNumber = 0
         for i in self.inputMap:
             if i == "grass_band_number" and self.inputMap[i] != "":
                 self.bandNumber = int(self.inputMap[i])
-                self.multipleRasterImport = False
                 self.LogInfo("Noticed grass_band_number: " + str(self.bandNumber))
                 
         if self.bandNumber == 0:
@@ -419,7 +420,6 @@ class GrassModuleStarter(ModuleLogging):
         """This function runs a process and logs its stdout and stderr"""
 
         try:
-            # inputlist = ["valgrind","--tool=memcheck"] + inputlist
             self.LogInfo("Run process: " + str(inputlist))
             proc = subprocess.Popen(args=inputlist, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             self.runPID = proc.pid
@@ -585,8 +585,11 @@ class GrassModuleStarter(ModuleLogging):
     def _linkInput(self, input):
         """Link the input data into a grass work location"""
         self.LogInfo("Link input")
-
-        inputName = "input_" + str(self.inputCounter)
+        # Set the input names
+        if self.multipleRasterImport == True:
+            inputName = input.identifier + "_" + str(self.inputCounter)
+        else:
+            inputName = input.identifier
 
         if self._isRaster(input) != None:
             parameter = [os.path.join(self.inputParameter.grassGisBase, "bin", "r.external"), "input=" + input.pathToFile, "output=" + inputName]
@@ -633,8 +636,12 @@ class GrassModuleStarter(ModuleLogging):
 
     ############################################################################
     def _importInput(self, input):
-
-        inputName = "input_" + str(self.inputCounter)
+        """Import raster and vektor files into the grass work location"""
+        # Set the input name
+        if self.multipleRasterImport == True:
+            inputName = input.identifier + "_" + str(self.inputCounter)
+        else:
+            inputName = input.identifier
 
         # import the raster data via gdal
         if self._isRaster(input) != None:
@@ -764,7 +771,8 @@ class GrassModuleStarter(ModuleLogging):
             return
 
         for i in list:
-            outputName = "output_" + str(self.outputCounter)
+            # Use the same name as the output
+            outputName = i.identifier
             # Ignore if multiple defined
             if self.outputMap.has_key(i.identifier):
                 pass
@@ -799,7 +807,7 @@ class GrassModuleStarter(ModuleLogging):
                     self.LogError(log)
                     raise GMSError(log)
             else:
-                log = "Unable to export " + outputName
+                log = "Unsupported mime type. Unable to export " + outputName
                 self.LogError(log)
                 raise GMSError(log)
 

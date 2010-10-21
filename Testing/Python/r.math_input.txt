@@ -1,0 +1,66 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=/home/soeren/src/wps-grass-bridge/Testing/Python/GrassAddons
+ GRASS_VERSION=7.0.svn
+ Module=r.math
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=a
+ PathToFile=TestData/basin_50K_nc.tif
+ MimeType=image/tiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=b
+ PathToFile=TestData/basin_50K_nc.tif
+ MimeType=image/tiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=c
+ PathToFile=TestData/basin_50K_nc.tif
+ MimeType=image/tiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=d
+ MaxOccurs=1
+ PathToFile=TestData/basin_50K_nc.tif
+ MimeType=image/tiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=math
+ PathToFile=r.math_expressions.txt
+ MimeType=text/plain
+ MaxOccurs=1
+ Encoding=UTF-8
+ Schema=
+
+[LiteralData]
+ Identifier=grass_band_number
+ DataType=integer
+ Value=1
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/r_math_output.tif
+ MimeType=image/geotiff
+ Encoding=
+ Schema=

@@ -1,9 +1,10 @@
+# Test r.watershed
 [System]
  WorkDir=/tmp
  OutputDir=/tmp
 
 [GRASS]
- GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
  GRASS_ADDON_PATH=
  GRASS_VERSION=7.0.svn
  Module=r.watershed
@@ -15,7 +16,7 @@
 [ComplexData]
  Identifier=elevation
  MaxOccurs=1
- PathToFile=elev_srtm_30m.tiff
+ PathToFile=TestData/elev_srtm_30m.tif
  MimeType=image/tiff
  Encoding=
  Schema=
