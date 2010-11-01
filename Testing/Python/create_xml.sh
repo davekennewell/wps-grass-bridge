@@ -2,6 +2,7 @@ python GrassAddons/r.add --wps-process-description > r.add.xml
 python GrassAddons/r.sub --wps-process-description > r.sub.xml
 python GrassAddons/r.div --wps-process-description > r.div.xml
 python GrassAddons/r.mult --wps-process-description > r.mult.xml
+python GrassAddons/r.math --wps-process-description > r.math.xml
 r.contour --wps-process-description > r.contour.xml
 r.watershed --wps-process-description > r.watershed.xml
 r.univar --wps-process-description > r.univar.xml

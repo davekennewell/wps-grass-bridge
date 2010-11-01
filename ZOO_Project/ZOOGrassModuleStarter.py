@@ -108,8 +108,16 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
                 raise
             # Create input and output maps
             self._createInputOutputMaps()
-            # Import/link the data, run the module and export the data
-            self._importRunExport()
+            # Import all data, run the module and export the data
+            # Before import check if zipped shape files are present in input and
+            # Extract them and update the input map
+            self._checkForZippedShapeFiles()
+            # Create the new location based on the first valid input and import all maps
+            self._importData()
+            # start the grass module one or multiple times, depending on the multiple import parameter
+            self._startGrassModule()
+            # now export the results
+            self._exportOutput()
             # Attach the results to the outputs list
             self._attachOutputFiles()
             # self.LogInfo(str(self._inputs))
