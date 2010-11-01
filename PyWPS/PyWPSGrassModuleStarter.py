@@ -37,10 +37,10 @@ GRASS_VERSION="7.0.svn"
 
 import tempfile
 import sys
+from types import *
 # Import the GrassModuleStarter
 sys.path.append("..")
 from GrassModuleStarter import *
-from pywps.Process import WPSProcess
 from pywps.Process.InAndOutputs import LiteralInput as PyWPSLiteralInput
 from pywps.Process.InAndOutputs import ComplexInput as PyWPSComplexInput
 from pywps.Process.InAndOutputs import ComplexOutput as PyWPSComplexOutput
@@ -80,7 +80,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 self._checkForZippedShapeFiles()
                 # Create the new location based on the first valid input and import all maps
                 self._importData()
-                # start the grass module one or multiple times, depending on the multiple import parameter
+                # start the grass module 
                 self._startGrassModule()
                 # now export the results
                 self._exportOutput()
@@ -103,9 +103,25 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 data = LiteralData()
                 data.identifier = self._inputs[input].identifier
                 data.value = self._inputs[input].getValue()
-                data.type = self._inputs[input].dataType
+                #check for double, integer, boolean, string
+                if self._inputs[input].dataType is IntType:
+                    data.type = "integer"
+                elif self._inputs[input].dataType is FloatType:
+                    data.type = "double"
+                elif self._inputs[input].dataType is StringType:
+                    data.type = "string"
+                elif self._inputs[input].dataType is BooleanType:
+                    data.type = "boolean"
+                    if data.value == False:
+                        data.value = "False"
+                    elif data.type == True:
+                        data.value = "True"
+                    else:
+                        data.value = "False"
+                else:
+                    data.type = "string"
                 self.inputParameter.literalDataList.append(data)
-                self.LogInfo("Added literal input " + data.identifier + " type " + data.value + " type " + data.type)
+                self.LogInfo("Added literal input " + data.identifier)
             elif isinstance(self._inputs[input], PyWPSComplexInput):
                 data = ComplexData()
                 data.identifier = self._inputs[input].identifier
@@ -115,7 +131,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 data.schema = self._inputs[input].format["schema"]
                 data.encoding = self._inputs[input].format["encoding"]
                 self.inputParameter.complexDataList.append(data)
-                self.LogInfo("Added complex input " + data.identifier + " path " + data.pathToFile + " mime type " + data.mimeType + " schema" + data.schema)
+                self.LogInfo("Added complex input " + data.identifier)
         
         for output in self._outputs:
             if isinstance(self._outputs[output], PyWPSComplexOutput):
@@ -125,7 +141,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 data.schema = self._outputs[output].format["schema"]
                 data.encoding = self._outputs[output].format["encoding"]
                 self.inputParameter.complexOutputList.append(data)
-                self.LogInfo("Added complex output " + data.identifier + " path " + data.pathToFile + " mime type " + data.mimeType)
+                self.LogInfo("Added complex output " + data.identifier)
 
 
     ############################################################################

@@ -109,6 +109,7 @@ class GrassXMLtoPyWPS():
         self.__output.write("# Mail: soerengebbert <at> googlemail <dot> com    #\n")
         self.__output.write("# ################################################ #\n\n")
         self.__output.write("from pywps.Process import WPSProcess\n\n")
+        self.__output.write("from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter\n\n")
         self.__output.write("class " + str(self.__content["ProcessDescription"]["Identifier"]).replace(".", "_") + "(WPSProcess):\n\n")
         self.__output.write("  def __init__(self):\n")
         self.__output.write("    WPSProcess.__init__(self, identifier = \'" + str(self.__content["ProcessDescription"]["Identifier"]) + "\', ")
@@ -167,20 +168,15 @@ class GrassXMLtoPyWPS():
 	    if output.has_key("Abstract"):
                 self.__output.write(", abstract = \'" + output["Abstract"] + "\'")
             self.__output.write(", formats = " + str(output["ComplexOutput"]["Supported"]))
-            self.__output.write(")\n")
+            self.__output.write(")\n\n")
 
-        self.__output.write("\n\n  def execute(self):\n")
-        self.__output.write("    pass\n\n\n")
-            
-        # For debug only
+        self.__output.write("  def execute(self):\n")
+        self.__output.write("    starter = PyWPSGrassModuleStarter()\n")
+        self.__output.write("    starter.fromPyWPS(\"" + self.__content["ProcessDescription"]["Identifier"] +  "\", self.inputs, self.outputs)\n\n")
+        
         self.__output.write("if __name__ == \"__main__\":\n")
-        self.__output.write("  print \"Self test\"\n")
-        self.__output.write("  p = " + str(self.__content["ProcessDescription"]["Identifier"]).replace(".", "_") + "()\n")
-        self.__output.write("  p.execute()\n")
-        self.__output.write("  for input in p.inputs:\n")
-        self.__output.write("    print input\n")
-        self.__output.write("  for output in p.outputs:\n")
-        self.__output.write("    print output\n")
+        self.__output.write("  process = " + str(self.__content["ProcessDescription"]["Identifier"]).replace(".", "_") + "()\n")
+        self.__output.write("  process.execute()\n")
                         	
     def __getTitleAbstract(self, element):
         """Create the title and abstract for yaml zcfg file"""
