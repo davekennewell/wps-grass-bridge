@@ -1,6 +1,0 @@
-To convert GRASS WPS XML process description files into the zcfg or YAML format you need to install two additional Python libraries:
-
-1.) PyXB http://sourceforge.net/projects/pyxb/
-2.) YAML http://pyyaml.org/
-
-Install the libraries and modify your PYTHONPATH so the scripts can find them 

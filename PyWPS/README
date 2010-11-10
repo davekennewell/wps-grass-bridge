@@ -1,5 +1,0 @@
-To convert GRASS WPS XML process description files into PyWPS process python files, you need to install two additional Python libraries:
-
-1.) PyXB http://sourceforge.net/projects/pyxb/
-
-Install the libraries and modify your PYTHONPATH so the scripts are able to find them 
