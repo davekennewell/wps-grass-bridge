@@ -25,7 +25,6 @@ from optparse import OptionParser
 import sys
 import os
 import os.path
-sys.path.append("..")
 import WPS_1_0_0.OGC_WPS_1_0_0 as wps
 
 class GrassXMLtoZcfg():
@@ -48,7 +47,7 @@ class GrassXMLtoZcfg():
 
     def __writePythonFile(self, modulename, funcname):
         """Write the service python file for the ZOO Kernel"""
-        self.__pythonFile.write("import ZOO_Project.ZOOGrassModuleStarter as zoo\n")
+        self.__pythonFile.write("import ZOOGrassModuleStarter as zoo\n")
         self.__pythonFile.write("def " + str(funcname) + "(m, inputs, outputs):\n")
         self.__pythonFile.write("    service = zoo.ZOOGrassModuleStarter()\n")
         self.__pythonFile.write("    service.fromMaps(\"" + str(modulename)+ "\", inputs, outputs)\n")

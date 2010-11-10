@@ -30,15 +30,15 @@ OUTPUTDIR="/tmp"
 LOGFILE="logfile.txt"
 LOGFILE_MODULE_STDOUT="logfile_module_stdout.txt"
 LOGFILE_MODULE_STDERR="logfile_module_sterr.txt"
-GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu"
-GRASS_ADDON_PATH="/home/soeren/src/vtkGRASSBridge/vtk-grass-bridge/WPS/Testing/Python/GrassAddons"
+GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu"
+GRASS_ADDON_PATH="gms/Testing/Python/GrassAddons"
 GRASS_VERSION="7.0.svn"
 # !!!!! END EDIT SECTION !!!!!
 
 
 import os.path
 # Import the GrassModuleStarter
-from GrassModuleStarter import *
+from gms.GrassModuleStarter import *
 # Import the WPS bindings
 import WPS_1_0_0.OGC_WPS_1_0_0 as wps
 

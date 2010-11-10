@@ -25,7 +25,6 @@ from optparse import OptionParser
 import sys
 import os
 import os.path
-sys.path.append("..")
 import WPS_1_0_0.OGC_WPS_1_0_0 as wps
 import yaml
 

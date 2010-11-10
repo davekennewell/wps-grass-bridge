@@ -39,8 +39,8 @@ import tempfile
 import sys
 from types import *
 # Import the GrassModuleStarter
-sys.path.append("..")
-from GrassModuleStarter import *
+from gms.GrassModuleStarter import *
+# Impot the PyWPS stuff.. Mask the name to avoid conflicts with the GrassModuleStarter
 from pywps.Process.InAndOutputs import LiteralInput as PyWPSLiteralInput
 from pywps.Process.InAndOutputs import ComplexInput as PyWPSComplexInput
 from pywps.Process.InAndOutputs import ComplexOutput as PyWPSComplexOutput
