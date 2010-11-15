@@ -150,7 +150,7 @@ class GrassXMLtoPyWPS():
                     else:
                         self.__output.write(", default = " + str(input["LiteralData"]["DefaultValue"]))	       
 	        if input["LiteralData"].has_key("AllowedValues"):
-	            self.__output.write(", allowedValues = \'" + str(input["LiteralData"]["AllowedValues"]) + "\'")
+	            self.__output.write(", allowedValues = " + str(input["LiteralData"]["AllowedValues"]))
 	        elif input["LiteralData"].has_key("AnyValue"):
 	            self.__output.write(", allowedValues = \'*\'")
             if input.has_key("ComplexData"):
@@ -280,7 +280,7 @@ class GrassXMLtoPyWPS():
                         allowedValues.append(str(value.value()))
                 except:
                     allowedValues.append(str(value.value()))
-            literalData["AllowdValues"] = allowedValues
+            literalData["AllowedValues"] = allowedValues
         if element.DefaultValue != None:
             try:
                 if literalData["DataType"] == "boolean":
