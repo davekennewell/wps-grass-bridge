@@ -21,22 +21,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-
-
-# !!!!! EDIT THIS SECTION !!!!!
-# Some default variables. Override them to your needs.
-WORKDIR="/tmp"
-OUTPUTDIR="/tmp"
-LOGFILE="/tmp/logfile.txt"
-LOGFILE_MODULE_STDOUT="/tmp/logfile_module_stdout.txt"
-LOGFILE_MODULE_STDERR="/tmp/logfile_module_sterr.txt"
-GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu"
-GRASS_ADDON_PATH="/home/soeren/src/wps-grass-bridge/WPS/Testing/Python/GrassAddons"
-GRASS_VERSION="7.0.svn"
-# !!!!! END EDIT SECTION !!!!!
-
+import GlobalGrassSettings
 import tempfile
-import sys
 from types import *
 # Import the GrassModuleStarter
 from gms.GrassModuleStarter import *
@@ -58,7 +44,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         self._outputs = outputs
         
         # Initiate the logging mechanism and the logfiles
-        ModuleLogging.__init__(self, LOGFILE, LOGFILE_MODULE_STDOUT, LOGFILE_MODULE_STDERR)
+        ModuleLogging.__init__(self, GlobalGrassSettings.LOGFILE, GlobalGrassSettings.LOGFILE_MODULE_STDOUT, GlobalGrassSettings.LOGFILE_MODULE_STDERR)
 
         # Parse the input parameter of the text file
         self.inputParameter = InputParameter(self.logfile)
@@ -148,10 +134,10 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
     def _setInputParameterInit(self):
         """Initiate the input parameter"""
         self.inputParameter = InputParameter(self.logfile)
-        self.inputParameter.grassGisBase = GRASS_GIS_BASE
-        self.inputParameter.grassAddonPath = GRASS_ADDON_PATH
-        self.inputParameter.grassVersion = GRASS_VERSION
-        self.inputParameter.workDir = WORKDIR
+        self.inputParameter.grassGisBase = GlobalGrassSettings.GRASS_GIS_BASE
+        self.inputParameter.grassAddonPath = GlobalGrassSettings.GRASS_ADDON_PATH
+        self.inputParameter.grassVersion = GlobalGrassSettings.GRASS_VERSION
+        self.inputParameter.workDir = GlobalGrassSettings.WORKDIR
         self.inputParameter.grassModule = self._grassModule
  
     ############################################################################
@@ -159,7 +145,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         """Create the output file names which are used to identify the outputs"""
         count = 0
         for output in self.inputParameter.complexOutputList:
-            filename = tempfile.mktemp(prefix=output.identifier + "_" + str(count),dir=OUTPUTDIR)
+            filename = tempfile.mktemp(prefix=output.identifier + "_" + str(count),dir=GlobalGrassSettings.OUTPUTDIR)
             output.pathToFile= filename
             self.LogInfo("Created output filename " + filename)
             count = count + 1
