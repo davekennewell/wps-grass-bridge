@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.sunmask</ows:Identifier>
 		<ows:Title>Either exact sun position (A) is specified, or date/time to calculate the sun position (B) by r.sunmask itself.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.sunmask.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.sunmask.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="sun position" />
 		<DataInputs>
@@ -62,7 +62,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-89.999</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>89.999</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -72,7 +75,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-360</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>360</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -82,7 +88,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>1950-2050</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>1950</ows:MinimumValue>
+							<ows:MaximumValue>2050</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -92,7 +101,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-12</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>12</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -102,7 +114,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-31</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>31</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -112,7 +127,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-24</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>24</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -122,7 +140,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-60</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>60</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -132,7 +153,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-60</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>60</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>

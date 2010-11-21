@@ -31,7 +31,7 @@ OUTPUTDIR="/tmp"
 LOGFILE="/tmp/logfile.txt"
 LOGFILE_MODULE_STDOUT="/tmp/logfile_module_stdout.txt"
 LOGFILE_MODULE_STDERR="/tmp/logfile_module_sterr.txt"
-GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu"
+GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu"
 GRASS_ADDON_PATH="gms/Testing/Python/GrassAddons"
 GRASS_VERSION="7.0.svn"
 # !!!!! END EDIT SECTION !!!!!

@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.mkgrid</ows:Identifier>
 		<ows:Title>Creates a vector map of a user-defined grid.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/v.mkgrid.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.mkgrid.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
 		<DataInputs>
@@ -64,7 +64,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>3-30</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>3</ows:MinimumValue>
+							<ows:MaximumValue>30</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>3</DefaultValue>
 				</LiteralData>

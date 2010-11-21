@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.quantile</ows:Identifier>
 		<ows:Title>Compute quantiles using two passes.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.quantile.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.quantile.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="statistics" />
 		<DataInputs>

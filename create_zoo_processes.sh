@@ -3,7 +3,7 @@
 for name in `find gms/Testing/Python/ -name \*.xml` ; do
 	echo "convert $name into `basename $name .xml `"
 	script=`basename $name .xml | sed -e s/\\\./_/g`
-	python GrassXMLtoPyWPS.py -x $name -z ${script}.zcfg -p ${script}.py
+	python GrassXMLtoZCFG.py -x $name -z ${script}.zcfg -p ${script}.py
 done
 
 #echo "r.add.xml to r_add.zcfg"

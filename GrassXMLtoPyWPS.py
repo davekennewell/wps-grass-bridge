@@ -112,12 +112,12 @@ class GrassXMLtoPyWPS():
         self.__output.write("class " + str(self.__content["ProcessDescription"]["Identifier"]).replace(".", "_") + "(WPSProcess):\n\n")
         self.__output.write("  def __init__(self):\n")
         self.__output.write("    WPSProcess.__init__(self, identifier = \'" + str(self.__content["ProcessDescription"]["Identifier"]) + "\', ")
-        self.__output.write("title = \'" + str(self.__content["ProcessDescription"]["Title"]) + "\', ")
+        self.__output.write("title = \'" + str(self.__content["ProcessDescription"]["Title"]).replace("<", "&#60;").replace(">", "&#62;") + "\', ")
         self.__output.write("version = " + str(self.__content["ProcessDescription"]["processVersion"]) + ", ")
         self.__output.write("statusSupported = " + str(self.__content["ProcessDescription"]["statusSupported"]) + ", ")
         self.__output.write("storeSupported = " + str(self.__content["ProcessDescription"]["storeSupported"]) + ", ")
         self.__output.write("metadata = " + str(self.__content["ProcessDescription"]["Metadata"]) + ", ")
-        self.__output.write("abstract = \'" + str(self.__content["ProcessDescription"]["Abstract"]) + "\')\n")
+        self.__output.write("abstract = \'" + str(self.__content["ProcessDescription"]["Abstract"]).replace("<", "&#60;").replace(">", "&#62;") + "\')\n")
         
         
         self.__output.write("\n    # Literal and complex inputs\n")
@@ -129,9 +129,9 @@ class GrassXMLtoPyWPS():
 	        self.__output.write("    self.addLiteralInput(")
 	        
 	    self.__output.write("identifier = \'" + input["Identifier"] + "\', ")
-	    self.__output.write("title = \'" + input["Title"] + "\', ")
+	    self.__output.write("title = \'" + input["Title"].replace("<", "&#60;").replace(">", "&#62;") + "\', ")
 	    if input.has_key("Abstract"):
-                self.__output.write("abstract = \'" + input["Abstract"] + "\', ")
+                self.__output.write("abstract = \'" + input["Abstract"].replace("<", "&#60;").replace(">", "&#62;") + "\', ")
             self.__output.write("minOccurs = " + str(input["minOccurs"]) + ", ")
             self.__output.write("maxOccurs = " + str(input["maxOccurs"]) + "") 
             
@@ -280,7 +280,9 @@ class GrassXMLtoPyWPS():
                         allowedValues.append(str(value.value()))
                 except:
                     allowedValues.append(str(value.value()))
+        if len(allowedValues) > 0:
             literalData["AllowedValues"] = allowedValues
+
         if element.DefaultValue != None:
             try:
                 if literalData["DataType"] == "boolean":

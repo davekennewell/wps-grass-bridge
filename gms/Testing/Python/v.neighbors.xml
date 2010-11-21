@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.neighbors</ows:Identifier>
 		<ows:Title>Makes each cell value a function of the attribute values assigned to the vector points or centroids around it, and stores new cell values in an output raster map.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/v.neighbors.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.neighbors.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="aggregation" />

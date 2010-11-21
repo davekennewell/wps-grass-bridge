@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.buffer</ows:Identifier>
 		<ows:Title>Creates a buffer around vector features of given type.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/v.buffer.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.buffer.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
 		<ows:Metadata xlink:title="buffer" />

@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.series</ows:Identifier>
 		<ows:Title>Makes each output cell value a function of the values assigned to the corresponding cells in the input raster map layers.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.series.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.series.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="series" />
 		<DataInputs>
@@ -93,7 +93,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0.0-1.0</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0.0</ows:MinimumValue>
+							<ows:MaximumValue>1.0</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>

@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.univar</ows:Identifier>
 		<ows:Title>Variance and standard deviation is calculated only for points if specified.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/v.univar.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.univar.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="statistics" />
 		<DataInputs>
@@ -93,7 +93,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-100</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>100</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>90</DefaultValue>
 				</LiteralData>

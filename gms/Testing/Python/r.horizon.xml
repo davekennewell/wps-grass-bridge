@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.horizon</ows:Identifier>
 		<ows:Title>Computes horizon angle height from a digital elevation model. The module has two different modes of operation:  1. Computes the entire horizon around a single point whose coordinates are given with the 'coord' option. The horizon height (in radians). 2. Computes one or more raster maps of the horizon height in a single direction.  The input for this is the angle (in degrees), which is measured  counterclockwise with east=0, north=90 etc. The output is the horizon height in radians.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.horizon.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.horizon.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">

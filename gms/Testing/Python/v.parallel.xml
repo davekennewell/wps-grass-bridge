@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.parallel</ows:Identifier>
 		<ows:Title>Creates parallel line to input vector lines.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/v.parallel.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.parallel.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
 		<DataInputs>
@@ -62,7 +62,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-100000000</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>100000000</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -72,7 +75,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-100000000</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>100000000</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -104,7 +110,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-100000000</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>100000000</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>

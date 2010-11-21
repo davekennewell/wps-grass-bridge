@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.sun</ows:Identifier>
 		<ows:Title>Computes direct (beam), diffuse and reflected solar irradiation raster maps for given day, latitude, surface and atmospheric conditions. Solar parameters (e.g. sunrise, sunset times, declination, extraterrestrial irradiance, daylight length) are saved in the map history file. Alternatively, a local time can be specified to compute solar incidence angle and/or irradiance raster maps. The shadowing effect of the topography is optionally incorporated.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.sun.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.sun.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
@@ -492,7 +492,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>1-365</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>1</ows:MinimumValue>
+							<ows:MaximumValue>365</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
@@ -519,7 +522,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-24</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>24</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 				</LiteralData>
 			</Input>

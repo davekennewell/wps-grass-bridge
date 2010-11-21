@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.neighbors</ows:Identifier>
 		<ows:Title>Makes each cell category value a function of the category values assigned to the cells around it, and stores new cell values in an output raster map layer.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.neighbors.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.neighbors.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
@@ -170,7 +170,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0.0-1.0</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0.0</ows:MinimumValue>
+							<ows:MaximumValue>1.0</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>0.5</DefaultValue>
 				</LiteralData>

@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.generalize</ows:Identifier>
 		<ows:Title>Tool for vector based generalization.</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/v.generalize.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.generalize.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="generalization" />
 		<ows:Metadata xlink:title="simplification" />
@@ -103,7 +103,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-1000000000</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>1000000000</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>1.0</DefaultValue>
 				</LiteralData>
@@ -123,7 +126,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-100</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>100</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>50</DefaultValue>
 				</LiteralData>
@@ -134,7 +140,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-1</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>1</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>0.5</DefaultValue>
 				</LiteralData>
@@ -145,7 +154,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-180</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>180</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>3</DefaultValue>
 				</LiteralData>
@@ -165,7 +177,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-1</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>1</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>0</DefaultValue>
 				</LiteralData>

@@ -86,28 +86,45 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         
         for input in self._inputs:
             if isinstance(self._inputs[input], PyWPSLiteralInput):
-                data = LiteralData()
-                data.identifier = self._inputs[input].identifier
-                data.value = self._inputs[input].getValue()
-                #check for double, integer, boolean, string
-                if self._inputs[input].dataType is IntType:
-                    data.type = "integer"
-                elif self._inputs[input].dataType is FloatType:
-                    data.type = "double"
-                elif self._inputs[input].dataType is StringType:
-                    data.type = "string"
-                elif self._inputs[input].dataType is BooleanType:
-                    data.type = "boolean"
-                    if data.value == False:
-                        data.value = "False"
-                    elif data.type == True:
-                        data.value = "True"
+                # Attach only when not empty
+                if self._inputs[input].getValue() != None:
+                    data = LiteralData()
+                    data.identifier = self._inputs[input].identifier
+
+                    # In case an array is attached
+                    if type(self._inputs[input].getValue()) == type([]):
+                        data.value = ""
+                        count = 0
+                        size = len(self._inputs[input].getValue())
+                        for i in self._inputs[input].getValue():
+                            data.value += str(i)
+                            if count > 0 and count < size - 1:
+                                data.value += ","
+                            count += 1
                     else:
-                        data.value = "False"
-                else:
-                    data.type = "string"
-                self.inputParameter.literalDataList.append(data)
-                self.LogInfo("Added literal input " + data.identifier)
+                        data.value = self._inputs[input].getValue()
+
+                    #check for double, integer, boolean, string
+                    if self._inputs[input].dataType is IntType:
+                        data.type = "integer"
+                    elif self._inputs[input].dataType is FloatType:
+                        data.type = "double"
+                    elif self._inputs[input].dataType is StringType:
+                        data.type = "string"
+                    elif self._inputs[input].dataType is BooleanType:
+                        data.type = "boolean"
+                        if data.value == False:
+                            data.value = "False"
+                        elif data.type == True:
+                            data.value = "True"
+                        else:
+                            data.value = "False"
+                    else:
+                        data.type = "string"
+
+                    self.inputParameter.literalDataList.append(data)
+                    self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
+
             elif isinstance(self._inputs[input], PyWPSComplexInput):
                 data = ComplexData()
                 data.identifier = self._inputs[input].identifier

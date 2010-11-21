@@ -9,7 +9,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.shaded.relief</ows:Identifier>
 		<ows:Title>Creates shaded relief map from an elevation map (DEM).</ows:Title>
-		<ows:Abstract>The manual page of this module is available here: http://grass.osgeo.org/grass70/manuals/html70_user/r.shaded.relief.html</ows:Abstract>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.shaded.relief.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
@@ -61,7 +61,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-90</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>90</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>30</DefaultValue>
 				</LiteralData>
@@ -72,7 +75,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>0-360</ows:Value>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>360</ows:MaximumValue>
+						</ows:Range>
 					</ows:AllowedValues>
 					<DefaultValue>270</DefaultValue>
 				</LiteralData>
