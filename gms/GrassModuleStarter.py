@@ -164,6 +164,8 @@ class GrassModuleStarter(ModuleLogging):
         self.inputMap = {}
         self.outputMap = {}
 
+        self.moduleStdout = ""
+        self.moduleStderr = ""
         # the pid of the process which is currently executed, to be used for suspending
         self.runPID = -1
 
@@ -796,7 +798,7 @@ class GrassModuleStarter(ModuleLogging):
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
                 if errorid != 0:
-                    log = "Unable to export " + outputName
+                    log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
                     self.LogError(log)
                     raise GMSError(log)
 
@@ -806,7 +808,18 @@ class GrassModuleStarter(ModuleLogging):
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
                 if errorid != 0:
-                    log = "Unable to export " + outputName
+                    log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
+                    self.LogError(log)
+                    raise GMSError(log)
+            elif self._isTextFile(output) != None and output.identifier.lower() == "stdout":
+                try:
+                    # Copy the stdout to output.pathToFile
+                    self.LogInfo("Write grass module stdout to file: " + output.pathToFile)
+                    outFile = open(output.pathToFile, 'w')
+                    outFile.write(self.moduleStdout)
+                    outFile.close()
+                except:
+                    log = "Unable to export " + outputName + " to file: " + output.pathToFile + " with content:\n" + self.moduleStdout
                     self.LogError(log)
                     raise GMSError(log)
             else:
@@ -860,15 +873,20 @@ class GrassModuleStarter(ModuleLogging):
                     parameter.append(i)
 
         for i in self.outputMap:
-            parameter.append(i + "=" + self.outputMap[i])
+            # Check for stdout identifier, this should not be added to the parameter list
+            if i.lower() != "stdout":
+                parameter.append(i + "=" + self.outputMap[i])
 
         errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+
+        self.moduleStdout = stdout_buff
+        self.moduleStderr = stderr_buff
 
         self.LogModuleStdout(stdout_buff)
         self.LogModuleStderr(stderr_buff)
 
         if errorid != 0:
-            log = "Error while executing the grass module"
+            log = "Error while executing the grass module. The following error message was logged:\n" + stderr_uff
             self.LogError(log)
             raise GMSError(log)
 
