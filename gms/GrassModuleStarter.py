@@ -536,7 +536,7 @@ class GrassModuleStarter(ModuleLogging):
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
-                log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile)
+                log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile) + " GDAL log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
 
@@ -545,7 +545,7 @@ class GrassModuleStarter(ModuleLogging):
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
-                log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile)
+                log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile) + " GDAL log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
             
@@ -580,7 +580,7 @@ class GrassModuleStarter(ModuleLogging):
                     parameter = [self._createGrassModulePath("g.region"), "ewres=" + str(ew), "nsres=" + str(ns)]
                     errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
                     if errorid != 0:
-                        log = "Unable to set the region resolution"
+                        log = "Unable to set the region resolution. g.region log: " + stderr_buff
                         self.LogError(log)
                         raise GMSError(log)
 
@@ -609,7 +609,7 @@ class GrassModuleStarter(ModuleLogging):
                 try:
                     self._importInput(input)
                 except:
-                    log = "Unable to link or import the raster map " + input.pathToFile + " into the grass mapset"
+                    log = "Unable to link or import the raster map " + input.pathToFile + " into the grass mapset" + " r.external log: " + stderr_buff
                     self.LogError(log)
                     raise GMSError(log)
                 return
@@ -660,7 +660,7 @@ class GrassModuleStarter(ModuleLogging):
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
-                log = "Unable to import " + inputName
+                log = "Unable to import " + inputName  + " GDAL log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
 
@@ -679,7 +679,7 @@ class GrassModuleStarter(ModuleLogging):
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
-                log = "Unable to import " + inputName
+                log = "Unable to import " + inputName + " GDAL log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
 
@@ -712,7 +712,7 @@ class GrassModuleStarter(ModuleLogging):
             # We return the group name, which is the raster map name
             return inputName
         elif errorid < 0:
-            log = "Error while imagery group detection. i.group aborted with an error"
+            log = "Error while imagery group detection. i.group aborted with an error: " + stderr_buff
             self.LogError(log)
             raise GMSError(log)
         else:
@@ -798,7 +798,7 @@ class GrassModuleStarter(ModuleLogging):
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
                 if errorid != 0:
-                    log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
+                    log = "Unable to export " + outputName + "   r.out.gdal error:\n" + stderr_buff
                     self.LogError(log)
                     raise GMSError(log)
 
@@ -831,7 +831,6 @@ class GrassModuleStarter(ModuleLogging):
     def _createGrassModulePath(self, grassModule):
         """Create the parameter list and start the grass module. Search for grass
         modules in different grass specific directories"""
-        self.LogInfo("Start GRASS module " + grassModule)
         
         if os.name != "posix":
             grassModule = grassModule + ".exe"
@@ -853,6 +852,8 @@ class GrassModuleStarter(ModuleLogging):
                     log = "GRASS module "+ grassModule + " not found in "  + grassModulePath
                     self.LogError(log)
                     raise GMSError(log)
+
+        self.LogInfo("GRASS module path is " + grassModulePath)
 
         return grassModulePath
 
@@ -886,7 +887,7 @@ class GrassModuleStarter(ModuleLogging):
         self.LogModuleStderr(stderr_buff)
 
         if errorid != 0:
-            log = "Error while executing the grass module. The following error message was logged:\n" + stderr_uff
+            log = "Error while executing the grass module. The following error message was logged:\n" + stderr_buff
             self.LogError(log)
             raise GMSError(log)
 

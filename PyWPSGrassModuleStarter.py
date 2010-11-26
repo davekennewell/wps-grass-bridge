@@ -126,15 +126,30 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                     self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
 
             elif isinstance(self._inputs[input], PyWPSComplexInput):
-                data = ComplexData()
-                data.identifier = self._inputs[input].identifier
-                data.pathToFile = self._inputs[input].getValue()
-                data.maxOccurs = self._inputs[input].maxOccurs
-                data.mimeType = self._inputs[input].format["mimeType"]
-                data.schema = self._inputs[input].format["schema"]
-                data.encoding = self._inputs[input].format["encoding"]
-                self.inputParameter.complexDataList.append(data)
-                self.LogInfo("Added complex input " + data.identifier)
+                if  self._inputs[input].getValue() != None:
+                    if type(self._inputs[input].getValue()) == type([]):
+                        for path in self._inputs[input].getValue():
+                            data = ComplexData()
+                            data.identifier = self._inputs[input].identifier
+                            data.pathToFile = path
+                            data.maxOccurs = self._inputs[input].maxOccurs
+                            data.mimeType = self._inputs[input].format["mimeType"]
+                            data.schema = self._inputs[input].format["schema"]
+                            data.encoding = self._inputs[input].format["encoding"]
+
+                            self.inputParameter.complexDataList.append(data)
+                            self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
+                    else:
+                        data = ComplexData()
+                        data.identifier = self._inputs[input].identifier
+                        data.pathToFile =  self._inputs[input].getValue()
+                        data.maxOccurs = self._inputs[input].maxOccurs
+                        data.mimeType = self._inputs[input].format["mimeType"]
+                        data.schema = self._inputs[input].format["schema"]
+                        data.encoding = self._inputs[input].format["encoding"]
+
+                        self.inputParameter.complexDataList.append(data)
+                        self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
         
         for output in self._outputs:
             if isinstance(self._outputs[output], PyWPSComplexOutput):
