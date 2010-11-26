@@ -25,7 +25,7 @@ from optparse import OptionParser
 import sys
 import os
 import os.path
-import WPS_1_0_0.OGC_WPS_1_0_0 as wps
+import wpsXML.WPS_1_0_0.OGC_WPS_1_0_0 as wps
 
 class GrassXMLtoZcfg():
     """ Convert a Grass WPS XML file into a ZOO-WPS config file (zcfg)"""
