@@ -8,14 +8,14 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.rast.stats</ows:Identifier>
-		<ows:Title>Calculates univariate statistics from a GRASS raster map based on vector polygons and uploads statistics to new attribute columns.</ows:Title>
+		<ows:Title>Calculates univariate statistics from a raster map based on vector polygon map and uploads statistics to new attribute columns.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.rast.stats.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="statistics" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>input</ows:Identifier>
+				<ows:Identifier>vector</ows:Identifier>
 				<ows:Title>Data source for OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -101,7 +101,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>colprefix</ows:Identifier>
+				<ows:Identifier>column_prefix</ows:Identifier>
 				<ows:Title>Column prefix for new attribute columns</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>

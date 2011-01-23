@@ -257,7 +257,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<ows:Identifier>walk_coeff</ows:Identifier>
 				<ows:Title>Coefficients for walking energy formula parameters a,b,c,d</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
 					<DefaultValue>0.72,6.0,1.9998,-1.9998</DefaultValue>
 				</LiteralData>

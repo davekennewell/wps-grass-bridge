@@ -156,38 +156,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output file</ows:Title>
-				<ComplexData maximumMegabytes="2048">
-					<Default>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Supported>
-				</ComplexData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>qobs</ows:Identifier>
-				<ows:Title>Name for observed flow file</ows:Title>
-				<ComplexData maximumMegabytes="2048">
-					<Default>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Supported>
-				</ComplexData>
-			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>timestep</ows:Identifier>
 				<ows:Title>Time step</ows:Title>
@@ -397,6 +365,38 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						</Format>
 						<Format>
 							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name for output file</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>qobs</ows:Identifier>
+				<ows:Title>Name for observed flow file</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

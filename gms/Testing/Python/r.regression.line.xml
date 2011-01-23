@@ -100,22 +100,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>ASCII file for storing regression coefficients (output to screen if file not specified).</ows:Title>
-				<ComplexData maximumMegabytes="2048">
-					<Default>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Supported>
-				</ComplexData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-g</ows:Identifier>
 				<ows:Title>Print in shell script style</ows:Title>
 				<LiteralData>
@@ -177,9 +161,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>stdout</ows:Identifier>
-				<ows:Title>Module output on stdout</ows:Title>
-				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>ASCII file for storing regression coefficients (output to screen if file not specified).</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

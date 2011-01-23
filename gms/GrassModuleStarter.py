@@ -441,6 +441,8 @@ class GrassModuleStarter(ModuleLogging):
         """Import all ComplexData inputs which are raster or vector files. Take care of multiple inputs and group generation"""
         list = self.inputParameter.complexDataList
 
+        importedInput = None
+
         # The list may be empty in case no input is provided
         if len(list) == 0:
             return
@@ -467,6 +469,8 @@ class GrassModuleStarter(ModuleLogging):
                     self.gisrc.locationName = GRASS_WORK_LOCATION
                     self.gisrc.rewriteFile()
                     success = True
+                    if self._isVector(input):
+                        importedInput = input
                     break
                     
         # In case of textual input, use the default location
@@ -493,10 +497,15 @@ class GrassModuleStarter(ModuleLogging):
         # In case no band number was provided but the input has only one band, the data will be imported not linked
         if self.inputParameter.linkInput == "FALSE":
             for i in list:
+                if i == importedInput:
+                    continue
                 self._importInput(i)
         else:
             # Link the inputs into the location
             for i in list:
+                # Check for imported vector maps
+                if i == importedInput:
+                    continue
                 self._linkInput(i)
 
     ############################################################################
@@ -541,14 +550,16 @@ class GrassModuleStarter(ModuleLogging):
                 raise GMSError(log)
 
         elif self._isVector(input) != None:
-            parameter = [self._createGrassModulePath("v.in.ogr"), "dsn=" + input.pathToFile, "location=" + GRASS_WORK_LOCATION , "-ce", "output=undefined"]
+            parameter = [self._createGrassModulePath("v.in.ogr"), "dsn=" + input.pathToFile, "location=" + GRASS_WORK_LOCATION , "-ce", "output=" + str(input.identifier)] # we need the correct name for import
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
                 log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile) + " GDAL log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
-            
+            # Vector maps are imported when the location is created. Linking does not work properly currently
+            self._updateInputMap(input, str(input.identifier))
+
         elif self._isTextFile(input) != None:
             log = "Using XY projection for data processing."
             self.LogError(log)
