@@ -55,6 +55,7 @@ class GrassEnvironment(ProcessLogging):
                     value  += ":"+origValue
                 os.putenv(key,value)
                 os.environ[key] = value
+                self.LogInfo(key + "=" + value)
             except:
                 self.LogError("Error setting grass environmental variables")
                 raise
@@ -120,7 +121,11 @@ class GrassGisRC(ProcessLogging):
             gisrc.write("DIGITIZER: none\n")
             gisrc.write("GISDBASE: %s\n" % self.gisdbase)
             gisrc.write("OVERWRITE: 1\n")
-            gisrc.write("GRASS_GUI: text\n")
+            gisrc.write("DEBUG: 0\n")
+            gisrc.write("GRASS_GUI: text")
+            gisrc.close()
+            gisrc = open(self.__gisrcFile, 'r')
+            self.LogInfo(gisrc.read())
             gisrc.close()
         except:
             self.LogError("Error writing the gisrc file")

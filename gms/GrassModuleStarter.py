@@ -292,14 +292,14 @@ class GrassModuleStarter(ModuleLogging):
             and set the path and mime type accordingly """
         self.LogInfo("inputs")
         count = 0
-        for cd in self.inputParameter.complexDataList:
-            self.LogInfo("Input file: " + str(cd.pathToFile) + "\nMime type: " + str(cd.mimeType).upper())
+        for input in self.inputParameter.complexDataList:
+            self.LogInfo("Input file: " + str(input.pathToFile) + "\nMime type: " + str(input.mimeType).upper())
             # Check for zipped shape files
-            if cd.mimeType.upper() == "APPLICATION/X-ZIPPED-SHP":
-                self.LogInfo("Found zipped shape file " + str(cd.pathToFile))
+            if input.mimeType.upper() == "APPLICATION/X-ZIPPED-SHP":
+                self.LogInfo("Found zipped shape file " + str(input.pathToFile))
                 
-                if zipfile.is_zipfile(cd.pathToFile) == False:
-                    log = "Input: " + cd.pathToFile + " is not a zip file"
+                if zipfile.is_zipfile(input.pathToFile) == False:
+                    log = "Input: " + input.pathToFile + " is not a zip file"
                     self.LogError(log)
                     raise GMSError(log)
                 
@@ -307,7 +307,7 @@ class GrassModuleStarter(ModuleLogging):
                 zpath = os.path.join(self.gisdbase, "input_" + str(count))
                 
                 # Create the zfile object
-                zfile = zipfile.ZipFile(cd.pathToFile)
+                zfile = zipfile.ZipFile(input.pathToFile)
                 # Get the names of the zip file
                 namelist =  zfile.namelist()
                 
@@ -318,12 +318,12 @@ class GrassModuleStarter(ModuleLogging):
                 # Set the shape file name for gdal import
                 for name in namelist:
                     if name.upper().find(".SHP") >= 0:
-                        cd.pathToFile = os.path.join(zpath, name)
-                        self.LogInfo("Extracted shape file path: " + cd.pathToFile)
+                        input.pathToFile = os.path.join(zpath, name)
+                        self.LogInfo("Extracted shape file path: " + input.pathToFile)
                         zfound = True
                         break
                 # Set the mime type
-                cd.mimeType = "APPLICATION/SHP"
+                input.mimeType = "APPLICATION/SHP"
                 
                 if zfound == False:
                     log = "Shape file not found in zip file. Namelist: " + str(namelist)
@@ -409,11 +409,12 @@ class GrassModuleStarter(ModuleLogging):
         self.genv.env["GRASS_VERSION"] = "7.0.svn"
         self.genv.env["GRASS_ADDON_PATH"] = grassAddonPath
         if os.name != 'posix':
-            self.genv.env["PATH"] = str(os.path.join(self.genv.env["GISBASE"], "bin") + ";" + os.path.join(self.genv.env["GISBASE"], "scripts"))
+            self.genv.env["PATH"] = str(os.path.join(self.genv.env["GISBASE"], "bin") + ";" + os.path.join(self.genv.env["GISBASE"], "scripts") + ";" + os.path.join(self.genv.env["GISBASE"], "lib") + ";" + os.path.join(self.genv.env["GISBASE"], "extralib"))
             self.genv.env["PYTHONPATH"] = str(self.genv.env["PYTHONPATH"] + ";" + os.path.join(self.genv.env["GISBASE"], "etc", "python"))
         else:
             self.genv.env["PATH"] = str(os.path.join(self.genv.env["GISBASE"], "bin") + ":" + os.path.join(self.genv.env["GISBASE"], "scripts"))
             self.genv.env["PYTHONPATH"] = str(self.genv.env["PYTHONPATH"] + ":" + os.path.join(self.genv.env["GISBASE"], "etc", "python"))
+            
         self.genv.setEnvVariables()
         self.genv.getEnvVariables()
 
@@ -898,7 +899,7 @@ class GrassModuleStarter(ModuleLogging):
         self.LogModuleStderr(stderr_buff)
 
         if errorid != 0:
-            log = "Error while executing the grass module. The following error message was logged:\n" + stderr_buff
+            log = "Error while executing the grass module. The following error message was logged:\n" + stderr_buff.replace("<","&#60;").replace(">", "&#62;")
             self.LogError(log)
             raise GMSError(log)
 
