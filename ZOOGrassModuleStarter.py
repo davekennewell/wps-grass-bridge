@@ -37,11 +37,7 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
     def fromMaps(self, grassModule, inputs, outputs):
 
         self._grassModule = grassModule
-        self._inputs = {}
-        # Transfer the input values. The metadata is read separately from generated GRASS WPS XML files
-	for key in inputs.keys():
-            self._inputs[key] = inputs[key]["value"]
-
+        self._inputs = inputs
         self._outputs = outputs
         
         # Create the tmp working directory and initiate the logging functionality
@@ -64,25 +60,13 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
             self._setInputParameterInit()
             self._setUpGrassLocation(self.inputParameter.grassGisBase, self.inputParameter.grassAddonPath)
 
-            # Catch the XML process description of the input module
-            inputlist = [self._createGrassModulePath(self.inputParameter.grassModule), "--wps-process-description"]
-            error_code, stdout_buff, stderr_buff = self._runProcess(inputlist)
-            #
             try:
-                # Read the XML into a PyXB generated class hierarchy
-                self._doc = wps.CreateFromDocument(stdout_buff)
-                # Create the inner data structure for GrassModuleStarter
-                self._parseXML()
+                # Parse the ZOO maps and create the GrassModuleStarter structures
+                self._parseInputsAndOutputs()
                 # Write the complex inputs into files
                 self._createInputFiles()
                 # Create the output file names
                 self._createOutputFiles()
-
-                # Check and attach the literal data
-                for key in self._inputs.keys():
-                    for ldata in self.inputParameter.literalDataList:
-                        if ldata.identifier == key:
-                            ldata.value = self._inputs[key]
             except:
                 raise
             # Create input and output maps
@@ -99,8 +83,7 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
             self._exportOutput()
             # Attach the results to the outputs list
             self._attachOutputFiles()
-            # self.LogInfo(str(self._inputs))
-            # self.LogInfo(str(outputs))
+            self.LogInfo(str(outputs))
         except:
             raise
         finally:
@@ -125,12 +108,12 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
             filename = os.path.join(self.gisdbase, input.identifier + "_" + str(count))
             try:
                 infile = open(filename, 'w')
-                infile.write(self._inputs[input.identifier])
+                infile.write(self._inputs[input.identifier]["value"])
                 infile.close()
             except:
                 self.LogError("Unable to create input files")
                 raise
-            self._inputs[input.identifier] = filename
+            self._inputs[input.identifier]["value"] = filename
             input.pathToFile= filename
             self.LogInfo("Created input filename " + filename)
             count = count + 1
@@ -159,76 +142,44 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
                 raise
             self.LogInfo("Attached output file " + filename)
             count = count + 1
-
+        
     ############################################################################
-    def _parseXML(self):
-        """Parse the PyXB XML structure and fill the internal data structure with content"""
-        try:
-            if len(self._doc.ProcessDescription) > 1:
-                raise IOError("Only one Process is supported")
-            
-            for process in self._doc.ProcessDescription:
-	        self._getDataInputs(process)
-	        self._getProcessOutputs(process)
-        except:
-            raise
-
-    ############################################################################
-    def _getDataInputs(self,  process):
-        """Create data inputs"""
-        for data in process.DataInputs.Input:
-            input= None
-            
-            if data.ComplexData != None:
-                input = self._getComplexData(data.ComplexData)
-                if input:
-                    input.maxOccurs = int(data.maxOccurs)
-                    input.identifier = str(data.Identifier.value())
-                    self.inputParameter.complexDataList.append(input)
-                    #print "Added input", input.identifier
-            if data.LiteralData != None:
-                input= self._getLiteralData(data.LiteralData)
-                if input:
-                    input.maxOccurs = int(data.maxOccurs)
-                    input.identifier = str(data.Identifier.value())
-                    self.inputParameter.literalDataList.append(input)
-                    #print "Added input", input.identifier
-
-    ############################################################################
-    def _getProcessOutputs(self,  process):
-        """Create process outputs"""
-        for data in process.ProcessOutputs.Output:
-            output = None
-                
-            if data.ComplexOutput != None:
-                output = self._getComplexData(data.ComplexOutput)
-                output.identifier = str(data.Identifier.value())
+    def _parseInputsAndOutputs(self):
+	for key in self._inputs.keys():
+            # Complex Data
+            if self._inputs[key].has_key("mimeType") == True and self._inputs[key].has_key("value") == True and self._inputs[key]["value"] != 'NULL':
+                self.LogInfo("Attach complex data " + key)
+                input = ComplexData()
+                input.identifier = key
+                input.pathToFile = self._inputs[key]["value"]
+                input.mimeType = self._inputs[key]["mimeType"]
+                input.maxOccurs = self._inputs[key]["maxOccurs"]
+                if self._inputs[key].has_key("encoding"):
+                    input.encoding = self._inputs[key]["encoding"]
+                if self._inputs[key].has_key("schema"):
+                    input.schema = self._inputs[key]["schema"]
+                self.inputParameter.complexDataList.append(input)
+            # Literal Data
+            if self._inputs[key].has_key("DataType") == True and self._inputs[key].has_key("value") == True and self._inputs[key]["value"] != 'NULL':
+                self.LogInfo("Attach literal data " + key)
+                input = LiteralData()
+                input.identifier = key
+                input.value = self._inputs[key]["value"]
+                input.type = self._inputs[key]["DataType"]
+                self.inputParameter.literalDataList.append(input)
+        # Only complex outputs are currently supported by grass
+	for key in self._outputs.keys():
+            # Complex Output
+            if self._outputs[key].has_key("mimeType") == True:
+                self.LogInfo("Attach complex output " + key)
+                output = ComplexData()
+                output.identifier = key
+                output.mimeType = self._outputs[key]["mimeType"]
+                if self._outputs[key].has_key("encoding"):
+                    output.encoding = self._outputs[key]["encoding"]
+                if self._outputs[key].has_key("schema"):
+                    output.schema = self._outputs[key]["schema"]
                 self.inputParameter.complexOutputList.append(output)
-                #print "Added output", output.identifier
-
-    ############################################################################
-    def _getComplexData(self,  element):
-        """Create complex data"""
-        data = ComplexData()
-       
-        if element.Default.Format.MimeType != None:
-            data.mimeType = str(element.Default.Format.MimeType)
-        if element.Default.Format.Encoding != None:
-            data.encoding = str(element.Default.Format.Encoding)
-        if element.Default.Format.Schema != None:
-            data.schema = str(element.Default.Format.Schema)
-
-        return data
-
-    ############################################################################
-    def _getLiteralData(self,  element):
-        """The literal data"""
-        data = LiteralData()
-
-        if element.DataType != None:
-            data.type = str(element.DataType.value())
-
-        return data
 
 ################################################################################
 def main():
@@ -239,7 +190,7 @@ def main():
     starter = ZOOGrassModuleStarter()
     starter.fromMaps("v.voronoi", inputs, outputs)
     
-    print outputs["output"]
+    print str(outputs['output']['value'])
         
     exit(0)
 

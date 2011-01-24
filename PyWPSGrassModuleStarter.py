@@ -37,11 +37,12 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         GrassModuleStarter.__init__(self)
 
     ############################################################################
-    def fromPyWPS(self, grassModule, inputs, outputs):
+    def fromPyWPS(self, grassModule, inputs, outputs, pywps):
 
         self._grassModule = grassModule
         self._inputs = inputs
         self._outputs = outputs
+        self._pywps = pywps
         
         # Initiate the logging mechanism and the logfiles
         ModuleLogging.__init__(self, GlobalGrassSettings.LOGFILE, GlobalGrassSettings.LOGFILE_MODULE_STDOUT, GlobalGrassSettings.LOGFILE_MODULE_STDERR)
@@ -90,8 +91,14 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 if self._inputs[input].getValue() != None:
                     data = LiteralData()
                     data.identifier = self._inputs[input].identifier
+                    
+                    self.LogInfo("Literal input " + self._inputs[input].identifier + " with value " + str(self._inputs[input].getValue()) + " type " + str(type(self._inputs[input].getValue())))
 
-                    # In case an array is attached
+                    # Store the value
+                    data.value = str(self._inputs[input].getValue())
+                    
+                    # In case an array is attached, store the values as comma 
+                    # separated list
                     if type(self._inputs[input].getValue()) == type([]):
                         data.value = ""
                         count = 0
@@ -101,9 +108,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                             if count > 0 and count < size - 1:
                                 data.value += ","
                             count += 1
-                    else:
-                        data.value = self._inputs[input].getValue()
-
+                        
                     #check for double, integer, boolean, string
                     if self._inputs[input].dataType is IntType:
                         data.type = "integer"
@@ -112,10 +117,11 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                     elif self._inputs[input].dataType is StringType:
                         data.type = "string"
                     elif self._inputs[input].dataType is BooleanType:
+                        # Override the stored value
                         data.type = "boolean"
-                        if data.value == False:
+                        if self._inputs[input].getValue() == False:
                             data.value = "False"
-                        elif data.type == True:
+                        elif self._inputs[input].getValue() == True:
                             data.value = "True"
                         else:
                             data.value = "False"
@@ -126,6 +132,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                     self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
 
             elif isinstance(self._inputs[input], PyWPSComplexInput):
+                self.LogInfo(str(self._inputs[input].format))
                 if  self._inputs[input].getValue() != None:
                     if type(self._inputs[input].getValue()) == type([]):
                         for path in self._inputs[input].getValue():
@@ -133,9 +140,18 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                             data.identifier = self._inputs[input].identifier
                             data.pathToFile = path
                             data.maxOccurs = self._inputs[input].maxOccurs
-                            data.mimeType = self._inputs[input].format["mimeType"]
-                            data.schema = self._inputs[input].format["schema"]
-                            data.encoding = self._inputs[input].format["encoding"]
+                            try:
+                                data.mimeType = self._inputs[input].format["mimeType"]
+                            except:
+                                self.LogWarning("Missing mimeType in input " + str(input) + ". Setting to text/plain")
+                                data.mimeType = "text/plain"
+                            try:
+                                # schema and encoding are not mandatory
+                                data.schema = self._inputs[input].format["schema"]
+                                data.encoding = self._inputs[input].format["encoding"]
+                                self.LogWarning("Missing schema and encoding")
+                            except:
+                                pass
 
                             self.inputParameter.complexDataList.append(data)
                             self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
@@ -144,24 +160,45 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                         data.identifier = self._inputs[input].identifier
                         data.pathToFile =  self._inputs[input].getValue()
                         data.maxOccurs = self._inputs[input].maxOccurs
-                        data.mimeType = self._inputs[input].format["mimeType"]
-                        data.schema = self._inputs[input].format["schema"]
-                        data.encoding = self._inputs[input].format["encoding"]
+                        try:
+                            data.mimeType = self._inputs[input].format["mimeType"]
+                        except:
+                            self.LogWarning("Missing mimeType in input " + str(input) + ". Setting to text/plain")
+                            data.mimeType = "text/plain"
+                        try:
+                            # schema and encoding are not mandatory
+                            data.schema = self._inputs[input].format["schema"]
+                            data.encoding = self._inputs[input].format["encoding"]
+                            self.LogWarning("Missing schema and encoding")
+                        except:
+                            pass
 
                         self.inputParameter.complexDataList.append(data)
                         self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
         
-        for output in self._outputs:
-            if isinstance(self._outputs[output], PyWPSComplexOutput):
-                data = ComplexOutput()
-                data.identifier = self._outputs[output].identifier
-                data.mimeType = self._outputs[output].format["mimeType"]
-                data.schema = self._outputs[output].format["schema"]
-                data.encoding = self._outputs[output].format["encoding"]
-                self.inputParameter.complexOutputList.append(data)
-                self.LogInfo("Added complex output " + data.identifier)
-
-
+        # Attach all requested outputs
+        for output in self._pywps.inputs["responseform"]["responsedocument"]["outputs"]:
+            
+            self.LogInfo(str(self._pywps.inputs["responseform"]["responsedocument"]["outputs"]))
+            
+            data = ComplexOutput()
+            data.identifier = output["identifier"]
+            try:
+                data.mimeType = output["mimetype"]
+            except:
+                self.LogWarning("Missing mimeType in output " + str(input) + ". Setting to text/plain")
+                data.mimeType = "text/plain"
+            try:
+                # schema and encoding are not mandatory
+                data.schema = output["schema"]
+                data.encoding = output["encoding"]
+            except:
+                self.LogWarning("Missing schema and encoding")
+                pass
+                
+            self.inputParameter.complexOutputList.append(data)
+            self.LogInfo("Added complex output " + data.identifier + " of format " + data.mimeType)
+            
     ############################################################################
     def _setInputParameterInit(self):
         """Initiate the input parameter"""
@@ -227,8 +264,10 @@ def main():
     outputs = {}
     outputs[identifier] = output
 
+    
+
     starter = PyWPSGrassModuleStarter()
-    starter.fromPyWPS("v.voronoi", inputs, outputs)
+    starter.fromPyWPS("v.voronoi", inputs, outputs, requests)
     
     print outputs[identifier].value
     

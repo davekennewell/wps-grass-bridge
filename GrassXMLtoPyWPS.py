@@ -103,7 +103,7 @@ class GrassXMLtoPyWPS(wps.GrassXMLtoDict):
 
             self._output.write("  def execute(self):\n")
             self._output.write("    starter = PyWPSGrassModuleStarter()\n")
-            self._output.write("    starter.fromPyWPS(\"" + self._content["ProcessDescription"]["Identifier"] +  "\", self.inputs, self.outputs)\n\n")
+            self._output.write("    starter.fromPyWPS(\"" + self._content["ProcessDescription"]["Identifier"] +  "\", self.inputs, self.outputs, self.pywps)\n\n")
 
             self._output.write("if __name__ == \"__main__\":\n")
             self._output.write("  process = " + str(self._content["ProcessDescription"]["Identifier"]).replace(".", "_") + "()\n")
