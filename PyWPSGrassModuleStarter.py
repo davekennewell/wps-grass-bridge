@@ -54,9 +54,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         self._setInputParameterInit()
         
         # Some debug stuff
-        # self.LogInfo(str(self._pywps.inputs["responseform"]["responsedocument"]["outputs"]))
-        # self.LogInfo(str(self._pywps.inputs["datainputs"]))
-        self.LogInfo(str(self._pywps.inputs))
+        # self.LogInfo(str(self._pywps.inputs))
 
         # Parse the PyWPS input and output data
         self._parsePyWPSInputsAndOutputs()
@@ -92,14 +90,17 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
     ############################################################################
     def _parsePyWPSInputsAndOutputs(self):
         
-        for datainput in self._pywps.inputs["datainputs"]:
-            # Process only requested inputs
-            for input in self._inputs:
+        # Double for loop to identify requested inputs
+        for datainput in self._pywps.inputs["datainputs"]: # list
+            for input in self._inputs: # dict
+                # Identify requested inputs
                 if self._inputs[input].identifier != datainput["identifier"]:
                     continue
                 else:
                     message = "Add requested input with identifier \"" + datainput["identifier"] + "\""
                     self.LogInfo(message)
+                    
+                # Check for literal inputs
                 if isinstance(self._inputs[input], PyWPSLiteralInput):
                     # Attach only when not empty
                     if self._inputs[input].getValue() != None:
@@ -143,9 +144,10 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                         self.inputParameter.literalDataList.append(data)
                         self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
 
+                # Check for complex data
                 elif isinstance(self._inputs[input], PyWPSComplexInput):
-                    self.LogInfo(str(self._inputs[input].formats))
                     if  self._inputs[input].getValue() != None:
+                        # Check for multiple complex inputs
                         if type(self._inputs[input].getValue()) == type([]):
                             for path in self._inputs[input].getValue():
                                 data = ComplexData()
@@ -161,14 +163,24 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                     raise GMSError(log)
                                 try:
                                     # schema and encoding are not mandatory
-                                    data.schema = self._inputs[input].format["schema"]
-                                    data.encoding = self._inputs[input].format["encoding"]
-                                    self.LogWarning("Missing schema and encoding.")
+                                    #data.schema = self._inputs[input].format["schema"]
+                                    #data.encoding = self._inputs[input].format["encoding"]
+                                    #self.LogWarning("Missing schema and encoding")
+                                    if datainput.has_key("schema"):
+                                        data.schema = datainput["schema"]
+                                    else:
+                                        self.LogWarning("Missing schema")
+                                    if datainput.has_key("encoding"):
+                                        data.encoding = datainput["encoding"]
+                                    else:
+                                        self.LogWarning("Missing schema")
                                 except:
                                     pass
 
                                 self.inputParameter.complexDataList.append(data)
                                 self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
+
+                        # Single complex input
                         else:
                             data = ComplexData()
                             data.identifier = self._inputs[input].identifier
@@ -183,9 +195,17 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                 raise GMSError(log)
                             try:
                                 # schema and encoding are not mandatory
-                                data.schema = self._inputs[input].format["schema"]
-                                data.encoding = self._inputs[input].format["encoding"]
-                                self.LogWarning("Missing schema and encoding")
+                                #data.schema = self._inputs[input].format["schema"]
+                                #data.encoding = self._inputs[input].format["encoding"]
+                                #self.LogWarning("Missing schema and encoding")
+                                if datainput.has_key("schema"):
+                                    data.schema = datainput["schema"]
+                                else:
+                                    self.LogWarning("Missing schema")
+                                if datainput.has_key("encoding"):
+                                    data.encoding = datainput["encoding"]
+                                else:
+                                    self.LogWarning("Missing schema")
                             except:
                                 pass
 
@@ -238,15 +258,27 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
     ############################################################################
     def _passOutputs(self):
         for output in self.inputParameter.complexOutputList:
-            filename = output.pathToFile
+            filename = str(output.pathToFile)
             try:
                 self._outputs[output.identifier].setValue(filename)
             except:
                 self.LogError("Unable to attach output file")
                 raise
             self.LogInfo("Attached output file " + filename)    
-    
+
+
 ################################################################################
+# Code for testing #############################################################
+################################################################################
+
+# We emulate the PyWPS inputs dict structure for testing
+class pywps_inputs:
+    def __init__(self):
+        self.inputs = {'responseform': {'rawdataoutput': {}, 'responsedocument': {'lineage': False, 'status': False, 'storeexecuteresponse': True, 'outputs': [{'mimetype': u'text/xml', 'encoding': '', 'asreference': True, 'identifier': u'output', 'uom': '', 'schema': u'http://schemas.opengis.net/gml/2.1.2/feature.xsd'}]}}, 'service': 'wps', 'language': 'en-CA', 'request': 'execute', 'version': u'1.0.0', 'datainputs': [{'mimetype': u'text/xml', 'encoding': '', 'value': u'<ogr:FeatureCollection xmlns:gml="http://www.opengis.net/gml" xmlns:ogr="http://ogr.maptools.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/ gml.xsd"><gml:boundedBy><gml:Box><gml:coord><gml:X>631431.2732342008</gml:X><gml:Y>217051.3475836431</gml:Y></gml:coord><gml:coord><gml:X>643603.8568773235</gml:X><gml:Y>225781.1802973978</gml:Y></gml:coord></gml:Box></gml:boundedBy><gml:featureMember><ogr:qt_temp fid="F0"><ogr:geometryProperty><gml:Point><gml:coordinates>631571.793680297443643,225728.485130111512262</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>10</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F1"><ogr:geometryProperty><gml:Point><gml:coordinates>635752.276951672858559,225113.708178438653704</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>20</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F2"><ogr:geometryProperty><gml:Point><gml:coordinates>640898.838289962848648,225781.180297397775576</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>40</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F3"><ogr:geometryProperty><gml:Point><gml:coordinates>643603.856877323472872,221319.65613382900483</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>60</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F4"><ogr:geometryProperty><gml:Point><gml:coordinates>640038.1505576208001,217999.860594795551151</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>50</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F5"><ogr:geometryProperty><gml:Point><gml:coordinates>633047.258364312234335,217051.347583643131657</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>40</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F6"><ogr:geometryProperty><gml:Point><gml:coordinates>635471.236059479531832,220599.488847583648749</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>25</ogr:height></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F7"><ogr:geometryProperty><gml:Point><gml:coordinates>631431.27323420078028,222443.819702602224424</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>20</ogr:height></ogr:qt_temp></gml:featureMember></ogr:FeatureCollection>', 'identifier': u'input', 'type': 'ComplexValue', 'schema': u'http://schemas.opengis.net/gml/2.1.2/feature.xsd'}, {'dataType': '', 'identifier': u'-t', 'value': False, 'uom': ''}, {'dataType': '', 'identifier': u'-l', 'value': False, 'uom': ''}], 'identifier': [u'v.voronoi']}
+
+
+################################################################################
+# Main function to start the v.voronoi test
 def main():
     """This is a simple test script to evaluate the PyWPS - GrassModuleStarter 
     wrapper. """
@@ -260,10 +292,10 @@ def main():
     
     input = PyWPSComplexInput(identifier=identifier, minOccurs=minOccurs, maxOccurs=maxOccurs, title=title,formats=format)
     
-    # The data is an GML file
-    data = '<?xml version=\'1.0\' encoding="UTF-8" ?>\n<wfs:FeatureCollection\n   xmlns:ms="http://mapserver.gis.umn.edu/mapserver"\n   xmlns:gml="http://www.opengis.net/gml"\n   xmlns:wfs="http://www.opengis.net/wfs"\n   xmlns:ogc="http://www.opengis.net/ogc"\n   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n   xsi:schemaLocation="http://mapserver.gis.umn.edu/mapserver http://carto.languedoc-roussillon.ecologie.gouv.fr/final/mapjax/webservices//wfs/diren_general/?SERVICE=WFS&amp;VERSION=1.1.0&amp;REQUEST=DescribeFeatureType&amp;TYPENAME=Znieff1&amp;OUTPUTFORMAT=text/xml; subtype=gml/3.1.1  http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd">\n      <gml:boundedBy>\n      \t<gml:Envelope srsName="EPSG:27572">\n      \t\t<gml:lowerCorner>549421.218052 1703199.993069</gml:lowerCorner>\n      \t\t<gml:upperCorner>801405.118492 1990265.823167</gml:upperCorner>\n      \t</gml:Envelope>\n      </gml:boundedBy>\n    <gml:featureMember>\n      <ms:Znieff1 gml:id="Znieff1.11">\n        <gml:boundedBy>\n        \t<gml:Envelope srsName="EPSG:27572">\n        \t\t<gml:lowerCorner>609360.619377 1818923.090409</gml:lowerCorner>\n        \t\t<gml:upperCorner>610176.568795 1821136.189945</gml:upperCorner>\n        \t</gml:Envelope>\n        </gml:boundedBy>\n        <ms:msGeometry>\n          <gml:Polygon srsName="EPSG:27572">\n            <gml:exterior>\n              <gml:LinearRing>\n                <gml:posList srsDimension="2">609953.620527 1821125.764306 609965.191840 1821108.579188 609962.785923 1821078.562515 609926.353472 1820970.067135 609934.373194 1820864.206806 610055.012725 1820718.018733 610123.294928 1820567.706231 610176.568795 1820321.844472 610050.773729 1820223.087325 609975.159208 1820044.247527 609905.158493 1819973.788542 609899.659255 1819809.269676 609805.943077 1819640.511814 609724.141913 1819393.962650 609689.198840 1819211.456694 609673.961368 1818923.090409 609578.182975 1818958.377185 609490.997142 1819035.939352 609490.768007 1819106.054635 609437.494140 1819307.349654 609360.619377 1819403.930019 609387.199027 1819438.529391 609475.186833 1819455.485374 609546.447790 1819476.222083 609631.571409 1819562.033108 609717.153299 1819805.947220 609820.951413 1819995.212656 609932.310980 1820195.820271 609936.549976 1820385.887679 609869.298879 1820597.264635 609799.985569 1820691.439083 609692.635863 1820749.639350 609638.560024 1820859.165838 609621.374906 1820979.003396 609699.968180 1821106.860676 609768.823221 1821123.816660 609845.239714 1821127.826521 609918.219183 1821136.189945 609953.620527 1821125.764306 609953.620527 1821125.764306 </gml:posList>\n              </gml:LinearRing>\n            </gml:exterior>\n          </gml:Polygon>\n        </ms:msGeometry>\n        <ms:toponyme>Ar\xc3\xaate rocheuse de Fount-Ferrouzo</ms:toponyme>\n        <ms:id>4085-0010</ms:id>\n        <ms:surface_sig_ha>46.5860506579831</ms:surface_sig_ha>\n      </ms:Znieff1>\n    </gml:featureMember>\n</wfs:FeatureCollection>\n\n'
-
-    # Set the value
+    # The PyWPS request dict structure
+    requests = pywps_inputs()
+    # The first input
+    data = requests.inputs["datainputs"][0]["value"]
     input.storeData(data)
     
     inputs= {}
@@ -279,12 +311,11 @@ def main():
     outputs = {}
     outputs[identifier] = output
 
-    
-
+    # Start the GRASS process
     starter = PyWPSGrassModuleStarter()
     starter.fromPyWPS("v.voronoi", inputs, outputs, requests)
     
-    print outputs[identifier].value
+    print "Generated GML output is located here: ", outputs[identifier].value
     
     exit(0)
 

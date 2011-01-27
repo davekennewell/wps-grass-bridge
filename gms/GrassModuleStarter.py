@@ -102,7 +102,7 @@ VECTOR_MIMETYPES =        [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML
                            {"MIMETYPE":"APPLICATION/SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}]
 
 
-GMS_DEBUG = True
+GMS_DEBUG = False
 
 ###############################################################################
 ###############################################################################
@@ -484,7 +484,7 @@ class GrassModuleStarter(ModuleLogging):
 
         # Error if location creation did not work
         if success == False:
-            log = "Unsupported MimeType: " + str(input.mimeType) + ". Unable to create input location from input " + str(input.pathToFile)
+            log = "Unsupported MimeType: \"" + str(input.mimeType) + "\". Unable to create input location from input " + str(input.pathToFile)
             self.LogError(log)
             raise GMSError(log)
         
@@ -512,6 +512,7 @@ class GrassModuleStarter(ModuleLogging):
     ############################################################################
     def _isRaster(self, input):
         """Check for raster input"""
+        self.LogInfo("Check raster mimetype: " + str(input.mimeType.upper()))
         for rasterType in RASTER_MIMETYPES:
             if input.mimeType.upper() == rasterType["MIMETYPE"]:
                 self.LogInfo("Raster map is of type " + str(rasterType["MIMETYPE"]))
@@ -521,6 +522,7 @@ class GrassModuleStarter(ModuleLogging):
     ############################################################################
     def _isVector(self, input):
         """Check for vector input. Zipped shapefiles must be extracted"""
+        self.LogInfo("Check vector mimetype: " + str(input.mimeType.upper()) + " schema: " + str(input.schema.upper()))
         for vectorType in VECTOR_MIMETYPES:
             if input.mimeType.upper() == vectorType["MIMETYPE"] \
                and input.schema.upper().find(vectorType["SCHEMA"]) != -1:
