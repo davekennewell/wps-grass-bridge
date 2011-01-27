@@ -21,6 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
+from gms.ErrorHandler import GMSError
 import GlobalGrassSettings
 import tempfile
 from types import *
@@ -51,8 +52,14 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         self.inputParameter = InputParameter(self.logfile)
         # Initiate the input parameter for the GrassModuleStarter
         self._setInputParameterInit()
+        
+        # Some debug stuff
+        # self.LogInfo(str(self._pywps.inputs["responseform"]["responsedocument"]["outputs"]))
+        # self.LogInfo(str(self._pywps.inputs["datainputs"]))
+        self.LogInfo(str(self._pywps.inputs))
+
         # Parse the PyWPS input and output data
-        self._parsePyWPSInputsOutputs()
+        self._parsePyWPSInputsAndOutputs()
         
         try:
             self._createInputOutputMaps()
@@ -83,68 +90,95 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
             self._closeLogfiles()
             
     ############################################################################
-    def _parsePyWPSInputsOutputs(self):
+    def _parsePyWPSInputsAndOutputs(self):
         
-        for input in self._inputs:
-            if isinstance(self._inputs[input], PyWPSLiteralInput):
-                # Attach only when not empty
-                if self._inputs[input].getValue() != None:
-                    data = LiteralData()
-                    data.identifier = self._inputs[input].identifier
-                    
-                    self.LogInfo("Literal input " + self._inputs[input].identifier + " with value " + str(self._inputs[input].getValue()) + " type " + str(type(self._inputs[input].getValue())))
+        for datainput in self._pywps.inputs["datainputs"]:
+            # Process only requested inputs
+            for input in self._inputs:
+                if self._inputs[input].identifier != datainput["identifier"]:
+                    continue
+                else:
+                    message = "Add requested input with identifier \"" + datainput["identifier"] + "\""
+                    self.LogInfo(message)
+                if isinstance(self._inputs[input], PyWPSLiteralInput):
+                    # Attach only when not empty
+                    if self._inputs[input].getValue() != None:
+                        data = LiteralData()
+                        data.identifier = self._inputs[input].identifier
 
-                    # Store the value
-                    data.value = str(self._inputs[input].getValue())
-                    
-                    # In case an array is attached, store the values as comma 
-                    # separated list
-                    if type(self._inputs[input].getValue()) == type([]):
-                        data.value = ""
-                        count = 0
-                        size = len(self._inputs[input].getValue())
-                        for i in self._inputs[input].getValue():
-                            data.value += str(i)
-                            if count > 0 and count < size - 1:
-                                data.value += ","
-                            count += 1
-                        
-                    #check for double, integer, boolean, string
-                    if self._inputs[input].dataType is IntType:
-                        data.type = "integer"
-                    elif self._inputs[input].dataType is FloatType:
-                        data.type = "double"
-                    elif self._inputs[input].dataType is StringType:
-                        data.type = "string"
-                    elif self._inputs[input].dataType is BooleanType:
-                        # Override the stored value
-                        data.type = "boolean"
-                        if self._inputs[input].getValue() == False:
-                            data.value = "False"
-                        elif self._inputs[input].getValue() == True:
-                            data.value = "True"
+                        # Store the value
+                        data.value = str(self._inputs[input].getValue())
+
+                        # In case an array is attached, store the values as comma 
+                        # separated list
+                        if type(self._inputs[input].getValue()) == type([]):
+                            data.value = ""
+                            count = 0
+                            size = len(self._inputs[input].getValue())
+                            for i in self._inputs[input].getValue():
+                                data.value += str(i)
+                                if count > 0 and count < size - 1:
+                                    data.value += ","
+                                count += 1
+
+                        #check for double, integer, boolean, string
+                        if self._inputs[input].dataType is IntType:
+                            data.type = "integer"
+                        elif self._inputs[input].dataType is FloatType:
+                            data.type = "double"
+                        elif self._inputs[input].dataType is StringType:
+                            data.type = "string"
+                        elif self._inputs[input].dataType is BooleanType:
+                            # Override the stored value
+                            data.type = "boolean"
+                            if self._inputs[input].getValue() == False:
+                                data.value = "False"
+                            elif self._inputs[input].getValue() == True:
+                                data.value = "True"
+                            else:
+                                data.value = "False"
                         else:
-                            data.value = "False"
-                    else:
-                        data.type = "string"
+                            data.type = "string"
 
-                    self.inputParameter.literalDataList.append(data)
-                    self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
+                        self.inputParameter.literalDataList.append(data)
+                        self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
 
-            elif isinstance(self._inputs[input], PyWPSComplexInput):
-                self.LogInfo(str(self._inputs[input].format))
-                if  self._inputs[input].getValue() != None:
-                    if type(self._inputs[input].getValue()) == type([]):
-                        for path in self._inputs[input].getValue():
+                elif isinstance(self._inputs[input], PyWPSComplexInput):
+                    self.LogInfo(str(self._inputs[input].formats))
+                    if  self._inputs[input].getValue() != None:
+                        if type(self._inputs[input].getValue()) == type([]):
+                            for path in self._inputs[input].getValue():
+                                data = ComplexData()
+                                data.identifier = self._inputs[input].identifier
+                                data.pathToFile = path
+                                data.maxOccurs = self._inputs[input].maxOccurs
+                                try:
+                                    data.mimeType = self._inputs[input].format["mimetype"]
+                                except:
+                                    log = "Missing mimeType in input " + str(input)
+                                    self.LogError(log)
+                                    raise GMSError(log)
+                                try:
+                                    # schema and encoding are not mandatory
+                                    data.schema = self._inputs[input].format["schema"]
+                                    data.encoding = self._inputs[input].format["encoding"]
+                                    self.LogWarning("Missing schema and encoding.")
+                                except:
+                                    pass
+
+                                self.inputParameter.complexDataList.append(data)
+                                self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
+                        else:
                             data = ComplexData()
                             data.identifier = self._inputs[input].identifier
-                            data.pathToFile = path
+                            data.pathToFile =  self._inputs[input].getValue()
                             data.maxOccurs = self._inputs[input].maxOccurs
                             try:
-                                data.mimeType = self._inputs[input].format["mimeType"]
+                                data.mimeType = self._inputs[input].format["mimetype"]
                             except:
-                                self.LogWarning("Missing mimeType in input " + str(input) + ". Setting to text/plain")
-                                data.mimeType = "text/plain"
+                                log = "Missing mimeType in input " + str(input)
+                                self.LogError(log)
+                                raise GMSError(log)
                             try:
                                 # schema and encoding are not mandatory
                                 data.schema = self._inputs[input].format["schema"]
@@ -155,39 +189,18 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
 
                             self.inputParameter.complexDataList.append(data)
                             self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
-                    else:
-                        data = ComplexData()
-                        data.identifier = self._inputs[input].identifier
-                        data.pathToFile =  self._inputs[input].getValue()
-                        data.maxOccurs = self._inputs[input].maxOccurs
-                        try:
-                            data.mimeType = self._inputs[input].format["mimeType"]
-                        except:
-                            self.LogWarning("Missing mimeType in input " + str(input) + ". Setting to text/plain")
-                            data.mimeType = "text/plain"
-                        try:
-                            # schema and encoding are not mandatory
-                            data.schema = self._inputs[input].format["schema"]
-                            data.encoding = self._inputs[input].format["encoding"]
-                            self.LogWarning("Missing schema and encoding")
-                        except:
-                            pass
 
-                        self.inputParameter.complexDataList.append(data)
-                        self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
-        
         # Attach all requested outputs
         for output in self._pywps.inputs["responseform"]["responsedocument"]["outputs"]:
-            
-            self.LogInfo(str(self._pywps.inputs["responseform"]["responsedocument"]["outputs"]))
             
             data = ComplexOutput()
             data.identifier = output["identifier"]
             try:
                 data.mimeType = output["mimetype"]
             except:
-                self.LogWarning("Missing mimeType in output " + str(input) + ". Setting to text/plain")
-                data.mimeType = "text/plain"
+                log = "Missing mimeType in output " + str(output)
+                self.LogError(log)
+                raise GMSError(log)
             try:
                 # schema and encoding are not mandatory
                 data.schema = output["schema"]

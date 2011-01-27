@@ -1,0 +1,775 @@
+[r_sun]
+Title = Computes direct beam, diffuse and reflected solar irradiation raster maps for given day, latitude, surface and atmospheric conditions. Solar parameters e.g. sunrise, sunset times, declination, extraterrestrial irradiance, daylight length are saved in the map history file. Alternatively, a local time can be specified to compute solar incidence angle and/or irradiance raster maps. The shadowing effect of the topography is optionally incorporated.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/r.sun.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = r_sun
+serviceType = Python
+<DataInputs>
+  [elevin]
+  Title = Name of the input elevation raster map [meters]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [aspin]
+  Title = Name of the input aspect map terrain aspect or azimuth of the solar panel [decimal degrees]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [aspect]
+  Title = A single value of the orientation aspect, 270 is south
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 270
+    </Default>
+  </LiteralData>
+  [slopein]
+  Title = Name of the input slope raster map terrain slope or solar panel inclination [decimal degrees]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [slope]
+  Title = A single value of inclination slope
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [linkein]
+  Title = Name of the Linke atmospheric turbidity coefficient input raster map [-]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [lin]
+  Title = A single value of the Linke atmospheric turbidity coefficient [-]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 3.0
+    </Default>
+  </LiteralData>
+  [albedo]
+  Title = Name of the ground albedo coefficient input raster map [-]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [alb]
+  Title = A single value of the ground albedo coefficient [-]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.2
+    </Default>
+  </LiteralData>
+  [latin]
+  Title = Name of input raster map containing latitudes [decimal degrees]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [longin]
+  Title = Name of input raster map containing longitudes [decimal degrees]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [coefbh]
+  Title = Name of real-sky beam radiation coefficient input raster map [-]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [coefdh]
+  Title = Name of real-sky diffuse radiation coefficient input raster map [-]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [horizon]
+  Title = The horizon information input map prefix
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [horizonstep]
+  Title = Angle step size for multidirectional horizon [degrees]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [day]
+  Title = No. of day of the year 1-365
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [step]
+  Title = Time step when computing all-day radiation sums [decimal hours]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.5
+    </Default>
+  </LiteralData>
+  [declin]
+  Title = Declination value overriding the internally computed value [radians]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [time]
+  Title = Local solar time to be set for mode 1 only [decimal hours]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [dist]
+  Title = Sampling distance step coefficient 0.5-1.5
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1.0
+    </Default>
+  </LiteralData>
+  [numpartitions]
+  Title = Read the input files in this number of chunks
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [civiltime]
+  Title = Civil time zone value, if none, the time will be local solar time
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [-s]
+  Title = Incorporate the shadowing effect of terrain
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [-m]
+  Title = Use the low-memory version of the program
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [grass_resolution_ns]
+  Title = Resolution of the mapset in north-south direction in meters or degrees
+  Abstract = This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_resolution_ew]
+  Title = Resolution of the mapset in east-west direction in meters or degrees
+  Abstract = This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_band_number]
+  Title = Band to select for processing default is all bands
+  Abstract = This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [incidout]
+  Title = Output incidence angle raster map mode 1 only
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [beam_rad]
+  Title = Output beam irradiance [W.m-2] mode 1 or irradiation raster map [Wh.m-2.day-1] mode 2
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [insol_time]
+  Title = Output insolation time raster map [h] mode 2 only
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [diff_rad]
+  Title = Output diffuse irradiance [W.m-2] mode 1 or irradiation raster map [Wh.m-2.day-1] mode 2
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [refl_rad]
+  Title = Output ground reflected irradiance [W.m-2] mode 1 or irradiation raster map [Wh.m-2.day-1] mode 2
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [glob_rad]
+  Title = Output global total irradiance/irradiation [W.m-2] mode 1 or irradiance/irradiation raster map [Wh.m-2.day-1] mode 2
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>

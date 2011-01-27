@@ -1,0 +1,414 @@
+[r_slope_aspect]
+Title = Aspect is calculated counterclockwise from east.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/r.slope.aspect.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = r_slope_aspect
+serviceType = Python
+<DataInputs>
+  [elevation]
+  Title = Name of input elevation raster map
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [format]
+  Title = Format for reporting the slope
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = degrees
+    </Default>
+  </LiteralData>
+  [prec]
+  Title = Type of output aspect and slope maps
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = float
+    </Default>
+  </LiteralData>
+  [zfactor]
+  Title = Multiplicative factor to convert elevation units to meters
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1.0
+    </Default>
+  </LiteralData>
+  [min_slp_allowed]
+  Title = Minimum slope val. in percent for which aspect is computed
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [-a]
+  Title = Do not align the current region to the elevation layer
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [grass_resolution_ns]
+  Title = Resolution of the mapset in north-south direction in meters or degrees
+  Abstract = This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_resolution_ew]
+  Title = Resolution of the mapset in east-west direction in meters or degrees
+  Abstract = This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_band_number]
+  Title = Band to select for processing default is all bands
+  Abstract = This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [slope]
+  Title = Name for output slope raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [aspect]
+  Title = Name for output aspect raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [pcurv]
+  Title = Name for output profile curvature raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [tcurv]
+  Title = Name for output tangential curvature raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [dx]
+  Title = Name for output first order partial derivative dx E-W slope raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [dy]
+  Title = Name for output first order partial derivative dy N-S slope raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [dxx]
+  Title = Name for output second order partial derivative dxx raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [dyy]
+  Title = Name for output second order partial derivative dyy raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [dxy]
+  Title = Name for output second order partial derivative dxy raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>

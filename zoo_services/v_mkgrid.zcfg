@@ -1,0 +1,106 @@
+[v_mkgrid]
+Title = Creates a vector map of a user-defined grid.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.mkgrid.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_mkgrid
+serviceType = Python
+<DataInputs>
+  [grid]
+  Title = Number of rows and columns in grid
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [position]
+  Title = Where to place the grid
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = region
+    </Default>
+  </LiteralData>
+  [coor]
+  Title = Lower left easting and northing coordinates of map
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [box]
+  Title = Width and height of boxes in grid
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [angle]
+  Title = Angle of rotation in degrees counter-clockwise
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0
+    </Default>
+  </LiteralData>
+  [breaks]
+  Title = Number of horizontal vertex points per grid cell
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+      value = 3
+    </Default>
+  </LiteralData>
+  [-p]
+  Title = Create grid of points instead of areas and centroids
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [map]
+  Title = Name for output vector map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>

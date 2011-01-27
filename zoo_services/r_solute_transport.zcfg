@@ -1,0 +1,814 @@
+[r_solute_transport]
+Title = Numerical calculation program for transient, confined and unconfined solute transport in two dimensions
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/r.solute.transport.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = r_solute_transport
+serviceType = Python
+<DataInputs>
+  [c]
+  Title = The initial concentration in [kg/m^3]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [phead]
+  Title = The piezometric head in [m]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [hc_x]
+  Title = The x-part of the hydraulic conductivity tensor in [m/s]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [hc_y]
+  Title = The y-part of the hydraulic conductivity tensor in [m/s]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [status]
+  Title = The status for each cell, :: 0 - inactive cell, 1 - active cell, 2 - dirichlet- and 3 - transfer boundary condition
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [diff_x]
+  Title = The x-part of the diffusion tensor in [m^2/s]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [diff_y]
+  Title = The y-part of the diffusion tensor in [m^2/s]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [q]
+  Title = Groundwater sources and sinks in [m^3/s]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [cin]
+  Title = Concentration sources and sinks bounded to a water source or sink in [kg/s]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [cs]
+  Title = Concentration of inner sources and inner sinks in [kg/s] i.e. a chemical reaction
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [rd]
+  Title = Retardation factor [-]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [nf]
+  Title = Effective porosity [-]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [top]
+  Title = Top surface of the aquifer in [m]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [bottom]
+  Title = Bottom surface of the aquifer in [m]
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [dt]
+  Title = The calculation time in seconds
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 86400
+    </Default>
+  </LiteralData>
+  [maxit]
+  Title = Maximum number of iteration used to solver the linear equation system
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+      value = 100000
+    </Default>
+  </LiteralData>
+  [error]
+  Title = Error break criteria for iterative solvers jacobi, sor, cg or bicgstab
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0000000001
+    </Default>
+  </LiteralData>
+  [solver]
+  Title = The type of solver which should solve the linear equation system
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = bicgstab
+    </Default>
+  </LiteralData>
+  [relax]
+  Title = The relaxation parameter used by the jacobi and sor solver for speedup or stabilizing
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [al]
+  Title = The longditudinal dispersivity length. [m]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [at]
+  Title = The transversal dispersivity length. [m]
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [loops]
+  Title = Use this number of time loops if the CFL flag is off. The timestep will become dt/loops.
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [stab]
+  Title = Set the flow stabilizing scheme full or exponential upwinding.
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = full
+    </Default>
+  </LiteralData>
+  [-f]
+  Title = Use a full filled quadratic linear equation system, default is a sparse linear equation system.
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [-c]
+  Title = Use the Courant-Friedrichs-Lewy criteria for time step calculation
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [grass_resolution_ns]
+  Title = Resolution of the mapset in north-south direction in meters or degrees
+  Abstract = This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_resolution_ew]
+  Title = Resolution of the mapset in east-west direction in meters or degrees
+  Abstract = This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_band_number]
+  Title = Band to select for processing default is all bands
+  Abstract = This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = The resulting concentration of the numerical solute transport calculation will be written to this map. [kg/m^3]
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [vx]
+  Title = Calculate and store the groundwater filter velocity vector part in x direction [m/s] 
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [vy]
+  Title = Calculate and store the groundwater filter velocity vector part in y direction [m/s] 
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>

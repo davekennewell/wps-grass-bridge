@@ -1,0 +1,127 @@
+[v_net_salesman]
+Title = Note that TSP is NP-hard, heuristic algorithm is used by this module and created cycle may be sub optimal
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.net.salesman.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_net_salesman
+serviceType = Python
+<DataInputs>
+  [input]
+  Title = Data source for OGR access
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [type]
+  Title = Arc type
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = line,boundary
+    </Default>
+  </LiteralData>
+  [alayer]
+  Title = Arc layer
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [nlayer]
+  Title = Node layer used for cities
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = 2
+    </Default>
+  </LiteralData>
+  [acolumn]
+  Title = Arcs cost column for both directions
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [ccats]
+  Title = Categories of points cities on nodes layer is specified by nlayer
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [-g]
+  Title = Use geodesic calculation for longitude-latitude locations
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = Name for output vector map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>

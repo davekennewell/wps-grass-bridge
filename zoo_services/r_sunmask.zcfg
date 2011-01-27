@@ -1,0 +1,254 @@
+[r_sunmask]
+Title = Either exact sun position A is specified, or date/time to calculate the sun position B by r.sunmask itself.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/r.sunmask.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = r_sunmask
+serviceType = Python
+<DataInputs>
+  [elevation]
+  Title = Name of input elevation raster map
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = image/png
+    </Supported>
+    <Supported>
+      mimeType = image/gif
+    </Supported>
+    <Supported>
+      mimeType = image/jpeg
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+  [altitude]
+  Title = Altitude of the sun above horizon, degrees A
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [azimuth]
+  Title = Azimuth of the sun from the north, degrees A
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [year]
+  Title = Year B
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [month]
+  Title = Month B
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [day]
+  Title = Day B
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [hour]
+  Title = Hour B
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [minute]
+  Title = Minutes B
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [second]
+  Title = Seconds B
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [timezone]
+  Title = East positive, offset from GMT, also use to adjust daylight savings
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [east]
+  Title = Default: map center
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [north]
+  Title = Default: map center
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [-z]
+  Title = Dont ignore zero elevation
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [-s]
+  Title = Calculate sun position only and exit
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [-g]
+  Title = Print the sun position output in shell script style
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [grass_resolution_ns]
+  Title = Resolution of the mapset in north-south direction in meters or degrees
+  Abstract = This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_resolution_ew]
+  Title = Resolution of the mapset in east-west direction in meters or degrees
+  Abstract = This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_band_number]
+  Title = Band to select for processing default is all bands
+  Abstract = This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = Name for output raster map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>

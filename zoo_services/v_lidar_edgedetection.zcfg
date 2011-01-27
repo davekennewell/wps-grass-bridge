@@ -1,0 +1,151 @@
+[v_lidar_edgedetection]
+Title = Detects the objects edges from a LIDAR data set.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.lidar.edgedetection.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_lidar_edgedetection
+serviceType = Python
+<DataInputs>
+  [input]
+  Title = Data source for OGR access
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [see]
+  Title = Interpolation spline step value in east direction
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 4
+    </Default>
+  </LiteralData>
+  [sen]
+  Title = Interpolation spline step value in north direction
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 4
+    </Default>
+  </LiteralData>
+  [lambda_g]
+  Title = Regularization weight in gradient evaluation
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.01
+    </Default>
+  </LiteralData>
+  [tgh]
+  Title = High gradient threshold for edge classification
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 6
+    </Default>
+  </LiteralData>
+  [tgl]
+  Title = Low gradient threshold for edge classification
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 3
+    </Default>
+  </LiteralData>
+  [theta_g]
+  Title = Angle range for same direction detection
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.26
+    </Default>
+  </LiteralData>
+  [lambda_r]
+  Title = Regularization weight in residual evaluation
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 2
+    </Default>
+  </LiteralData>
+  [-e]
+  Title = Estimate point density and distance for the input vector points within the current region extends and quit
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = Name for output vector map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>

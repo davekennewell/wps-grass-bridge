@@ -1,0 +1,222 @@
+[v_distance]
+Title = Finds the nearest element in vector map to for elements in vector map from.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.distance.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_distance
+serviceType = Python
+<DataInputs>
+  [from]
+  Title = Name of existing vector map from
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [from_layer]
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [from_type]
+  Title = Feature type
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = point
+    </Default>
+  </LiteralData>
+  [to]
+  Title = Name of existing vector map to
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [to_layer]
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [to_type]
+  Title = Feature type
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = point,line,area
+    </Default>
+  </LiteralData>
+  [dmax]
+  Title = Maximum distance or -1 for no limit
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = -1
+    </Default>
+  </LiteralData>
+  [dmin]
+  Title = Minimum distance or -1 for no limit
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = -1
+    </Default>
+  </LiteralData>
+  [upload]
+  Title = Values describing the relation between two nearest features
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [column]
+  Title = Column names where values specified by upload option will be uploaded
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [to_column]
+  Title = Column name of nearest feature used with upload::to_attr
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [table]
+  Title = Name of table created for output when the distance to all flag is used
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [-p]
+  Title = First column is always category of from feature called from_cat
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [-a]
+  Title = The output is written to stdout but may be uploaded to a new table created by this module. From categories are may be multiple.
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = Name for output vector map containing lines connecting nearest elements
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>

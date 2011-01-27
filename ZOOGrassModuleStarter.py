@@ -25,8 +25,6 @@ import GlobalGrassSettings
 import os.path
 # Import the GrassModuleStarter
 from gms.GrassModuleStarter import *
-# Import the WPS bindings
-import wpsXML.WPS_1_0_0.OGC_WPS_1_0_0 as wps
 
 class ZOOGrassModuleStarter(GrassModuleStarter):
     """Start a grass module specified by ZOO-WPS server"""
@@ -145,41 +143,44 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
         
     ############################################################################
     def _parseInputsAndOutputs(self):
+        # Parse the inputs
 	for key in self._inputs.keys():
-            # Complex Data
-            if self._inputs[key].has_key("mimeType") == True and self._inputs[key].has_key("value") == True and self._inputs[key]["value"] != 'NULL':
-                self.LogInfo("Attach complex data " + key)
-                input = ComplexData()
-                input.identifier = key
-                input.pathToFile = self._inputs[key]["value"]
-                input.mimeType = self._inputs[key]["mimeType"]
-                input.maxOccurs = self._inputs[key]["maxOccurs"]
-                if self._inputs[key].has_key("encoding"):
-                    input.encoding = self._inputs[key]["encoding"]
-                if self._inputs[key].has_key("schema"):
-                    input.schema = self._inputs[key]["schema"]
-                self.inputParameter.complexDataList.append(input)
-            # Literal Data
-            if self._inputs[key].has_key("DataType") == True and self._inputs[key].has_key("value") == True and self._inputs[key]["value"] != 'NULL':
-                self.LogInfo("Attach literal data " + key)
-                input = LiteralData()
-                input.identifier = key
-                input.value = self._inputs[key]["value"]
-                input.type = self._inputs[key]["DataType"]
-                self.inputParameter.literalDataList.append(input)
+            if self._inputs[key]["inRequest"].lower() == 'true':
+                # Complex Data
+                if self._inputs[key].has_key("mimeType") == True and self._inputs[key].has_key("value") == True and self._inputs[key]["value"] != 'NULL':
+                    self.LogInfo("Attach complex data " + key)
+                    input = ComplexData()
+                    input.identifier = key
+                    input.pathToFile = self._inputs[key]["value"]
+                    input.mimeType = self._inputs[key]["mimeType"]
+                    input.maxOccurs = self._inputs[key]["maxOccurs"]
+                    if self._inputs[key].has_key("encoding"):
+                        input.encoding = self._inputs[key]["encoding"]
+                    if self._inputs[key].has_key("schema"):
+                        input.schema = self._inputs[key]["schema"]
+                    self.inputParameter.complexDataList.append(input)
+                # Literal Data
+                if self._inputs[key].has_key("DataType") == True and self._inputs[key].has_key("value") == True and self._inputs[key]["value"] != 'NULL':
+                    self.LogInfo("Attach literal data " + key)
+                    input = LiteralData()
+                    input.identifier = key
+                    input.value = self._inputs[key]["value"]
+                    input.type = self._inputs[key]["DataType"]
+                    self.inputParameter.literalDataList.append(input)
         # Only complex outputs are currently supported by grass
 	for key in self._outputs.keys():
-            # Complex Output
-            if self._outputs[key].has_key("mimeType") == True:
-                self.LogInfo("Attach complex output " + key)
-                output = ComplexData()
-                output.identifier = key
-                output.mimeType = self._outputs[key]["mimeType"]
-                if self._outputs[key].has_key("encoding"):
-                    output.encoding = self._outputs[key]["encoding"]
-                if self._outputs[key].has_key("schema"):
-                    output.schema = self._outputs[key]["schema"]
-                self.inputParameter.complexOutputList.append(output)
+            if self._outputs[key]["inRequest"].lower() == 'true':
+                # Complex Output
+                if self._outputs[key].has_key("mimeType") == True:
+                    self.LogInfo("Attach complex output " + key)
+                    output = ComplexData()
+                    output.identifier = key
+                    output.mimeType = self._outputs[key]["mimeType"]
+                    if self._outputs[key].has_key("encoding"):
+                        output.encoding = self._outputs[key]["encoding"]
+                    if self._outputs[key].has_key("schema"):
+                        output.schema = self._outputs[key]["schema"]
+                    self.inputParameter.complexOutputList.append(output)
 
 ################################################################################
 def main():

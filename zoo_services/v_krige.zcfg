@@ -1,0 +1,194 @@
+[v_krige]
+Title = Performs ordinary or block kriging.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.krige.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_krige
+serviceType = Python
+<DataInputs>
+  [input]
+  Title = Name of point vector map containing sample data
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [column]
+  Title = Name of attribute column with numerical value to be interpolated
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [package]
+  Title = R package to use
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = gstat
+    </Default>
+  </LiteralData>
+  [model]
+  Title = Leave empty to test all models requires automap
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [block]
+  Title = Block size. Used by block kriging.
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [range]
+  Title = Automatically fixed if not set
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [nugget]
+  Title = Automatically fixed if not set
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [sill]
+  Title = Automatically fixed if not set
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = integer
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_resolution_ns]
+  Title = Resolution of the mapset in north-south direction in meters or degrees
+  Abstract = This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+  [grass_resolution_ew]
+  Title = Resolution of the mapset in east-west direction in meters or degrees
+  Abstract = This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = If omitted, will be input name_kriging
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [output_var]
+  Title = If omitted, will be input name_kriging_var
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = image/tiff
+    </Default>
+    <Supported>
+      mimeType = image/tiff
+    </Supported>
+    <Supported>
+      mimeType = image/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-geotiff
+    </Supported>
+    <Supported>
+      mimeType = application/x-erdas-hfa
+    </Supported>
+    <Supported>
+      mimeType = application/netcdf
+    </Supported>
+    <Supported>
+      mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>

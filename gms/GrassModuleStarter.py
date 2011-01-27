@@ -823,7 +823,7 @@ class GrassModuleStarter(ModuleLogging):
                     log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
                     self.LogError(log)
                     raise GMSError(log)
-            elif self._isTextFile(output) != None and output.identifier.lower() == "stdout":
+            elif self._isTextFile(output) != None or output.identifier.lower() == "stdout":
                 try:
                     # Copy the stdout to output.pathToFile
                     self.LogInfo("Write grass module stdout to file: " + output.pathToFile)

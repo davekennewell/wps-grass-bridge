@@ -1,0 +1,43 @@
+[r_surf_area]
+Title = Surface area estimation for rasters.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.area.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = r_surf_area
+serviceType = Python
+<DataInputs>
+  [input]
+  Title = Raster file for surface
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [vscale]
+  Title = Vertical scale
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [stdout]
+  Title = Module output on stdout
+  Abstract = The output of the module written to stdout
+  <ComplexData>
+    <Default>
+      mimeType = text/plain
+    </Default>
+    <Supported>
+      mimeType = text/plain
+    </Supported>
+  </ComplexData>
+</DataOutputs>
