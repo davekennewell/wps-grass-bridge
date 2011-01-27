@@ -19,7 +19,7 @@
 #% key: a
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 1. 
+#% description: Raster map 1. 
 #% required: no
 #% multiple: no
 #% end
@@ -27,7 +27,7 @@
 #% key: b
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 2. 
+#% description: Raster map 2. 
 #% required: no
 #% multiple: no
 #% end
@@ -35,7 +35,7 @@
 #% key: c
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 3. 
+#% description: Raster map 3. 
 #% required: no
 #% multiple: no
 #% end
@@ -43,7 +43,7 @@
 #% key: d
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 4. 
+#% description: Raster map 4. 
 #% required: no
 #% multiple: no
 #% end
@@ -51,7 +51,7 @@
 #% key: e
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 5. 
+#% description: Raster map 5. 
 #% required: no
 #% multiple: no
 #% end
@@ -59,7 +59,7 @@
 #% key: f
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 6. 
+#% description: Raster map 6. 
 #% required: no
 #% multiple: no
 #% end
@@ -67,7 +67,7 @@
 #% key: g
 #% type: string
 #% gisprompt: old,cell,raster
-#% description: Raster maps 7. 
+#% description: Raster map 7. 
 #% required: no
 #% multiple: no
 #% end

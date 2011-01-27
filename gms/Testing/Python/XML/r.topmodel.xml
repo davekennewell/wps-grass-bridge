@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>r.topmodel</ows:Identifier>
+		<ows:Title>Simulates TOPMODEL which is a physically based hydrologic model.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.topmodel.html</ows:Abstract>
+		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="hydrology" />
+		<DataInputs>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>elevation</ows:Identifier>
+				<ows:Title>Name of input elevation raster map</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/png</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/gif</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/jpeg</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>basin</ows:Identifier>
+				<ows:Title>Created by r.water.outlet (MASK)</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/png</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/gif</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/jpeg</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>nidxclass</ows:Identifier>
+				<ows:Title>Number of topographic index classes</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>30</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>idxstats</ows:Identifier>
+				<ows:Title>Name of topographic index statistics file (o/i)</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>parameters</ows:Identifier>
+				<ows:Title>Name of TOPMODEL parameters file</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of rainfall and potential evapotranspiration data file</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>timestep</ows:Identifier>
+				<ows:Title>Time step</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>idxclass</ows:Identifier>
+				<ows:Title>Topographic index class</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-i</ows:Identifier>
+				<ows:Title>Input data given for (o/i)</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ns</ows:Identifier>
+				<ows:Title>Resolution of the mapset in north-south direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ew</ows:Identifier>
+				<ows:Title>Resolution of the mapset in east-west direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_band_number</ows:Identifier>
+				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
+				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>depressionless</ows:Identifier>
+				<ows:Title>Name for output depressionless elevation raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>direction</ows:Identifier>
+				<ows:Title>Name for output flow direction map for depressionless elevation raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>basin_elevation</ows:Identifier>
+				<ows:Title>MASK applied</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>topidx</ows:Identifier>
+				<ows:Title>MASK applied</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name for output file</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>qobs</ows:Identifier>
+				<ows:Title>Name for observed flow file</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>

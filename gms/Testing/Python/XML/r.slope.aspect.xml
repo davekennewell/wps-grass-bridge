@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>r.slope.aspect</ows:Identifier>
+		<ows:Title>Aspect is calculated counterclockwise from east.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.slope.aspect.html</ows:Abstract>
+		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="terrain" />
+		<DataInputs>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>elevation</ows:Identifier>
+				<ows:Title>Name of input elevation raster map</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/png</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/gif</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/jpeg</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>format</ows:Identifier>
+				<ows:Title>Format for reporting the slope</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>degrees</ows:Value>
+						<ows:Value>percent</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>degrees</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>prec</ows:Identifier>
+				<ows:Title>Type of output aspect and slope maps</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>default</ows:Value>
+						<ows:Value>double</ows:Value>
+						<ows:Value>float</ows:Value>
+						<ows:Value>int</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>float</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>zfactor</ows:Identifier>
+				<ows:Title>Multiplicative factor to convert elevation units to meters</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1.0</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>min_slp_allowed</ows:Identifier>
+				<ows:Title>Minimum slope val. (in percent) for which aspect is computed</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>0.0</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-a</ows:Identifier>
+				<ows:Title>Do not align the current region to the elevation layer</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ns</ows:Identifier>
+				<ows:Title>Resolution of the mapset in north-south direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ew</ows:Identifier>
+				<ows:Title>Resolution of the mapset in east-west direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_band_number</ows:Identifier>
+				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
+				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>slope</ows:Identifier>
+				<ows:Title>Name for output slope raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>aspect</ows:Identifier>
+				<ows:Title>Name for output aspect raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>pcurv</ows:Identifier>
+				<ows:Title>Name for output profile curvature raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>tcurv</ows:Identifier>
+				<ows:Title>Name for output tangential curvature raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>dx</ows:Identifier>
+				<ows:Title>Name for output first order partial derivative dx (E-W slope) raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>dy</ows:Identifier>
+				<ows:Title>Name for output first order partial derivative dy (N-S slope) raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>dxx</ows:Identifier>
+				<ows:Title>Name for output second order partial derivative dxx raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>dyy</ows:Identifier>
+				<ows:Title>Name for output second order partial derivative dyy raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>dxy</ows:Identifier>
+				<ows:Title>Name for output second order partial derivative dxy raster map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>
