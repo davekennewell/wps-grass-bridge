@@ -153,7 +153,8 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                 data.pathToFile = path
                                 data.maxOccurs = self._inputs[input].maxOccurs
                                 try:
-                                    data.mimeType = self._inputs[input].format["mimetype"]
+                                    # data.mimeType = self._inputs[input].format["mimeType"]
+                                    data.mimeType = datainput["mimetype"]
                                 except:
                                     log = "Missing mimeType in input " + str(input)
                                     self.LogError(log)
@@ -174,7 +175,8 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                             data.pathToFile =  self._inputs[input].getValue()
                             data.maxOccurs = self._inputs[input].maxOccurs
                             try:
-                                data.mimeType = self._inputs[input].format["mimetype"]
+                                # data.mimeType = self._inputs[input].format["mimeType"]
+                                data.mimeType = datainput["mimetype"]
                             except:
                                 log = "Missing mimeType in input " + str(input)
                                 self.LogError(log)
