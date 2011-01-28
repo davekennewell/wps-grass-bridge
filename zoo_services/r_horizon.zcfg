@@ -8,7 +8,7 @@ serviceProvider = r_horizon
 serviceType = Python
 <DataInputs>
   [elevin]
-  Title = Name of the input elevation raster map [meters]
+  Title = Name of the input elevation raster map meters
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -58,7 +58,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [horizonstep]
-  Title = Angle step size for multidirectional horizon [degrees]
+  Title = Angle step size for multidirectional horizon degrees
   Abstract =
   minOccurs = 0
   maxOccurs = 1

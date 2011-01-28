@@ -41,7 +41,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [seed]
-  Title = Random seed SEED_MIN :: value :: SEED_MAX, default [random]
+  Title = Random seed SEED_MIN :: value :: SEED_MAX, default random
   Abstract =
   minOccurs = 0
   maxOccurs = 1

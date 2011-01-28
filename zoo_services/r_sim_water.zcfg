@@ -48,7 +48,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [dx]
-  Title = Name of x-derivatives raster map [m/m]
+  Title = Name of x-derivatives raster map m/m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -88,7 +88,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [dy]
-  Title = Name of y-derivatives raster map [m/m]
+  Title = Name of y-derivatives raster map m/m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -128,7 +128,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [rain]
-  Title = Name of rainfall excess rate rain-infilt raster map [mm/hr]
+  Title = Name of rainfall excess rate rain-infilt raster map mm/hr
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -168,7 +168,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [rain_value]
-  Title = Rainfall excess rate unique value [mm/hr]
+  Title = Rainfall excess rate unique value mm/hr
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -179,7 +179,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [infil]
-  Title = Name of runoff infiltration rate raster map [mm/hr]
+  Title = Name of runoff infiltration rate raster map mm/hr
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -219,7 +219,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [infil_value]
-  Title = Runoff infiltration rate unique value [mm/hr]
+  Title = Runoff infiltration rate unique value mm/hr
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -331,7 +331,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [niter]
-  Title = Time used for iterations [minutes]
+  Title = Time used for iterations minutes
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -342,7 +342,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [outiter]
-  Title = Time interval for creating output maps [minutes]
+  Title = Time interval for creating output maps minutes
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -440,7 +440,7 @@ serviceType = Python
 </DataInputs>
 <DataOutputs>
   [depth]
-  Title = Name for output water depth raster map [m]
+  Title = Name for output water depth raster map m
   Abstract =
   <ComplexData>
     <Default>
@@ -471,7 +471,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [disch]
-  Title = Name for output water discharge raster map [m3/s]
+  Title = Name for output water discharge raster map m3/s
   Abstract =
   <ComplexData>
     <Default>
@@ -502,7 +502,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [err]
-  Title = Name for output simulation error raster map [m]
+  Title = Name for output simulation error raster map m
   Abstract =
   <ComplexData>
     <Default>

@@ -8,7 +8,7 @@ serviceProvider = r_gwflow
 serviceType = Python
 <DataInputs>
   [phead]
-  Title = Input raster map with initial piezometric head in [m]
+  Title = Input raster map with initial piezometric head in m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -88,7 +88,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [hc_x]
-  Title = Input raster map with x-part of the hydraulic conductivity tensor in [m/s]
+  Title = Input raster map with x-part of the hydraulic conductivity tensor in m/s
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -128,7 +128,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [hc_y]
-  Title = Input raster map with y-part of the hydraulic conductivity tensor in [m/s]
+  Title = Input raster map with y-part of the hydraulic conductivity tensor in m/s
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -168,7 +168,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [q]
-  Title = Input raster map with water sources and sinks in [m^3/s]
+  Title = Input raster map with water sources and sinks in m^3/s
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -208,7 +208,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [s]
-  Title = Input raster map with specific yield in [1/m]
+  Title = Input raster map with specific yield in 1/m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -248,7 +248,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [recharge]
-  Title = Recharge input raster map e.g: 6*10^-9 per cell in [m^3/s*m^2]
+  Title = Recharge input raster map e.g: 6*10^-9 per cell in m^3/s*m^2
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -288,7 +288,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [top]
-  Title = Input raster map describing the top surface of the aquifer in [m]
+  Title = Input raster map describing the top surface of the aquifer in m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -328,7 +328,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [bottom]
-  Title = Input raster map describing the bottom surface of the aquifer in [m]
+  Title = Input raster map describing the bottom surface of the aquifer in m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -379,7 +379,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [river_bed]
-  Title = Input raster map providing the height of the river bed in [m]
+  Title = Input raster map providing the height of the river bed in m
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -419,7 +419,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [river_head]
-  Title = Input raster map providing the water level head of the river with leakage connection in [m]
+  Title = Input raster map providing the water level head of the river with leakage connection in m
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -459,7 +459,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [river_leak]
-  Title = Input raster map providing the leakage coefficient of the river bed in [1/s].
+  Title = Input raster map providing the leakage coefficient of the river bed in 1/s.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -499,7 +499,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [drain_bed]
-  Title = Input raster map providing the height of the drainage bed in [m]
+  Title = Input raster map providing the height of the drainage bed in m
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -539,7 +539,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [drain_leak]
-  Title = Input raster map providing the leakage coefficient of the drainage bed in [1/s]
+  Title = Input raster map providing the leakage coefficient of the drainage bed in 1/s
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -666,7 +666,7 @@ serviceType = Python
 </DataInputs>
 <DataOutputs>
   [output]
-  Title = Output raster map storing the numerical result [m]
+  Title = Output raster map storing the numerical result m
   Abstract =
   <ComplexData>
     <Default>
@@ -697,7 +697,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [vx]
-  Title = Output raster map storing the groundwater filter velocity vector part in x direction [m/s] 
+  Title = Output raster map storing the groundwater filter velocity vector part in x direction m/s 
   Abstract =
   <ComplexData>
     <Default>
@@ -728,7 +728,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [vy]
-  Title = Output raster map storing the groundwater filter velocity vector part in y direction [m/s] 
+  Title = Output raster map storing the groundwater filter velocity vector part in y direction m/s 
   Abstract =
   <ComplexData>
     <Default>
@@ -759,7 +759,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [budget]
-  Title = Output raster map storing the groundwater budget for each cell [m^3/s] 
+  Title = Output raster map storing the groundwater budget for each cell m^3/s 
   Abstract =
   <ComplexData>
     <Default>

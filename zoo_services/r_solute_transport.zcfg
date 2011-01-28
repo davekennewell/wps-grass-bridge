@@ -8,7 +8,7 @@ serviceProvider = r_solute_transport
 serviceType = Python
 <DataInputs>
   [c]
-  Title = The initial concentration in [kg/m^3]
+  Title = The initial concentration in kg/m^3
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -48,7 +48,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [phead]
-  Title = The piezometric head in [m]
+  Title = The piezometric head in m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -88,7 +88,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [hc_x]
-  Title = The x-part of the hydraulic conductivity tensor in [m/s]
+  Title = The x-part of the hydraulic conductivity tensor in m/s
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -128,7 +128,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [hc_y]
-  Title = The y-part of the hydraulic conductivity tensor in [m/s]
+  Title = The y-part of the hydraulic conductivity tensor in m/s
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -208,7 +208,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [diff_x]
-  Title = The x-part of the diffusion tensor in [m^2/s]
+  Title = The x-part of the diffusion tensor in m^2/s
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -248,7 +248,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [diff_y]
-  Title = The y-part of the diffusion tensor in [m^2/s]
+  Title = The y-part of the diffusion tensor in m^2/s
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -288,7 +288,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [q]
-  Title = Groundwater sources and sinks in [m^3/s]
+  Title = Groundwater sources and sinks in m^3/s
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -328,7 +328,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [cin]
-  Title = Concentration sources and sinks bounded to a water source or sink in [kg/s]
+  Title = Concentration sources and sinks bounded to a water source or sink in kg/s
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -368,7 +368,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [cs]
-  Title = Concentration of inner sources and inner sinks in [kg/s] i.e. a chemical reaction
+  Title = Concentration of inner sources and inner sinks in kg/s i.e. a chemical reaction
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -408,7 +408,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [rd]
-  Title = Retardation factor [-]
+  Title = Retardation factor -
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -448,7 +448,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [nf]
-  Title = Effective porosity [-]
+  Title = Effective porosity -
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -488,7 +488,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [top]
-  Title = Top surface of the aquifer in [m]
+  Title = Top surface of the aquifer in m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -528,7 +528,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [bottom]
-  Title = Bottom surface of the aquifer in [m]
+  Title = Bottom surface of the aquifer in m
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -623,7 +623,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [al]
-  Title = The longditudinal dispersivity length. [m]
+  Title = The longditudinal dispersivity length. m
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -634,7 +634,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [at]
-  Title = The transversal dispersivity length. [m]
+  Title = The transversal dispersivity length. m
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -721,7 +721,7 @@ serviceType = Python
 </DataInputs>
 <DataOutputs>
   [output]
-  Title = The resulting concentration of the numerical solute transport calculation will be written to this map. [kg/m^3]
+  Title = The resulting concentration of the numerical solute transport calculation will be written to this map. kg/m^3
   Abstract =
   <ComplexData>
     <Default>
@@ -752,7 +752,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [vx]
-  Title = Calculate and store the groundwater filter velocity vector part in x direction [m/s] 
+  Title = Calculate and store the groundwater filter velocity vector part in x direction m/s 
   Abstract =
   <ComplexData>
     <Default>
@@ -783,7 +783,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [vy]
-  Title = Calculate and store the groundwater filter velocity vector part in y direction [m/s] 
+  Title = Calculate and store the groundwater filter velocity vector part in y direction m/s 
   Abstract =
   <ComplexData>
     <Default>

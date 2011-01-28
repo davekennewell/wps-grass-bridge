@@ -8,7 +8,7 @@ serviceProvider = r_sun
 serviceType = Python
 <DataInputs>
   [elevin]
-  Title = Name of the input elevation raster map [meters]
+  Title = Name of the input elevation raster map meters
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -48,7 +48,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [aspin]
-  Title = Name of the input aspect map terrain aspect or azimuth of the solar panel [decimal degrees]
+  Title = Name of the input aspect map terrain aspect or azimuth of the solar panel decimal degrees
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -99,7 +99,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [slopein]
-  Title = Name of the input slope raster map terrain slope or solar panel inclination [decimal degrees]
+  Title = Name of the input slope raster map terrain slope or solar panel inclination decimal degrees
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -150,7 +150,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [linkein]
-  Title = Name of the Linke atmospheric turbidity coefficient input raster map [-]
+  Title = Name of the Linke atmospheric turbidity coefficient input raster map -
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -190,7 +190,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [lin]
-  Title = A single value of the Linke atmospheric turbidity coefficient [-]
+  Title = A single value of the Linke atmospheric turbidity coefficient -
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -201,7 +201,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [albedo]
-  Title = Name of the ground albedo coefficient input raster map [-]
+  Title = Name of the ground albedo coefficient input raster map -
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -241,7 +241,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [alb]
-  Title = A single value of the ground albedo coefficient [-]
+  Title = A single value of the ground albedo coefficient -
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -252,7 +252,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [latin]
-  Title = Name of input raster map containing latitudes [decimal degrees]
+  Title = Name of input raster map containing latitudes decimal degrees
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -292,7 +292,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [longin]
-  Title = Name of input raster map containing longitudes [decimal degrees]
+  Title = Name of input raster map containing longitudes decimal degrees
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -332,7 +332,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [coefbh]
-  Title = Name of real-sky beam radiation coefficient input raster map [-]
+  Title = Name of real-sky beam radiation coefficient input raster map -
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -372,7 +372,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [coefdh]
-  Title = Name of real-sky diffuse radiation coefficient input raster map [-]
+  Title = Name of real-sky diffuse radiation coefficient input raster map -
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -452,7 +452,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [horizonstep]
-  Title = Angle step size for multidirectional horizon [degrees]
+  Title = Angle step size for multidirectional horizon degrees
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -472,7 +472,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [step]
-  Title = Time step when computing all-day radiation sums [decimal hours]
+  Title = Time step when computing all-day radiation sums decimal hours
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -483,7 +483,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [declin]
-  Title = Declination value overriding the internally computed value [radians]
+  Title = Declination value overriding the internally computed value radians
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -493,7 +493,7 @@ serviceType = Python
     </Default>
   </LiteralData>
   [time]
-  Title = Local solar time to be set for mode 1 only [decimal hours]
+  Title = Local solar time to be set for mode 1 only decimal hours
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -620,7 +620,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [beam_rad]
-  Title = Output beam irradiance [W.m-2] mode 1 or irradiation raster map [Wh.m-2.day-1] mode 2
+  Title = Output beam irradiance W.m-2 mode 1 or irradiation raster map Wh.m-2.day-1 mode 2
   Abstract =
   <ComplexData>
     <Default>
@@ -651,7 +651,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [insol_time]
-  Title = Output insolation time raster map [h] mode 2 only
+  Title = Output insolation time raster map h mode 2 only
   Abstract =
   <ComplexData>
     <Default>
@@ -682,7 +682,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [diff_rad]
-  Title = Output diffuse irradiance [W.m-2] mode 1 or irradiation raster map [Wh.m-2.day-1] mode 2
+  Title = Output diffuse irradiance W.m-2 mode 1 or irradiation raster map Wh.m-2.day-1 mode 2
   Abstract =
   <ComplexData>
     <Default>
@@ -713,7 +713,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [refl_rad]
-  Title = Output ground reflected irradiance [W.m-2] mode 1 or irradiation raster map [Wh.m-2.day-1] mode 2
+  Title = Output ground reflected irradiance W.m-2 mode 1 or irradiation raster map Wh.m-2.day-1 mode 2
   Abstract =
   <ComplexData>
     <Default>
@@ -744,7 +744,7 @@ serviceType = Python
 </DataOutputs>
 <DataOutputs>
   [glob_rad]
-  Title = Output global total irradiance/irradiation [W.m-2] mode 1 or irradiance/irradiation raster map [Wh.m-2.day-1] mode 2
+  Title = Output global total irradiance/irradiation W.m-2 mode 1 or irradiance/irradiation raster map Wh.m-2.day-1 mode 2
   Abstract =
   <ComplexData>
     <Default>

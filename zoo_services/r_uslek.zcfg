@@ -8,7 +8,7 @@ serviceProvider = r_uslek
 serviceType = Python
 <DataInputs>
   [psand]
-  Title = Name of soil sand fraction raster map [0.0-1.0]
+  Title = Name of soil sand fraction raster map 0.0-1.0
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -48,7 +48,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [pclay]
-  Title = Name of soil clay fraction raster map [0.0-1.0]
+  Title = Name of soil clay fraction raster map 0.0-1.0
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -88,7 +88,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [psilt]
-  Title = Name of soil silt fraction raster map [0.0-1.0]
+  Title = Name of soil silt fraction raster map 0.0-1.0
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -128,7 +128,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [pomat]
-  Title = Name of soil organic matter raster map [0.0-1.0]
+  Title = Name of soil organic matter raster map 0.0-1.0
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -200,7 +200,7 @@ serviceType = Python
 </DataInputs>
 <DataOutputs>
   [output]
-  Title = Name for output USLE K factor raster map [t.ha.hr/ha.MJ.mm]
+  Title = Name for output USLE K factor raster map t.ha.hr/ha.MJ.mm
   Abstract =
   <ComplexData>
     <Default>

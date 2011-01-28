@@ -8,7 +8,7 @@ serviceProvider = r_usler
 serviceType = Python
 <DataInputs>
   [input]
-  Title = Name of annual precipitation raster map [mm/year]
+  Title = Name of annual precipitation raster map mm/year
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -91,7 +91,7 @@ serviceType = Python
 </DataInputs>
 <DataOutputs>
   [output]
-  Title = Name for output USLE R raster map [MJ.mm/ha.hr.year]
+  Title = Name for output USLE R raster map MJ.mm/ha.hr.year
   Abstract =
   <ComplexData>
     <Default>
