@@ -701,7 +701,6 @@ class GrassModuleStarter(ModuleLogging):
                 parameter = [self._createGrassModulePath("v.info"), inputName ]
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
-
         # Text input file, no need to create a new name or for import, use the path as input
         elif self._isTextFile(input) != "":
             self._updateInputMap(input, input.pathToFile)

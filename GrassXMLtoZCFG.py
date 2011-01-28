@@ -47,11 +47,14 @@ class GrassXMLtoZcfg():
 
     def __writePythonFile(self, modulename, funcname):
         """Write the service python file for the ZOO Kernel"""
+        self.__pythonFile.write("#####################################################\n")
+        self.__pythonFile.write("# This service was generated using wps-grass-bridge #\n")
+        self.__pythonFile.write("#####################################################\n")
         self.__pythonFile.write("import ZOOGrassModuleStarter as zoo\n")
         self.__pythonFile.write("def " + str(funcname) + "(m, inputs, outputs):\n")
         self.__pythonFile.write("    service = zoo.ZOOGrassModuleStarter()\n")
         self.__pythonFile.write("    service.fromMaps(\"" + str(modulename)+ "\", inputs, outputs)\n")
-        self.__pythonFile.write("    return 1\n")
+        self.__pythonFile.write("    return 3\n")
         self.__pythonFile.close()
 
     def __closeOutput(self):
@@ -110,11 +113,11 @@ class GrassXMLtoZcfg():
         if element.Identifier != None:
             self.__output.write(indent + "[" + str(element.Identifier.value()).replace(".", "_").replace('\'', '') + "]\n")
         if element.Title.value() != None:
-            self.__output.write(indent + "Title = " + str(element.Title.value()).replace("\n"," ").replace("\t",  " ").replace("=",  "::").replace('\'', '').replace('(', '').replace(')', '').replace('<', '').replace('>', '') + "\n")
+            self.__output.write(indent + "Title = " + str(element.Title.value()).replace("\n"," ").replace("\t",  " ").replace("=",  "::").replace('\'', '').replace('(', '').replace(')', '').replace('<', '').replace('>', '').replace('[', '').replace(']', '') + "\n")
         else:
             self.__output.write(indent + "Title =\n")
         if element.Abstract != None:
-            self.__output.write(indent + "Abstract = " + str(element.Abstract.value()).replace("\n"," ").replace("\t",  " ").replace("=",  "::").replace('\'', '').replace('(', '').replace(')', '').replace('<', '').replace('>', '')  + "\n")
+            self.__output.write(indent + "Abstract = " + str(element.Abstract.value()).replace("\n"," ").replace("\t",  " ").replace("=",  "::").replace('\'', '').replace('(', '').replace(')', '').replace('<', '').replace('>', '').replace('[', '').replace(']', '')  + "\n")
         else:
             self.__output.write(indent + "Abstract =\n")
     
