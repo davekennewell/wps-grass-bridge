@@ -38,4 +38,10 @@ echo "18 Running module r.contour with HFA"
 python ../../GrassModuleStarter.py -f r.contour_input_HFA.txt     -l 18.log  -o 18_stdout.log  -e 18_stderr.log
 echo "19 Running module r.contour with netCDF"
 python ../../GrassModuleStarter.py -f r.contour_input_netCDF.txt  -l 19.log  -o 19_stdout.log  -e 19_stderr.log
+echo "20 Running module r.math with netCDF output"
+python ../../GrassModuleStarter.py -f r.math1_input.txt  -l 20.log  -o 20_stdout.log  -e 20_stderr.log
+echo "21 Running module r.math"
+python ../../GrassModuleStarter.py -f r.math2_input.txt  -l 21.log  -o 21_stdout.log  -e 21_stderr.log
+echo "22 Running module r.math producing an error"
+python ../../GrassModuleStarter.py -f r.math3_input.txt  -l 22.log  -o 22_stdout.log  -e 22_stderr.log
 

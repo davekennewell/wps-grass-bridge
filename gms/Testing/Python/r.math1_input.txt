@@ -47,7 +47,7 @@
 
 [ComplexData]
  Identifier=math
- PathToFile=r.math_expressions.txt
+ PathToFile=r.math1_expressions.txt
  MimeType=text/plain
  MaxOccurs=1
  Encoding=UTF-8
@@ -60,7 +60,7 @@
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/r_math_output.img
+ PathToFile=/tmp/r_math1_output.img
  MimeType=application/x-netcdf
  Encoding=
  Schema=
