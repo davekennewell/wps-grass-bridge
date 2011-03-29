@@ -1,0 +1,1 @@
+output = sinus(row()) + cosinus(col())
