@@ -19,7 +19,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Data source for OGR access</ows:Title>
+				<ows:Title>Data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -53,7 +53,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.</ows:Title>
+				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for direct OGR access.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -84,7 +84,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>lang</ows:Value>
 						<ows:Value>reduction</ows:Value>
 						<ows:Value>reumann</ows:Value>
-						<ows:Value>remove_small</ows:Value>
 						<ows:Value>boyle</ows:Value>
 						<ows:Value>sliding_averaging</ows:Value>
 						<ows:Value>distance_weighting</ows:Value>
@@ -240,18 +239,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-c</ows:Identifier>
 				<ows:Title>Copy attributes</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-r</ows:Identifier>
-				<ows:Title>Remove lines and areas smaller than threshold</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

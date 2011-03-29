@@ -24,6 +24,7 @@ class r_sim_water(WPSProcess):
     self.addComplexInput(identifier = 'man', title = 'Name of mannings n raster map', minOccurs = 0, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
     self.addLiteralInput(identifier = 'man_value', title = 'Mannings n unique value', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.1)
     self.addComplexInput(identifier = 'traps', title = 'Name of flow controls raster map (permeability ratio 0-1)', minOccurs = 0, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
+    self.addComplexInput(identifier = 'observation', title = 'Name of the sampling locations vector points map', minOccurs = 0, maxOccurs = 1, formats = [{'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/dgn', 'schema': 'None', 'encoding': 'None'}, {'mimeType': 'application/shp', 'schema': 'None', 'encoding': 'None'}, {'mimeType': 'application/x-zipped-shp', 'schema': 'None', 'encoding': 'None'}])
     self.addLiteralInput(identifier = 'nwalk', title = 'Number of walkers, default is twice the no. of cells', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
     self.addLiteralInput(identifier = 'niter', title = 'Time used for iterations [minutes]', minOccurs = 0, maxOccurs = 1, type = type(0), default = 10)
     self.addLiteralInput(identifier = 'outiter', title = 'Time interval for creating output maps [minutes]', minOccurs = 0, maxOccurs = 1, type = type(0), default = 2)
@@ -37,11 +38,15 @@ class r_sim_water(WPSProcess):
     self.addLiteralInput(identifier = 'grass_band_number', title = 'Band to select for processing (default is all bands)', abstract = 'This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
 
     # complex outputs
+    self.addComplexOutput(identifier = 'logfile', title = 'Name of the sampling points output text file. For each observation vector point the time series of water depth is stored.', formats = [{'mimeType': 'text/plain'}])
+
     self.addComplexOutput(identifier = 'depth', title = 'Name for output water depth raster map [m]', formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
 
     self.addComplexOutput(identifier = 'disch', title = 'Name for output water discharge raster map [m3/s]', formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
 
     self.addComplexOutput(identifier = 'err', title = 'Name for output simulation error raster map [m]', formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
+
+    self.addComplexOutput(identifier = 'outwalk', title = 'Base name of the output walkers vector points map', formats = [{'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd', 'encoding': 'UTF-8'}])
 
   def execute(self):
     starter = PyWPSGrassModuleStarter()

@@ -370,6 +370,40 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>observation</ows:Identifier>
+				<ows:Title>Name of the sampling locations vector points map</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/dgn</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/shp</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-zipped-shp</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>nwalk</ows:Identifier>
 				<ows:Title>Number of walkers</ows:Title>
 				<LiteralData>
@@ -451,6 +485,47 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 		</DataInputs>
 		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>outwalk</ows:Identifier>
+				<ows:Title>Base name of the output walkers vector points map</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>logfile</ows:Identifier>
+				<ows:Title>Name of the sampling points output text file. For each observation vector point the time series of sediment transport is stored.</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
 			<Output>
 				<ows:Identifier>tc</ows:Identifier>
 				<ows:Title>Name for output transport capacity raster map [kg/ms]</ows:Title>

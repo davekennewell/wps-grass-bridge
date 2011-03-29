@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1024">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Data source(s) for OGR access</ows:Title>
+				<ows:Title>Data source(s) for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

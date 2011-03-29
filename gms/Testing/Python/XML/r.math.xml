@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>a</ows:Identifier>
-				<ows:Title>Raster maps 1.</ows:Title>
+				<ows:Title>Raster map 1.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -58,7 +58,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>b</ows:Identifier>
-				<ows:Title>Raster maps 2.</ows:Title>
+				<ows:Title>Raster map 2.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -101,7 +101,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>c</ows:Identifier>
-				<ows:Title>Raster maps 3.</ows:Title>
+				<ows:Title>Raster map 3.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -144,7 +144,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>d</ows:Identifier>
-				<ows:Title>Raster maps 4.</ows:Title>
+				<ows:Title>Raster map 4.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -187,7 +187,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>e</ows:Identifier>
-				<ows:Title>Raster maps 5.</ows:Title>
+				<ows:Title>Raster map 5.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -230,7 +230,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>f</ows:Identifier>
-				<ows:Title>Raster maps 6.</ows:Title>
+				<ows:Title>Raster map 6.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -273,7 +273,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>g</ows:Identifier>
-				<ows:Title>Raster maps 7.</ows:Title>
+				<ows:Title>Raster map 7.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

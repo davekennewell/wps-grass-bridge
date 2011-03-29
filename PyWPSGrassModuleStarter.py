@@ -154,26 +154,20 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                 data.identifier = self._inputs[input].identifier
                                 data.pathToFile = path
                                 data.maxOccurs = self._inputs[input].maxOccurs
+                                # Check for mime types
                                 try:
-                                    # data.mimeType = self._inputs[input].format["mimeType"]
-                                    data.mimeType = datainput["mimetype"]
+                                    data.mimeType = self._inputs[input].format["mimetype"]
                                 except:
-                                    log = "Missing mimeType in input " + str(input)
-                                    self.LogError(log)
-                                    raise GMSError(log)
+                                    try:
+                                        data.mimeType = self._inputs[input].format["mimeType"]
+                                    except:
+                                        log = "Missing mimetype in input " + str(input)
+                                        self.LogError(log)
+                                        raise GMSError(log)
                                 try:
                                     # schema and encoding are not mandatory
-                                    #data.schema = self._inputs[input].format["schema"]
-                                    #data.encoding = self._inputs[input].format["encoding"]
-                                    #self.LogWarning("Missing schema and encoding")
-                                    if datainput.has_key("schema"):
-                                        data.schema = datainput["schema"]
-                                    else:
-                                        self.LogWarning("Missing schema")
-                                    if datainput.has_key("encoding"):
-                                        data.encoding = datainput["encoding"]
-                                    else:
-                                        self.LogWarning("Missing schema")
+                                    data.schema = self._inputs[input].format["schema"]
+                                    data.encoding = self._inputs[input].format["encoding"]
                                 except:
                                     pass
 
@@ -186,26 +180,20 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                             data.identifier = self._inputs[input].identifier
                             data.pathToFile =  self._inputs[input].getValue()
                             data.maxOccurs = self._inputs[input].maxOccurs
+                                # Check for mime types
                             try:
-                                # data.mimeType = self._inputs[input].format["mimeType"]
-                                data.mimeType = datainput["mimetype"]
+                                data.mimeType = self._inputs[input].format["mimetype"]
                             except:
-                                log = "Missing mimeType in input " + str(input)
-                                self.LogError(log)
-                                raise GMSError(log)
+                                try:
+                                    data.mimeType = self._inputs[input].format["mimeType"]
+                                except:
+                                    log = "Missing mimetype in input " + str(input)
+                                    self.LogError(log)
+                                    raise GMSError(log)
                             try:
                                 # schema and encoding are not mandatory
-                                #data.schema = self._inputs[input].format["schema"]
-                                #data.encoding = self._inputs[input].format["encoding"]
-                                #self.LogWarning("Missing schema and encoding")
-                                if datainput.has_key("schema"):
-                                    data.schema = datainput["schema"]
-                                else:
-                                    self.LogWarning("Missing schema")
-                                if datainput.has_key("encoding"):
-                                    data.encoding = datainput["encoding"]
-                                else:
-                                    self.LogWarning("Missing schema")
+                                data.schema = self._inputs[input].format["schema"]
+                                data.encoding = self._inputs[input].format["encoding"]
                             except:
                                 pass
 
