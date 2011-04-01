@@ -1,0 +1,55 @@
+# Test r.watershed
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=r.watershed
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=elevation
+ MaxOccurs=1
+ PathToFile=TestData/elev_srtm_30m.tif
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=-s
+ DataType=boolean
+ Value=true
+
+[LiteralData]
+ Identifier=threshold
+ DataType=double
+ Value=500
+
+[ComplexOutput]
+ Identifier=accumulation
+ PathToFile=/tmp/elev_srtm_30m_acc.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[ComplexOutput]
+ Identifier=basin
+ PathToFile=/tmp/elev_srtm_30m_basin.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[ComplexOutput]
+ Identifier=stream
+ PathToFile=/tmp/elev_srtm_30m_stream.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+

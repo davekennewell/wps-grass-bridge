@@ -1,0 +1,206 @@
+[v_transform]
+Title = Performs an affine transformation shift, scale and rotate, or GPCs on vector map.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.transform.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_transform
+serviceType = Python
+<DataInputs>
+  [input]
+  Title = Data source for OGR access
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [layer]
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = -1
+    </Default>
+  </LiteralData>
+  [pointsfile]
+  Title = If not given, transformation parameters xshift, yshift, zshift, xscale, yscale, zscale, zrot are used instead
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/plain
+    </Default>
+    <Supported>
+      mimeType = text/plain
+    </Supported>
+  </ComplexData>
+  [xshift]
+  Title = Shifting value for x coordinates
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [yshift]
+  Title = Shifting value for y coordinates
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [zshift]
+  Title = Shifting value for z coordinates
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [xscale]
+  Title = Scaling factor for x coordinates
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1.0
+    </Default>
+  </LiteralData>
+  [yscale]
+  Title = Scaling factor for y coordinates
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1.0
+    </Default>
+  </LiteralData>
+  [zscale]
+  Title = Scaling factor for z coordinates
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 1.0
+    </Default>
+  </LiteralData>
+  [zrot]
+  Title = Rotation around z axis in degrees counterclockwise
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = float
+    <Default>
+      value = 0.0
+    </Default>
+  </LiteralData>
+  [table]
+  Title = Name of table containing transformation parameters
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [columns]
+  Title = Format: parameter:column, e.g. xshift:xs,yshift:ys,zrot:zr
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1024
+  <LiteralData>
+    DataType   = string
+    <Default>
+    </Default>
+  </LiteralData>
+  [-t]
+  Title = Shift all z values to bottom::0
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+  [-m]
+  Title = Print the transformation matrix to stdout
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = boolean
+    <Default>
+      value = false
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = Name for output vector map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>

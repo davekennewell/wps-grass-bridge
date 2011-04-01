@@ -1,0 +1,140 @@
+[v_net_timetable]
+Title = Finds shortest path using timetables.
+Abstract = http://grass.osgeo.org/grass70/manuals/html70_user/v.net.timetable.html
+processVersion = 2
+storeSupported = true 
+statusSupported = true
+serviceProvider = v_net_timetable
+serviceType = Python
+<DataInputs>
+  [input]
+  Title = Data source for OGR access
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
+  [layer]
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = 1
+    </Default>
+  </LiteralData>
+  [walk_layer]
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = -1
+    </Default>
+  </LiteralData>
+  [path_layer]
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = -1
+    </Default>
+  </LiteralData>
+  [route_id]
+  Title = Name of column name with route ids
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = route_id
+    </Default>
+  </LiteralData>
+  [stop_time]
+  Title = Name of column name with stop timestamps
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = stop_time
+    </Default>
+  </LiteralData>
+  [to_stop]
+  Title = Name of column name with stop ids
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = to_stop
+    </Default>
+  </LiteralData>
+  [walk_length]
+  Title = Name of column name with walk lengths
+  Abstract =
+  minOccurs = 1
+  maxOccurs = 1
+  <LiteralData>
+    DataType   = string
+    <Default>
+      value = length
+    </Default>
+  </LiteralData>
+</DataInputs>
+<DataOutputs>
+  [output]
+  Title = Name for output vector map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>

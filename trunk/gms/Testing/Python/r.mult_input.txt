@@ -1,0 +1,44 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=GrassAddons
+ Module=r.mult
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[
+[ComplexData]
+ Identifier=inputs
+ MaxOccurs=1024
+ PathToFile=TestData/lsat7_nc.img
+ MimeType=application/x-erdas-hfa
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=inputs
+ MaxOccurs=1024
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=application/geotiff
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=inputs
+ MaxOccurs=1024
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=application/geotiff
+ Encoding=
+ Schema=
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/lsat7_nc_mult.tiff
+ MimeType=image/tiff
+ Encoding=
+ Schema=
