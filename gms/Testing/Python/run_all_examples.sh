@@ -44,4 +44,14 @@ echo "21 Running module r.math"
 python ../../GrassModuleStarter.py -f r.math2_input.txt  -l 21.log  -o 21_stdout.log  -e 21_stderr.log
 echo "22 Running module r.math producing an error"
 python ../../GrassModuleStarter.py -f r.math3_input.txt  -l 22.log  -o 22_stdout.log  -e 22_stderr.log
+echo "23  Running module r.univar"
+python ../../GrassModuleStarter.py -f r.univar3_input.txt     -l 23.log  -o 23_stdout.log  -e 23_stderr.log
+echo "24  Running module r.univar"
+python ../../GrassModuleStarter.py -f r.univar3_mc_input.txt  -l 24.log  -o 24_stdout.log  -e 24_stderr.log
+echo "25  Running module r.out.vtk"
+python ../../GrassModuleStarter.py -f r.out.vtk_input.txt  -l 25.log  -o 25_stdout.log  -e 25_stderr.log
+echo "26  Running module v.out.vtk"
+python ../../GrassModuleStarter.py -f v.out.vtk_input.txt  -l 26.log  -o 26_stdout.log  -e 26_stderr.log
+echo "27  Running module v.buffer"
+python ../../GrassModuleStarter.py -f v.buffer_gml_input.txt  -l 27.log  -o 27_stdout.log  -e 27_stderr.log
 

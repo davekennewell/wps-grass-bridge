@@ -367,8 +367,7 @@ class GrassModuleStarter(ModuleLogging):
 
     ############################################################################
     def _checkBandNumber(self):
-        """ Check if a band number is provided as literal data, if not multiple
-        import is enabled even the input file contains only one band """
+        """ Check if a band number is provided as literal data """
         self.LogInfo("Check if a band number is present")
         self.bandNumber = 0
         for i in self.inputMap:
@@ -607,44 +606,46 @@ class GrassModuleStarter(ModuleLogging):
             inputName = input.identifier + "_" + str(self.inputCounter)
         else:
             inputName = input.identifier
+        try:
+            if self._isRaster(input) != None:
+                parameter = [self._createGrassModulePath("r.external"), "input=" + input.pathToFile, "output=" + inputName]
+                if self.inputParameter.ignoreProjection == "TRUE":
+                    parameter.append("-o")
+                if self.bandNumber > 0:
+                    parameter.append("band=" + str(self.bandNumber))
 
-        if self._isRaster(input) != None:
-            parameter = [self._createGrassModulePath("r.external"), "input=" + input.pathToFile, "output=" + inputName]
-            if self.inputParameter.ignoreProjection == "TRUE":
-                parameter.append("-o")
-            if self.bandNumber > 0:
-                parameter.append("band=" + str(self.bandNumber))
+                errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
-            errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+                # If the linking fails, import the data with r.in.gdal
+                if errorid != 0:
+                    self.LogInfo("Unable to link the raster map" + input.pathToFile + " try to import.")
+                    try:
+                        self._importInput(input)
+                    except:
+                        log = "Unable to link or import the raster map " + input.pathToFile + " into the grass mapset" + " r.external log: " + stderr_buff
+                        self.LogError(log)
+                        raise GMSError(log)
+                    return
 
-            # If the linking fails, import the data with r.in.gdal
-            if errorid != 0:
-                self.LogInfo("Unable to link the raster map" + input.pathToFile + " try to import.")
-                try:
-                    self._importInput(input)
-                except:
-                    log = "Unable to link or import the raster map " + input.pathToFile + " into the grass mapset" + " r.external log: " + stderr_buff
-                    self.LogError(log)
-                    raise GMSError(log)
+                # Check if r.external created a group and put these file names into inputName
+                if self.bandNumber == 0:
+                    inputName = self._checkForRasterGroup(inputName)
+
+                if GMS_DEBUG:
+                    for i in inputName.split(','):
+                        parameter = [self._createGrassModulePath("r.info"), i ]
+                        errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+
+            elif self._isVector(input) != None:
+                # Linking does not work properly right now for GML -> no random access, so we import the vector data
+                self._importInput(input)
                 return
-
-            # Check if r.external created a group and put these file names into inputName
-            if self.bandNumber == 0:
-                inputName = self._checkForRasterGroup(inputName)
+            else:
+                # The import takes care of all the other mime types
+                self._importInput(input)
+                return
                 
-            if GMS_DEBUG:
-                for i in inputName.split(','):
-                    parameter = [self._createGrassModulePath("r.info"), i ]
-                    errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
-
-        elif self._isVector(input) != None:
-            # Linking does not work properly right now for GML -> no random access, so we import the vector data
-            self._importInput(input)
-            return
-        elif self._isTextFile(input) != "":
-            self._updateInputMap(input, input.pathToFile)
-            return
-        else:
+        except:
             log = "An unexpected error occured while input linking into the grass mapsets, input " + str(input.pathToFile)
             self.LogError(log)
             raise GMSError(log)
@@ -701,14 +702,10 @@ class GrassModuleStarter(ModuleLogging):
                 parameter = [self._createGrassModulePath("v.info"), inputName ]
                 errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
-        # Text input file, no need to create a new name or for import, use the path as input
-        elif self._isTextFile(input) != "":
-            self._updateInputMap(input, input.pathToFile)
-            return
+        # Text or other input file, no need to create a new name for import, use the path
+        # to the file as input for the grass module
         else:
-            log = "Unable to register textfile " + str(input.pathToFile)
-            self.LogError(log)
-            raise GMSError(log)
+            inputName = input.pathToFile
 
         self._updateInputMap(input, inputName)
 
@@ -789,8 +786,12 @@ class GrassModuleStarter(ModuleLogging):
             return
 
         for i in list:
-            # Use the same name as the output
-            outputName = i.identifier
+            # Use the same name as the output in case raster or vector data
+            # is set. Otherwise write directly to the output file path
+            if self._isRaster(i) != None or self._isVector(i) != None:
+                outputName = i.identifier
+            else:
+                outputName = i.pathToFile
             # Ignore if multiple defined
             if self.outputMap.has_key(i.identifier):
                 pass
@@ -802,43 +803,55 @@ class GrassModuleStarter(ModuleLogging):
     ############################################################################
     def _exportOutput(self):
         """Export the output"""
-        for output in self.inputParameter.complexOutputList:
-            outputName = self.outputMap[output.identifier]
+        try:
+            for output in self.inputParameter.complexOutputList:
+                outputName = self.outputMap[output.identifier]
 
-            # export the data via gdal
-            if self._isRaster(output) != None:
-                parameter = [self._createGrassModulePath("r.out.gdal"), "-c", "input=" + outputName, "format=" + self._isRaster(output), "output=" + output.pathToFile]
-                errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+                # export the data via gdal
+                if self._isRaster(output) != None:
+                    parameter = [self._createGrassModulePath("r.out.gdal"), "-c", "input=" + outputName, "format=" + self._isRaster(output), "output=" + output.pathToFile]
+                    errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
-                if errorid != 0:
-                    log = "Unable to export " + outputName + "   r.out.gdal error:\n" + stderr_buff
-                    self.LogError(log)
-                    raise GMSError(log)
+                    if errorid != 0:
+                        log = "Unable to export " + outputName + "   r.out.gdal error:\n" + stderr_buff
+                        self.LogError(log)
+                        raise GMSError(log)
 
-            # export the data via ogr
-            elif self._isVector(output) != None:
-                parameter = [self._createGrassModulePath("v.out.ogr"), "input=" + outputName, "format=" + self._isVector(output),"dsn=" + output.pathToFile]
-                errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+                # export the data via ogr
+                elif self._isVector(output) != None:
+                    parameter = [self._createGrassModulePath("v.out.ogr"), "input=" + outputName, "format=" + self._isVector(output),"dsn=" + output.pathToFile]
+                    errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
-                if errorid != 0:
-                    log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
-                    self.LogError(log)
-                    raise GMSError(log)
-            elif self._isTextFile(output) != None or output.identifier.lower() == "stdout":
-                try:
-                    # Copy the stdout to output.pathToFile
-                    self.LogInfo("Write grass module stdout to file: " + output.pathToFile)
-                    outFile = open(output.pathToFile, 'w')
-                    outFile.write(self.moduleStdout)
-                    outFile.close()
-                except:
-                    log = "Unable to export " + outputName + " to file: " + output.pathToFile + " with content:\n" + self.moduleStdout
-                    self.LogError(log)
-                    raise GMSError(log)
-            else:
-                log = "Unsupported mime type. Unable to export " + outputName
-                self.LogError(log)
-                raise GMSError(log)
+                    if errorid != 0:
+                        log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
+                        self.LogError(log)
+                        raise GMSError(log)
+                # In case stdout was logged, we need to write the content to the output file
+                elif output.identifier.lower() == "stdout":
+                    try:
+                        # Copy the stdout to output.pathToFile
+                        self.LogInfo("Write grass module stdout to file: " + output.pathToFile)
+                        outFile = open(output.pathToFile, 'w')
+                        outFile.write(self.moduleStdout)
+                        outFile.close()
+                    except:
+                        log = "Unable to export " + outputName + " to file: " + output.pathToFile + " with content:\n" + self.moduleStdout
+                        self.LogError(log)
+                        raise GMSError(log)
+                # In case a text or other binary file was created, we do not need to do anything
+                # In case the input is not a vector or raster map the output path is used
+                # directly for writing
+                else:
+                    if os.path.isfile(output.pathToFile) == True:
+                        pass
+                    else:
+                        log = "Unable to export " + outputName + ". output file " + output.pathToFile + " was not created"
+                        self.LogError(log)
+                        raise GMSError(log)
+        except:
+            log = "Unable to export " + outputName
+            self.LogError(log)
+            raise GMSError(log)
 
     ############################################################################
     def _createGrassModulePath(self, grassModule):
@@ -881,6 +894,7 @@ class GrassModuleStarter(ModuleLogging):
         for i in self.inputMap:
             # filter special WPS keywords from the argument list (resolution, band number, BBOX, ...)
             if i not in GRASS_WPS_KEYWORD_LIST:
+                # Check for flags
                 if self.inputMap[i] != "":
                     parameter.append(i + "=" + str(self.inputMap[i]))
                 else:

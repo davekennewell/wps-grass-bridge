@@ -1,0 +1,42 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=r.out.vtk
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=input
+ MaxOccurs=1
+ PathToFile=TestData/elev_srtm_30m.tif
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=elevation
+ MaxOccurs=1
+ PathToFile=TestData/elev_srtm_30m.tif
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=grass_band_number
+ DataType=integer
+ Value=1
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/elev_srtm_30m.vtk
+ MimeType=text/plain
+ Encoding=
+ Schema=
+

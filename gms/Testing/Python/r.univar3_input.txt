@@ -1,0 +1,56 @@
+# This script tests multiple inputs of single channel data with band number
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=r.univar
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[LiteralData]
+ Identifier=grass_band_number
+ DataType=integer
+ Value=1
+
+[ComplexData]
+ Identifier=map
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=application/geotiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=map
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=application/geotiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[ComplexData]
+ Identifier=map
+ PathToFile=TestData/lsat7_nc.tif
+ MimeType=image/tiff
+ MaxOccurs=1
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=-g
+ DataType=boolean
+ Value=true
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/r.univar3_output.txt
+ MimeType=text/plain
+ Encoding=
+ Schema=
+
