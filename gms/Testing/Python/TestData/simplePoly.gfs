@@ -1,0 +1,18 @@
+<GMLFeatureClassList>
+  <GMLFeatureClass>
+    <Name>simplePoly</Name>
+    <ElementPath>simplePoly</ElementPath>
+    <DatasetSpecificInfo>
+      <FeatureCount>1</FeatureCount>
+      <ExtentXMin>85265.43548</ExtentXMin>
+      <ExtentXMax>367458.82831</ExtentXMax>
+      <ExtentYMin>71091.22100</ExtentYMin>
+      <ExtentYMax>304869.08075</ExtentYMax>
+    </DatasetSpecificInfo>
+    <PropertyDefn>
+      <Name>foo</Name>
+      <ElementPath>foo</ElementPath>
+      <Type>Untyped</Type>
+    </PropertyDefn>
+  </GMLFeatureClass>
+</GMLFeatureClassList>

@@ -54,4 +54,6 @@ echo "26  Running module v.out.vtk"
 python ../../GrassModuleStarter.py -f v.out.vtk_input.txt  -l 26.log  -o 26_stdout.log  -e 26_stderr.log
 echo "27  Running module v.buffer"
 python ../../GrassModuleStarter.py -f v.buffer_gml_input.txt  -l 27.log  -o 27_stdout.log  -e 27_stderr.log
+echo "28  Running module v.out.vtk"
+python ../../GrassModuleStarter.py -f v.out.vtk2_input.txt  -l 28.log  -o 28_stdout.log  -e 28_stderr.log
 
