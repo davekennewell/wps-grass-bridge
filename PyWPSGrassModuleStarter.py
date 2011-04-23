@@ -21,9 +21,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
-
-
-
 from gms.ErrorHandler import GMSError
 import GlobalGrassSettings
 import tempfile
@@ -42,7 +39,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
 
     ############################################################################
     def fromPyWPS(self, grassModule, inputs, outputs, pywps):
-
+       
         self._grassModule = grassModule
         self._inputs = inputs
         self._outputs = outputs
@@ -63,8 +60,8 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         self._parsePyWPSInputsAndOutputs()
         
         try:
-            self._createInputOutputMaps()
             self._createOutputFiles()
+            self._createInputOutputMaps()
             try:
                 # Temporal directory must be created at the beginning
                 self._createTemporalDir(self.inputParameter.workDir)
@@ -150,7 +147,6 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 # Check for complex data
                 
                 elif isinstance(self._inputs[input], PyWPSComplexInput):
-                    
                     if  self._inputs[input].getValue() != None:
                         # Check for multiple complex inputs
                         if type(self._inputs[input].getValue()) == type([]):
@@ -159,7 +155,6 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                 data.identifier = self._inputs[input].identifier
                                 data.pathToFile = path
                                 data.maxOccurs = self._inputs[input].maxOccurs
-                                #JMDJ: check for mime types
                                 # Check for mime types
                                 try:
                                     data.mimeType = self._inputs[input].format["mimetype"]
@@ -171,33 +166,29 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                         self.LogError(log)
                                         raise GMSError(log)
                                 try:
-                                    #jmdj: schema and encoding are not mandatory
-                                    #data.schema = self._inputs[input].format["schema"]
-                                    #data.encoding = self._inputs[input].format["encoding"]
-                                    #self.LogWarning("Missing schema and encoding")
-                                   
-                                    if datainput.has_key("schema"):
-                                        data.schema = datainput["schema"]
+                                    # schema and encoding are not mandatory
+                                    if self._inputs[input].format.has_key("schema"):
+                                        data.schema = self._inputs[input].format["schema"]
                                     else:
                                         self.LogWarning("Missing schema")
-                                    if datainput.has_key("encoding"):
-                                        data.encoding = datainput["encoding"]
+                                    if self._inputs[input].format.has_key("encoding"):
+                                        data.encoding = self._inputs[input].format["encoding"]
                                     else:
                                         self.LogWarning("Missing schema")
                                 except:
                                     pass
-
+                                
                                 self.inputParameter.complexDataList.append(data)
                                 self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
-
+                              
                         # Single complex input
                         else:
-                           
+                            
                             data = ComplexData()
                             data.identifier = self._inputs[input].identifier
                             data.pathToFile =  self._inputs[input].getValue()
                             data.maxOccurs = self._inputs[input].maxOccurs
-                            # Check for mime types
+                            # Check for mime types                        
                             try:
                                 data.mimeType = self._inputs[input].format["mimetype"]
                             except:
@@ -208,34 +199,30 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                                     self.LogError(log)
                                     raise GMSError(log)
                             try:
-                                # schema and encoding are not mandatory
-                                #data.schema = self._inputs[input].format["schema"]
-                                #data.encoding = self._inputs[input].format["encoding"]
-                                #self.LogWarning("Missing schema and encoding")
-                                if datainput.has_key("schema"):
-                                    data.schema = datainput["schema"]
+                                # schema and encoding are not mandatory 
+                                if self._inputs[input].format.has_key("schema"):
+                                    data.schema = self._inputs[input].format["schema"]
                                 else:
                                     self.LogWarning("Missing schema")
-                                if datainput.has_key("encoding"):
-                                    data.encoding = datainput["encoding"]
+                                if self._inputs[input].format.has_key("encoding"):
+                                    data.encoding = self._inputs[input].format["encoding"]
                                 else:
                                     self.LogWarning("Missing schema")
                             except:
                                 pass
-
                             self.inputParameter.complexDataList.append(data)
                             self.LogInfo("Added complex input " + data.identifier + " with file path " + data.pathToFile)
 
         # Attach all requested outputs
-        #jmdj: A responsedocument with outputs is not mandatory in WPS requests. 
-        #If no ouputs are present we will assume the default mimeTypes and structure from the process it self
+        # jmdj: A responsedocument with outputs is not mandatory in WPS requests.
+        # If no ouputs are present we will assume the default mimeTypes and structure from the process it self
         try:
-            outputList=self._pywps.inputs["responseform"]["responsedocument"]["outputs"]
-            #may happen that responsedocument has some content inside
-            if outputList==[]:
+            outputList = self._pywps.inputs["responseform"]["responsedocument"]["outputs"]
+            # may happen that responsedocument has some content inside
+            if outputList == []:
                 raise
             
-            #if no exception raise then continue to loop:
+            # if no exception raise then continue to loop:
             for output in outputList:
                 data = ComplexOutput()
                 data.identifier = output["identifier"]
@@ -252,17 +239,15 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                 except:
                     self.LogWarning("Missing schema and encoding")
                     pass
-                
+              
                 self.inputParameter.complexOutputList.append(data)
                 self.LogInfo("Added complex output " + data.identifier + " of format " + data.mimeType)
-            
-            
              
         except:
-             #Making outputs to have the same attributes as self._pywps.inputs
+             # Making outputs to have the same attributes as self._pywps.inputs
              outputList=self._outputs.values()
-             #Making outputs to have the same attributes as self._pywps.inputs
-             #for output in outputList:
+             # Making outputs to have the same attributes as self._pywps.inputs
+             # for output in outputList:
              for output in outputList:
                 data = ComplexOutput()
                 data.identifier = output.identifier
@@ -303,7 +288,6 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
             output.pathToFile= filename
             self.LogInfo("Created output filename " + filename)
             count = count + 1
-            
 
     ############################################################################
     def _passOutputs(self):
@@ -315,8 +299,7 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
             except:
                 self.LogError("Unable to attach output file")
                 raise
-            self.LogInfo("Attached output file " + filename)    
-
+            self.LogInfo("Attached output file " + filename)  
 
 ################################################################################
 # Code for testing #############################################################
