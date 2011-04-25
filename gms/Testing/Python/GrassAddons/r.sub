@@ -44,7 +44,10 @@ def main():
     if count < 2:
         grass.fatal_error("At least two raster maps are needed")
 
-    grass.run_command('r.mapcalc', expression=output + "=" + inputs.replace(",", "-"))
+    code = grass.run_command('r.mapcalc', expression=output + "=" + inputs.replace(",", "-"))
+
+    if code != 0:
+        raise IOError("Error while running r.mapcalc")
 
     # write cmd history:
     grass.raster_history(output)

@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_surf_area(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.surf.area', title = 'Surface area estimation for rasters.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'interpolation'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.area.html')
+    WPSProcess.__init__(self, identifier = 'r.surf.area', title = 'Surface area estimation for rasters.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'statistics'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.area.html')
 
     # Literal and complex inputs
     self.addLiteralInput(identifier = 'input', title = 'Raster file for surface', minOccurs = 1, maxOccurs = 1, type = type("string"), allowedValues = '*')

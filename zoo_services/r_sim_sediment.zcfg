@@ -338,6 +338,52 @@ serviceType = Python
       value = 0.1
     </Default>
   </LiteralData>
+  [observation]
+  Title = Name of the sampling locations vector points map
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
   [nwalk]
   Title = Number of walkers
   Abstract =
@@ -412,6 +458,56 @@ serviceType = Python
     </Default>
   </LiteralData>
 </DataInputs>
+<DataOutputs>
+  [outwalk]
+  Title = Base name of the output walkers vector points map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [logfile]
+  Title = Name of the sampling points output text file. For each observation vector point the time series of sediment transport is stored.
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/plain
+    </Default>
+    <Supported>
+      mimeType = text/plain
+    </Supported>
+  </ComplexData>
+</DataOutputs>
 <DataOutputs>
   [tc]
   Title = Name for output transport capacity raster map kg/ms

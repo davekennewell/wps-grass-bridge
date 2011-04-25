@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Line-of-sight raster analysis program.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.los.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="viewshed" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>

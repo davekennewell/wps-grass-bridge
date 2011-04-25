@@ -8,7 +8,7 @@ serviceProvider = r_math
 serviceType = Python
 <DataInputs>
   [a]
-  Title = Raster maps 1.
+  Title = Raster map 1.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -48,7 +48,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [b]
-  Title = Raster maps 2.
+  Title = Raster map 2.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -88,7 +88,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [c]
-  Title = Raster maps 3.
+  Title = Raster map 3.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -128,7 +128,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [d]
-  Title = Raster maps 4.
+  Title = Raster map 4.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -168,7 +168,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [e]
-  Title = Raster maps 5.
+  Title = Raster map 5.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -208,7 +208,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [f]
-  Title = Raster maps 6.
+  Title = Raster map 6.
   Abstract =
   minOccurs = 0
   maxOccurs = 1
@@ -248,7 +248,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [g]
-  Title = Raster maps 7.
+  Title = Raster map 7.
   Abstract =
   minOccurs = 0
   maxOccurs = 1

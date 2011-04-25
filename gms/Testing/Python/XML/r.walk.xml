@@ -108,12 +108,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>
@@ -142,12 +157,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>
@@ -257,7 +287,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<ows:Identifier>walk_coeff</ows:Identifier>
 				<ows:Title>Coefficients for walking energy formula parameters a,b,c,d</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 					<DefaultValue>0.72,6.0,1.9998,-1.9998</DefaultValue>
 				</LiteralData>

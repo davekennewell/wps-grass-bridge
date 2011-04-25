@@ -11,7 +11,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Note that 'Minimum Steiner Tree' problem is NP-hard and heuristic algorithm is used in this module so the result may be sub optimal</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.net.steiner.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
-		<ows:Metadata xlink:title="networking" />
+		<ows:Metadata xlink:title="network" />
+		<ows:Metadata xlink:title="steiner tree" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -21,12 +22,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>
@@ -124,12 +140,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>

@@ -103,7 +103,10 @@ def main():
     output = options['output']
     efile  = options['math']
 
-    grass.run_command('r.mapcalc', file=efile)
+    code = grass.run_command('r.mapcalc', file=efile)
+
+    if code != 0:
+        raise IOError("Error while running r.mapcalc")
 
     # write cmd history:
     grass.raster_history(output)

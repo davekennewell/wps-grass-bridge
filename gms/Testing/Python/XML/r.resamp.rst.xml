@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Reinterpolates and optionally computes topographic analysis from input raster map to a new raster map (possibly with different resolution) using regularized spline with tension and smoothing.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.rst.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="resample" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>

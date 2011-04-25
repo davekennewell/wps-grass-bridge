@@ -523,6 +523,11 @@ class GrassModuleStarter(ModuleLogging):
     ############################################################################
     def _isVector(self, input):
         """Check for vector input. Zipped shapefiles must be extracted"""
+
+        # Adjust the schema definition
+        if input.schema == None:
+            input.schema = ""
+
         self.LogInfo("Check vector mimetype: " + str(input.mimeType.upper()) + " schema: " + str(input.schema.upper()))
         for vectorType in VECTOR_MIMETYPES:
             if input.mimeType.upper() == vectorType["MIMETYPE"] \

@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Outputs raster map layer values lying along user defined transect line(s).</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.transect.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="transect" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>map</ows:Identifier>

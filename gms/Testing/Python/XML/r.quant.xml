@@ -11,6 +11,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Produces the quantization file for a floating-point map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.quant.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="quantization" />
+		<ows:Metadata xlink:title="statistics" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1024">
 				<ows:Identifier>input</ows:Identifier>

@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_rescale(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.rescale', title = 'Rescales the range of category values in a raster map layer.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.rescale.html')
+    WPSProcess.__init__(self, identifier = 'r.rescale', title = 'Rescales the range of category values in a raster map layer.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'rescale'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.rescale.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'The name of the raster map to be rescaled', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

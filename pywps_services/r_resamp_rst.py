@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_resamp_rst(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.resamp.rst', title = 'Reinterpolates and optionally computes topographic analysis from input raster map to a new raster map (possibly with different resolution) using regularized spline with tension and smoothing.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.rst.html')
+    WPSProcess.__init__(self, identifier = 'r.resamp.rst', title = 'Reinterpolates and optionally computes topographic analysis from input raster map to a new raster map (possibly with different resolution) using regularized spline with tension and smoothing.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'resample'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.rst.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of input raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

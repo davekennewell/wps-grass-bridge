@@ -11,6 +11,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Generates red, green and blue raster map layers combining hue, intensity and saturation (HIS) values from user-specified input raster map layers.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.his.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="color transformation" />
+		<ows:Metadata xlink:title="RGB" />
+		<ows:Metadata xlink:title="HIS" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>h_map</ows:Identifier>

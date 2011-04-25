@@ -320,6 +320,52 @@ serviceType = Python
       mimeType = application/x-netcdf
     </Supported>
   </ComplexData>
+  [observation]
+  Title = Name of the sampling locations vector points map
+  Abstract =
+  minOccurs = 0
+  maxOccurs = 1
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/dgn
+    </Supported>
+    <Supported>
+      mimeType = application/shp
+    </Supported>
+    <Supported>
+      mimeType = application/x-zipped-shp
+    </Supported>
+  </ComplexData>
   [nwalk]
   Title = Number of walkers, default is twice the no. of cells
   Abstract =
@@ -439,6 +485,19 @@ serviceType = Python
   </LiteralData>
 </DataInputs>
 <DataOutputs>
+  [logfile]
+  Title = Name of the sampling points output text file. For each observation vector point the time series of water depth is stored.
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/plain
+    </Default>
+    <Supported>
+      mimeType = text/plain
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
   [depth]
   Title = Name for output water depth raster map m
   Abstract =
@@ -528,6 +587,43 @@ serviceType = Python
     </Supported>
     <Supported>
       mimeType = application/x-netcdf
+    </Supported>
+  </ComplexData>
+</DataOutputs>
+<DataOutputs>
+  [outwalk]
+  Title = Base name of the output walkers vector points map
+  Abstract =
+  <ComplexData>
+    <Default>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Default>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd
     </Supported>
   </ComplexData>
 </DataOutputs>

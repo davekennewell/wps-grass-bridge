@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_quant(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.quant', title = 'Produces the quantization file for a floating-point map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.quant.html')
+    WPSProcess.__init__(self, identifier = 'r.quant', title = 'Produces the quantization file for a floating-point map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'quantization'}, {'type': 'simple', 'title': 'statistics'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.quant.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Raster map(s) to be quantized', minOccurs = 1, maxOccurs = 1024, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

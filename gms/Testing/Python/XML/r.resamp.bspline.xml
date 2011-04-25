@@ -12,7 +12,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.bspline.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="surface" />
-		<ows:Metadata xlink:title="resampling" />
+		<ows:Metadata xlink:title="resample" />
+		<ows:Metadata xlink:title="interpolation" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -250,12 +251,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>

@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_solute_transport(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.solute.transport', title = 'Numerical calculation program for transient, confined and unconfined solute transport in two dimensions', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'solute transport'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.solute.transport.html')
+    WPSProcess.__init__(self, identifier = 'r.solute.transport', title = 'Numerical calculation program for transient, confined and unconfined solute transport in two dimensions', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'hydrology'}, {'type': 'simple', 'title': 'solute transport'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.solute.transport.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'c', title = 'The initial concentration in [kg/m^3]', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

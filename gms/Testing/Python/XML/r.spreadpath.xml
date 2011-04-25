@@ -11,6 +11,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Recursively traces the least cost path backwards to cells from which the cumulative cost was determined.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.spreadpath.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="fire" />
+		<ows:Metadata xlink:title="cumulative costs" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>x_input</ows:Identifier>

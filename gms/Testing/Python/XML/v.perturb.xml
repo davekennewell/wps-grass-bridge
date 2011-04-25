@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Random location perturbations of vector points.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.perturb.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
+		<ows:Metadata xlink:title="geometry" />
 		<ows:Metadata xlink:title="statistics" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
@@ -21,12 +22,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>
@@ -104,12 +120,27 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<Format>
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
 							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>text/xml</MimeType>
+							<Encoding>UTF-8</Encoding>
+							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
+						</Format>
+						<Format>
+							<MimeType>application/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
 						</Format>

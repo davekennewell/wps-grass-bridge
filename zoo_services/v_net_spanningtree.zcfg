@@ -8,7 +8,7 @@ serviceProvider = v_net_spanningtree
 serviceType = Python
 <DataInputs>
   [input]
-  Title = Data source for OGR access
+  Title = Data source for direct OGR access
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -16,10 +16,25 @@ serviceType = Python
     <Default>
       mimeType = text/xml
       encoding = UTF-8
-      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
     </Default>
     <Supported>
       mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
       encoding = UTF-8
       schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
     </Supported>
@@ -39,7 +54,7 @@ serviceType = Python
     </Supported>
   </ComplexData>
   [layer]
-  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for OGR access.
+  Title = A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for direct OGR access.
   Abstract =
   minOccurs = 1
   maxOccurs = 1
@@ -79,10 +94,25 @@ serviceType = Python
     <Default>
       mimeType = text/xml
       encoding = UTF-8
-      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
     </Default>
     <Supported>
       mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
       encoding = UTF-8
       schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
     </Supported>

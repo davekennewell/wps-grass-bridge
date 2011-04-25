@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_spread(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.spread', title = 'It optionally produces raster maps to contain backlink UTM coordinates for tracing spread paths.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.spread.html')
+    WPSProcess.__init__(self, identifier = 'r.spread', title = 'It optionally produces raster maps to contain backlink UTM coordinates for tracing spread paths.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'fire'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.spread.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'max', title = 'Name of raster map containing MAX rate of spread (ROS) (cm/min)', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

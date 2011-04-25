@@ -96,10 +96,25 @@ serviceType = Python
     <Default>
       mimeType = text/xml
       encoding = UTF-8
-      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
     </Default>
     <Supported>
       mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
       encoding = UTF-8
       schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
     </Supported>
@@ -127,10 +142,25 @@ serviceType = Python
     <Default>
       mimeType = text/xml
       encoding = UTF-8
-      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
     </Default>
     <Supported>
       mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/3.1.1/base/gml.xsd
+    </Supported>
+    <Supported>
+      mimeType = text/xml
+      encoding = UTF-8
+      schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
+    </Supported>
+    <Supported>
+      mimeType = application/xml
       encoding = UTF-8
       schema = http://schemas.opengis.net/gml/2.1.2/feature.xsd
     </Supported>
@@ -247,7 +277,7 @@ serviceType = Python
   minOccurs = 0
   maxOccurs = 1
   <LiteralData>
-    DataType   = float
+    DataType   = string
     <Default>
       value = 0.72,6.0,1.9998,-1.9998
     </Default>

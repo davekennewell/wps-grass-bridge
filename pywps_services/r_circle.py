@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_circle(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.circle', title = 'Creates a raster map containing concentric rings around a given point.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.circle.html')
+    WPSProcess.__init__(self, identifier = 'r.circle', title = 'Creates a raster map containing concentric rings around a given point.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'geometry'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.circle.html')
 
     # Literal and complex inputs
     self.addLiteralInput(identifier = 'coordinate', title = 'The coordinate of the center (east,north)', minOccurs = 1, maxOccurs = 1, type = type("string"), allowedValues = '*')

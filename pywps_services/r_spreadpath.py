@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_spreadpath(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.spreadpath', title = 'Recursively traces the least cost path backwards to cells from which the cumulative cost was determined.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.spreadpath.html')
+    WPSProcess.__init__(self, identifier = 'r.spreadpath', title = 'Recursively traces the least cost path backwards to cells from which the cumulative cost was determined.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'fire'}, {'type': 'simple', 'title': 'cumulative costs'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.spreadpath.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'x_input', title = 'Name of raster map containing back-path easting information', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
