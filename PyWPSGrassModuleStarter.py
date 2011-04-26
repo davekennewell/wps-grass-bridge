@@ -284,9 +284,11 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
         """Create the output file names which are used to identify the outputs"""
         count = 0
         for output in self.inputParameter.complexOutputList:
-            filename = tempfile.mktemp(prefix=output.identifier + "_" + str(count),dir=GlobalGrassSettings.OUTPUTDIR)
-            output.pathToFile= filename
-            self.LogInfo("Created output filename " + filename)
+            filename = tempfile.mkstemp(prefix=output.identifier + "_" + str(count),dir=GlobalGrassSettings.OUTPUTDIR)
+            output.pathToFile= filename[1]
+            # No need to let the file open
+            os.close(filename[0])
+            self.LogInfo("Created output filename " + filename[1])
             count = count + 1
 
     ############################################################################
