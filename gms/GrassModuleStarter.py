@@ -653,9 +653,7 @@ class GrassModuleStarter(ModuleLogging):
                 return
                 
         except:
-            log = "An unexpected error occured while input linking into the grass mapsets, input " + str(input.pathToFile)
-            self.LogError(log)
-            raise GMSError(log)
+            raise
 
         self._updateInputMap(input, inputName)
 

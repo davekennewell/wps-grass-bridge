@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wps:Execute service="WPS" version="1.0.0" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/1.0.0 http://schemas.opengis.net/wps/1.0.0/wpsExecute_request.xsd"><ows:Identifier>v.delaunay</ows:Identifier>
+<wps:DataInputs><wps:Input>
+<ows:Identifier>input</ows:Identifier>
+<ows:Title>input</ows:Title>
+<wps:Data>
+<wps:ComplexData mimeType="text/xml" schema="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd" enconding="utf-8"><ogr:FeatureCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/ gml.xsd" xmlns:ogr="http://ogr.maptools.org/" xmlns:gml="http://www.opengis.net/gml"><gml:boundedBy><gml:Box><gml:coord><gml:X>631431.2732342008</gml:X><gml:Y>217051.3475836431</gml:Y></gml:coord><gml:coord><gml:X>643603.8568773235</gml:X><gml:Y>225781.1802973978</gml:Y></gml:coord></gml:Box></gml:boundedBy><gml:featureMember><ogr:qt_temp fid="F0"><ogr:geometryProperty><gml:Point><gml:coordinates>631571.793680297443643,225728.485130111512262</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>10</ogr:height><ogr:nrate>100.00000</ogr:nrate><ogr:sand>20.00000</ogr:sand><ogr:csoil>22.00000</ogr:csoil><ogr:nsoil>10.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F1"><ogr:geometryProperty><gml:Point><gml:coordinates>635752.276951672858559,225113.708178438653704</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>20</ogr:height><ogr:nrate>120.00000</ogr:nrate><ogr:sand>10.00000</ogr:sand><ogr:csoil>23.00000</ogr:csoil><ogr:nsoil>11.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F2"><ogr:geometryProperty><gml:Point><gml:coordinates>640898.838289962848648,225781.180297397775576</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>40</ogr:height><ogr:nrate>110.00000</ogr:nrate><ogr:sand>12.00000</ogr:sand><ogr:csoil>21.00000</ogr:csoil><ogr:nsoil>12.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F3"><ogr:geometryProperty><gml:Point><gml:coordinates>643603.856877323472872,221319.65613382900483</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>60</ogr:height><ogr:nrate>200.00000</ogr:nrate><ogr:sand>30.00000</ogr:sand><ogr:csoil>22.00000</ogr:csoil><ogr:nsoil>13.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F4"><ogr:geometryProperty><gml:Point><gml:coordinates>640038.1505576208001,217999.860594795551151</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>50</ogr:height><ogr:nrate>120.00000</ogr:nrate><ogr:sand>40.00000</ogr:sand><ogr:csoil>20.00000</ogr:csoil><ogr:nsoil>14.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F5"><ogr:geometryProperty><gml:Point><gml:coordinates>633047.258364312234335,217051.347583643131657</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>40</ogr:height><ogr:nrate>40.00000</ogr:nrate><ogr:sand>20.00000</ogr:sand><ogr:csoil>21.00000</ogr:csoil><ogr:nsoil>15.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F6"><ogr:geometryProperty><gml:Point><gml:coordinates>635471.236059479531832,220599.488847583648749</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>25</ogr:height><ogr:nrate>30.00000</ogr:nrate><ogr:sand>15.00000</ogr:sand><ogr:csoil>22.00000</ogr:csoil><ogr:nsoil>16.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember><gml:featureMember><ogr:qt_temp fid="F7"><ogr:geometryProperty><gml:Point><gml:coordinates>631431.27323420078028,222443.819702602224424</gml:coordinates></gml:Point></ogr:geometryProperty><ogr:height>20</ogr:height><ogr:nrate>67.00000</ogr:nrate><ogr:sand>5.00000</ogr:sand><ogr:csoil>25.00000</ogr:csoil><ogr:nsoil>17.00000</ogr:nsoil></ogr:qt_temp></gml:featureMember></ogr:FeatureCollection></wps:ComplexData>
+</wps:Data>
+</wps:Input>
+<wps:Input>
+<ows:Identifier>-l</ows:Identifier>
+<ows:Title>-l</ows:Title>
+<wps:Data>
+<wps:LiteralData>False</wps:LiteralData>
+</wps:Data>
+</wps:Input>
+<wps:Input>
+<ows:Identifier>-r</ows:Identifier>
+<ows:Title>-r</ows:Title>
+<wps:Data>
+<wps:LiteralData>False</wps:LiteralData>
+</wps:Data>
+</wps:Input>
+<wps:Input>
+<ows:Identifier>layer</ows:Identifier>
+<ows:Title>layer</ows:Title>
+<wps:Data>
+<wps:LiteralData>-1</wps:LiteralData>
+</wps:Data>
+</wps:Input>
+</wps:DataInputs>
+<wps:ResponseForm>
+<wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="false">
+<wps:Output asReference="true" mimeType="text/xml" schema="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"><ows:Identifier>output</ows:Identifier>
+</wps:Output>
+</wps:ResponseDocument>
+</wps:ResponseForm>
+</wps:Execute>
