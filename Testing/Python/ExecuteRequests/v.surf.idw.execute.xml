@@ -39,14 +39,14 @@
 <ows:Identifier>grass_resolution_ew</ows:Identifier>
 <ows:Title>grass_resolution_ew</ows:Title>
 <wps:Data>
-<wps:LiteralData>1</wps:LiteralData>
+<wps:LiteralData>25</wps:LiteralData>
 </wps:Data>
 </wps:Input>
 <wps:Input>
 <ows:Identifier>grass_resolution_ns</ows:Identifier>
 <ows:Title>grass_resolution_ns</ows:Title>
 <wps:Data>
-<wps:LiteralData>1</wps:LiteralData>
+<wps:LiteralData>25</wps:LiteralData>
 </wps:Data>
 </wps:Input>
 <wps:Input>
