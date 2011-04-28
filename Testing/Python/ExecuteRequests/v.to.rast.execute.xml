@@ -59,7 +59,7 @@
 </wps:DataInputs>
 <wps:ResponseForm>
 <wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="false">
-<wps:Output asReference="false" mimeType="image/tiff" schema=""><ows:Identifier>output</ows:Identifier>
+<wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>output</ows:Identifier>
 </wps:Output>
 </wps:ResponseDocument>
 </wps:ResponseForm>
