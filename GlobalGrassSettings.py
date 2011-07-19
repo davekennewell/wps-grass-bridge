@@ -31,8 +31,8 @@ OUTPUTDIR="/tmp/pywps/"
 LOGFILE="/tmp/pywps/logfile.txt"
 LOGFILE_MODULE_STDOUT="/tmp/pywps/logfile_module_stdout.txt"
 LOGFILE_MODULE_STDERR="/tmp/pywps/logfile_module_sterr.txt"
-GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu"
-GRASS_ADDON_PATH="/home/soeren/src/wps-grass-bridge/gms/Testing/Python/GrassAddons"
+GRASS_GIS_BASE="/home/soeren/src/grass7.0/grass_trunk/dist.i686-pc-linux-gnu"
+GRASS_ADDON_PATH="/home/soeren/src/wps-grass-bridge/trunk/gms/Testing/Python/GrassAddons"
 GRASS_VERSION="7.0.svn"
 # !!!!! END EDIT SECTION !!!!!
 

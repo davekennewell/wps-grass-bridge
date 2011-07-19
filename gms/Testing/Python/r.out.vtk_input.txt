@@ -3,7 +3,7 @@
  OutputDir=/tmp
 
 [GRASS]
- GISBASE=/home/soeren/src/grass7.0/grass_trunk/dist.x86_64-unknown-linux-gnu
+ GISBASE=/usr/local/grass-7.0.svn
  GRASS_ADDON_PATH=
  GRASS_VERSION=7.0.svn
  Module=r.out.vtk

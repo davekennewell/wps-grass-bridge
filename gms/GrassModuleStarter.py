@@ -696,6 +696,9 @@ class GrassModuleStarter(ModuleLogging):
         # import the vector data via ogr
         elif self._isVector(input) != None:
             parameter = [self._createGrassModulePath("v.in.ogr"), "dsn=" + input.pathToFile, "output=" + inputName]
+            if self.inputParameter.ignoreProjection == "TRUE":
+                parameter.append("-o")
+
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:

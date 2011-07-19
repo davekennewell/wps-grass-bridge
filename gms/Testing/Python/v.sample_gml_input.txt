@@ -6,28 +6,41 @@
  GISBASE=/usr/local/grass-7.0.svn
  GRASS_ADDON_PATH=
  GRASS_VERSION=7.0.svn
- Module=v.buffer
+ Module=v.sample
  LOCATION=
  LinkInput=FALSE
- IgnoreProjection=FALSE
+ IgnoreProjection=TRUE
  UseXYLocation=FALSE
 
 [ComplexData]
  Identifier=input
  MaxOccurs=1
- PathToFile=TestData/random_points.gml
+ PathToFile=TestData/random.gml
  MimeType=text/xml
  Encoding=UTF-8
  Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
 
+[ComplexData]
+ Identifier=raster
+ MaxOccurs=1
+ PathToFile=TestData/elev_srtm_30m.tif
+ MimeType=image/tiff
+ Encoding=
+ Schema=
+
 [LiteralData]
- Identifier=distance
- DataType=double
- Value=200
+ Identifier=column
+ DataType=string
+ Value=height
+
+[LiteralData]
+ Identifier=method
+ DataType=string
+ Value=bilinear
 
 [ComplexOutput]
  Identifier=output
- PathToFile=/tmp/random_points__buffer.gml
+ PathToFile=/tmp/random_points_sample.gml
  MimeType=text/xml
  Encoding=UTF-8
  Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
