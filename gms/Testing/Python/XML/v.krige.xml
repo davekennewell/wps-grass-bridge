@@ -8,9 +8,12 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.krige</ows:Identifier>
-		<ows:Title>Performs ordinary or block kriging.</ows:Title>
+		<ows:Title>Performs ordinary or block kriging for vector maps.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.krige.html</ows:Abstract>
-		<ows:Metadata xlink:title="vector, interpolation, kriging" />
+		<ows:Metadata xlink:title="vector" />
+		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="interpolation" />
+		<ows:Metadata xlink:title="kriging" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>

@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>phead</ows:Identifier>
-				<ows:Title>Input raster map with initial piezometric head in [m]</ows:Title>
+				<ows:Title>Name of input raster map with initial piezometric head in [m]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -58,7 +58,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>status</ows:Identifier>
-				<ows:Title>Input raster map providing Boundary condition status: 0-inactive, 1-active, 2-dirichlet</ows:Title>
+				<ows:Title>Name of input raster map providing Boundary condition status: 0-inactive, 1-active, 2-dirichlet</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -101,7 +101,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>hc_x</ows:Identifier>
-				<ows:Title>Input raster map with x-part of the hydraulic conductivity tensor in [m/s]</ows:Title>
+				<ows:Title>Name of input raster map with x-part of the hydraulic conductivity tensor in [m/s]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -144,7 +144,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>hc_y</ows:Identifier>
-				<ows:Title>Input raster map with y-part of the hydraulic conductivity tensor in [m/s]</ows:Title>
+				<ows:Title>Name of input raster map with y-part of the hydraulic conductivity tensor in [m/s]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -187,7 +187,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>q</ows:Identifier>
-				<ows:Title>Input raster map with water sources and sinks in [m^3/s]</ows:Title>
+				<ows:Title>Name of input raster map with water sources and sinks in [m^3/s]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -230,7 +230,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>s</ows:Identifier>
-				<ows:Title>Input raster map with specific yield in [1/m]</ows:Title>
+				<ows:Title>Name of input raster map with storativity for confined or effective porosity for unconfined groundwater flow booth in [-] </ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -316,7 +316,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>top</ows:Identifier>
-				<ows:Title>Input raster map describing the top surface of the aquifer in [m]</ows:Title>
+				<ows:Title>Name of input raster map describing the top surface of the aquifer in [m]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -359,7 +359,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>bottom</ows:Identifier>
-				<ows:Title>Input raster map describing the bottom surface of the aquifer in [m]</ows:Title>
+				<ows:Title>Name of input raster map describing the bottom surface of the aquifer in [m]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -414,7 +414,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>river_bed</ows:Identifier>
-				<ows:Title>Input raster map providing the height of the river bed in [m]</ows:Title>
+				<ows:Title>Name of input raster map providing the height of the river bed in [m]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -457,7 +457,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>river_head</ows:Identifier>
-				<ows:Title>Input raster map providing the water level (head) of the river with leakage connection in [m]</ows:Title>
+				<ows:Title>Name of input raster map providing the water level (head) of the river with leakage connection in [m]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -500,7 +500,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>river_leak</ows:Identifier>
-				<ows:Title>Input raster map providing the leakage coefficient of the river bed in [1/s].</ows:Title>
+				<ows:Title>Name of input raster map providing the leakage coefficient of the river bed in [1/s].</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -543,7 +543,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>drain_bed</ows:Identifier>
-				<ows:Title>Input raster map providing the height of the drainage bed in [m]</ows:Title>
+				<ows:Title>Name of input raster map providing the height of the drainage bed in [m]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -586,7 +586,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>drain_leak</ows:Identifier>
-				<ows:Title>Input raster map providing the leakage coefficient of the drainage bed in [1/s]</ows:Title>
+				<ows:Title>Name of input raster map providing the leakage coefficient of the drainage bed in [1/s]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -638,20 +638,20 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>maxit</ows:Identifier>
-				<ows:Title>Maximum number of iteration used to solver the linear equation system</ows:Title>
+				<ows:Title>Maximum number of iteration used to solve the linear equation system</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>100000</DefaultValue>
+					<DefaultValue>10000</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>error</ows:Identifier>
-				<ows:Title>Error break criteria for iterative solvers (jacobi, sor, cg or bicgstab)</ows:Title>
+				<ows:Title>Error break criteria for iterative solver</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>0.0000000001</DefaultValue>
+					<DefaultValue>0.000001</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -762,8 +762,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>vx</ows:Identifier>
-				<ows:Title>Output raster map storing the groundwater filter velocity vector part in x direction [m/s]
-</ows:Title>
+				<ows:Title>Output raster map to store the groundwater filter velocity vector part in x direction [m/s]</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -797,8 +796,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>vy</ows:Identifier>
-				<ows:Title>Output raster map storing the groundwater filter velocity vector part in y direction [m/s]
-</ows:Title>
+				<ows:Title>Output raster map to store the groundwater filter velocity vector part in y direction [m/s]</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -832,8 +830,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>budget</ows:Identifier>
-				<ows:Title>Output raster map storing the groundwater budget for each cell [m^3/s]
-</ows:Title>
+				<ows:Title>Output raster map to store the groundwater budget for each cell [m^3/s]</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

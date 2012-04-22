@@ -116,7 +116,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>fprange</ows:Identifier>
 				<ows:Title>Floating point range: dmin,dmax</ows:Title>
 				<LiteralData>
@@ -124,7 +124,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>range</ows:Identifier>
 				<ows:Title>Integer range: min,max</ows:Title>
 				<LiteralData>

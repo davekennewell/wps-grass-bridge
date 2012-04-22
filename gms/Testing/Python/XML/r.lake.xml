@@ -64,7 +64,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>xy</ows:Identifier>
 				<ows:Title>Seed point coordinates</ows:Title>
 				<LiteralData>

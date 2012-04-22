@@ -56,7 +56,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>from</ows:Identifier>
 				<ows:Title>The input data range to be rescaled (default: full range of input map)</ows:Title>
 				<LiteralData>
@@ -64,7 +64,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="2" maxOccurs="2">
 				<ows:Identifier>to</ows:Identifier>
 				<ows:Title>The output data range</ows:Title>
 				<LiteralData>

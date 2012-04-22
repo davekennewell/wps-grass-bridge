@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>dip</ows:Identifier>
-				<ows:Title>Dip of plane. Value must be between -90 and 90 degrees</ows:Title>
+				<ows:Title>Dip of plane in degrees</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -24,7 +24,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>azimuth</ows:Identifier>
-				<ows:Title>Azimuth of the plane. Value must be between 0 and 360 degrees</ows:Title>
+				<ows:Title>Azimuth of the plane in degrees</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -106,8 +106,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>name</ows:Identifier>
-				<ows:Title>Name of raster plane to be created</ows:Title>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name for output raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

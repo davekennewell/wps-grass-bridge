@@ -96,7 +96,6 @@ r.sun --wps-process-description > r.sun.xml
 r.sunmask --wps-process-description > r.sunmask.xml
 r.surf.area --wps-process-description > r.surf.area.xml
 r.surf.contour --wps-process-description > r.surf.contour.xml
-r.surf.fractal --wps-process-description > r.surf.fractal.xml
 r.surf.gauss --wps-process-description > r.surf.gauss.xml
 r.surf.idw --wps-process-description > r.surf.idw.xml
 r.surf.idw2 --wps-process-description > r.surf.idw2.xml
@@ -170,4 +169,18 @@ v.to.rast --wps-process-description > v.to.rast.xml
 v.transform --wps-process-description > v.transform.xml
 v.univar --wps-process-description > v.univar.xml
 v.voronoi --wps-process-description > v.voronoi.xml
+t.rast.aggregate --wps-process-description > t.rast.aggregate.xml
+t.rast.aggregate.ds --wps-process-description > t.rast.aggregate.ds.xml
+t.rast.extract --wps-process-description > t.rast.extract.xml
+t.rast.mapcalc --wps-process-description > t.rast.mapcalc.xml
+t.rast.series --wps-process-description > t.rast.series.xml
+t.rast.univar --wps-process-description > t.rast.univar.xml
+t.sample --wps-process-description > t.sample.xml
+t.topology --wps-process-description > t.topology.xml
+t.rast.list --wps-process-description > t.rast.list.xml
+t.vect.extract --wps-process-description > t.vect.extract.xml
+t.vect.extract --wps-process-description > t.vect.extract.xml
+t.vect.observe.strds --wps-process-description > t.vect.observe.strds.xml
+t.vect.univar --wps-process-description > t.vect.univar.xml
+t.vect.what.strds --wps-process-description > t.vect.what.strds.xml
 # --wps-process-description > .xml

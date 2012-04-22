@@ -7,59 +7,31 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
-		<ows:Identifier>v.surf.idw</ows:Identifier>
-		<ows:Title>Surface interpolation from vector point data by Inverse Distance Squared Weighting.</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.surf.idw.html</ows:Abstract>
+		<ows:Identifier>t.vect.univar</ows:Identifier>
+		<ows:Title>Calculates univariate statistics from the non-null cells for each registered vector map of a space time vector dataset</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.vect.univar.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="statistics" />
 		<ows:Metadata xlink:title="vector" />
-		<ows:Metadata xlink:title="surface" />
-		<ows:Metadata xlink:title="interpolation" />
-		<ows:Metadata xlink:title="IDW" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>application/x-grass-strds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/dgn</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/shp</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-zipped-shp</MimeType>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexData>
@@ -73,26 +45,57 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>1</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>column</ows:Identifier>
-				<ows:Title>Name of attribute column with values to interpolate</ows:Title>
+				<ows:Title>Name of attribute column</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>npoints</ows:Identifier>
-				<ows:Title>Number of interpolation points</ows:Title>
+				<ows:Identifier>twhere</ows:Identifier>
+				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>12</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-n</ows:Identifier>
-				<ows:Title>Slower but uses less memory and includes points from outside region in the interpolation</ows:Title>
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>type</ows:Identifier>
+				<ows:Title>Feature type</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>point</ows:Value>
+						<ows:Value>line</ows:Value>
+						<ows:Value>boundary</ows:Value>
+						<ows:Value>centroid</ows:Value>
+						<ows:Value>area</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>point</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>fs</ows:Identifier>
+				<ows:Title>The field separator character between the output columns</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>|</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-e</ows:Identifier>
+				<ows:Title>Calculate extended statistics</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -103,8 +106,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-z</ows:Identifier>
-				<ows:Title>Use z coordinates for approximation (3D vector maps only)</ows:Title>
+				<ows:Identifier>-h</ows:Identifier>
+				<ows:Title>Print column names</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -153,35 +156,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

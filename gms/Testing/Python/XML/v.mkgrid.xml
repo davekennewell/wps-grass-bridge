@@ -13,7 +13,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
 		<DataInputs>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="2" maxOccurs="2">
 				<ows:Identifier>grid</ows:Identifier>
 				<ows:Title>Number of rows and columns in grid</ows:Title>
 				<LiteralData>
@@ -33,7 +33,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>region</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>coor</ows:Identifier>
 				<ows:Title>Lower left easting and northing coordinates of map</ows:Title>
 				<LiteralData>
@@ -41,7 +41,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>box</ows:Identifier>
 				<ows:Title>Width and height of boxes in grid</ows:Title>
 				<LiteralData>

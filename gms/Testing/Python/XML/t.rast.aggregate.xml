@@ -7,74 +7,61 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
-		<ows:Identifier>r.series</ows:Identifier>
-		<ows:Title>Makes each output cell value a function of the values assigned to the corresponding cells in the input raster map layers.</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.series.html</ows:Abstract>
-		<ows:Metadata xlink:title="raster" />
-		<ows:Metadata xlink:title="series" />
+		<ows:Identifier>t.rast.aggregate</ows:Identifier>
+		<ows:Title>Create a new space time raster dataset from the aggregated data of an existing space time raster dataset</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.aggregate.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="aggregation" />
 		<DataInputs>
-			<Input minOccurs="0" maxOccurs="1024">
+			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of input raster map(s)</ows:Title>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-strds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>image/geotiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/png</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/gif</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/jpeg</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>file</ows:Identifier>
-				<ows:Title>Input file with raster map names and optional weights per line, field separator between name and weight is |</ows:Title>
-				<ComplexData maximumMegabytes="2048">
-					<Default>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Supported>
-				</ComplexData>
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1024">
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>granularity</ows:Identifier>
+				<ows:Title>The aggregation granularity, format absolute time "x years, x months, x weeks, x days, x hours, x minutes, x seconds" or a double value for relative time</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name of the output space time raster dataset</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>method</ows:Identifier>
-				<ows:Title>Aggregate operation</ows:Title>
+				<ows:Title>Aggregate operation to be performed on the raster maps</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -101,52 +88,44 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>skewness</ows:Value>
 						<ows:Value>kurtosis</ows:Value>
 					</ows:AllowedValues>
+					<DefaultValue>average</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
-				<ows:Identifier>quantile</ows:Identifier>
-				<ows:Title>Quantile to calculate for method=quantile</ows:Title>
+				<ows:Identifier>sampling</ows:Identifier>
+				<ows:Title>The method to be used for sampling the input dataset</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Range ows:rangeClosure="closed">
-							<ows:MinimumValue>0.0</ows:MinimumValue>
-							<ows:MaximumValue>1.0</ows:MaximumValue>
-						</ows:Range>
+						<ows:Value>start</ows:Value>
+						<ows:Value>during</ows:Value>
+						<ows:Value>overlap</ows:Value>
+						<ows:Value>contain</ows:Value>
+						<ows:Value>equal</ows:Value>
 					</ows:AllowedValues>
+					<DefaultValue>start</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1024">
-				<ows:Identifier>weights</ows:Identifier>
-				<ows:Title>Weighting factor for each input map, default value is 1.0 for each input map</ows:Title>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>base</ows:Identifier>
+				<ows:Title>Name of base raster map</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="2">
-				<ows:Identifier>range</ows:Identifier>
-				<ows:Title>Ignore values outside this range</ows:Title>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>nprocs</ows:Identifier>
+				<ows:Title>The number of r.mapcalc processes to run in parallel</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
+					<DefaultValue>2</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-n</ows:Identifier>
-				<ows:Title>Propagate NULLs</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-z</ows:Identifier>
-				<ows:Title>Don't keep files open</ows:Title>
+				<ows:Title>Register Null maps</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -189,15 +168,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 							<ows:UOM>degrees</ows:UOM>
 						</Supported>
 					</UOMs>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>grass_band_number</ows:Identifier>
-				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
-				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>

@@ -132,7 +132,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>distance</ows:Identifier>
-				<ows:Title>Name for distance output map</ows:Title>
+				<ows:Title>Name for distance output raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -166,7 +166,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>value</ows:Identifier>
-				<ows:Title>Name for value output map</ows:Title>
+				<ows:Title>Name for value output raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

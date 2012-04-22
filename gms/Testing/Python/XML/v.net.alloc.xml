@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.net.alloc</ows:Identifier>
-		<ows:Title>Centre node must be opened (costs &gt;= 0). Costs of centre node are used in calculation</ows:Title>
+		<ows:Title>center node must be opened (costs &gt;= 0). Costs of center node are used in calculation</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.net.alloc.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="network" />
@@ -16,7 +16,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Data source for direct OGR access</ows:Title>
+				<ows:Title>Or data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -119,7 +119,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>ccats</ows:Identifier>
-				<ows:Title>Categories of centres (points on nodes) to which net will be allocated, layer for this categories is given by nlayer option</ows:Title>
+				<ows:Title>Categories of centers (points on nodes) to which net will be allocated, layer for this categories is given by nlayer option</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

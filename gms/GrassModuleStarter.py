@@ -93,6 +93,12 @@ RASTER_MIMETYPES =        [{"MIMETYPE":"IMAGE/TIFF", "GDALID":"GTiff"},
                            {"MIMETYPE":"APPLICATION/NETCDF", "GDALID":"netCDF"}, \
                            {"MIMETYPE":"APPLICATION/X-NETCDF", "GDALID":"netCDF"}, \
                            {"MIMETYPE":"APPLICATION/GEOTIFF", "GDALID":"GTiff"}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR", "GDALID":None}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR-GZ", "GDALID":None}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR-BZIP", "GDALID":None}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STVDS-TAR", "GDALID":None}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STVDS-TAR-GZ", "GDALID":None}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STVDS-TAR-BZIP", "GDALID":None}, \
                            {"MIMETYPE":"APPLICATION/X-GEOTIFF", "GDALID":"GTiff"}]
 # All supported input vector formats [mime type, schema]
 VECTOR_MIMETYPES =        [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML"}, \
@@ -102,6 +108,13 @@ VECTOR_MIMETYPES =        [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML
                            {"MIMETYPE":"APPLICATION/DGN", "SCHEMA":"", "GDALID":"DGN"}, \
                            #{"MIMETYPE":"APPLICATION/X-ZIPPED-SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}, \
                            {"MIMETYPE":"APPLICATION/SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}]
+# All supported space time dataset formats
+STDS_MIMETYPES =        [ {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR", "STDSID":"STRDS"}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR-GZ", "STDSID":"STRDS"}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR-BZIP", "STDSID":"STRDS"}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STVDS-TAR", "STDSID":"STVDS"}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STVDS-TAR-GZ", "STDSID":"STVDS"}, \
+                           {"MIMETYPE":"APPLICATION/X-GRASS-STVDS-TAR-BZIP", "STDSID":"STVDS"}]
 
 
 GMS_DEBUG = False
@@ -440,7 +453,7 @@ class GrassModuleStarter(ModuleLogging):
 
     ############################################################################
     def _importData(self):
-        """Import all ComplexData inputs which are raster or vector files. Take care of multiple inputs and group generation"""
+        """Import all ComplexData inputs which are raster, vector or space time dataset files. Take care of multiple inputs and group generation"""
         list = self.inputParameter.complexDataList
 
         importedInput = None
@@ -465,7 +478,7 @@ class GrassModuleStarter(ModuleLogging):
         # Check for raster and
         if success == False:
             for input in list:
-                if self._isRaster(input) or self._isVector(input):
+                if self._isRaster(input) or self._isVector(input) or self._isSTDS(input):
                     self._createInputLocation(input)
                     # Rewrite the gisrc file to enable the new created location
                     self.gisrc.locationName = GRASS_WORK_LOCATION
@@ -537,6 +550,17 @@ class GrassModuleStarter(ModuleLogging):
         return None
 
     ############################################################################
+    def _isSTDS(self, input):
+        """Check for space time datasets"""
+        self.LogInfo("Check space time dataset mimetype: " + str(input.mimeType.upper()))
+        for stdsType in STDS_MIMETYPES:
+            if input.mimeType.upper() == stdsType["MIMETYPE"]:
+                self.LogInfo("Space time dataset is of type " + str(stdsType["MIMETYPE"]))
+                return stdsType["STDSID"]
+        return None
+
+
+    ############################################################################
     def _isTextFile(self, input):
         """Check for text file input"""
         if input.mimeType.upper() == "TEXT/PLAIN":
@@ -568,6 +592,20 @@ class GrassModuleStarter(ModuleLogging):
                 raise GMSError(log)
             # Vector maps are imported when the location is created. Linking does not work properly currently
             self._updateInputMap(input, str(input.identifier))
+ 
+        if self._isSTDS(input) != None:
+	    stype = self._isSTDS(input)
+	    if stype == "STRDS":
+            	parameter = [self._createGrassModulePath("t.rast.import"), "input=" + input.pathToFile, "extrdir=unused", "location=" + GRASS_WORK_LOCATION , "-c", "output=undefined"]
+            	errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+	    elif stype == "STVDS":
+            	parameter = [self._createGrassModulePath("t.vect.import"), "input=" + input.pathToFile, "extrdir=unused", "location=" + GRASS_WORK_LOCATION , "-c", "output=undefined"]
+            	errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+
+            if errorid != 0:
+                log = "Error while import. Unable to create input location from input " + str(input.pathToFile) + " log: " + stderr_buff
+                self.LogError(log)
+                raise GMSError(log)
 
         elif self._isTextFile(input) != None:
             log = "Using XY projection for data processing."
@@ -642,6 +680,19 @@ class GrassModuleStarter(ModuleLogging):
                     for i in inputName.split(','):
                         parameter = [self._createGrassModulePath("r.info"), i ]
                         errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+ 
+            elif self._isSTDS(input) != None:
+	        stype = self._isSTDS(input)
+	        if stype == "STRDS":
+		    # Create a data directory for extraction an linking
+		    extrdir = tempfile.mkdtemp(dir=self.gisdbase)
+            	    parameter = [self._createGrassModulePath("t.rast.import"), "input=" + input.pathToFile, "extrdir=" + extrdir, "location=" + GRASS_WORK_LOCATION , "-l", "output=undefined"]
+            	    errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+
+                    if errorid != 0:
+                        log = "Unable to link space time raster dataset " + input.pathToFile + " into the grass mapset" + " t.rast.import log: " + stderr_buff
+                        self.LogError(log)
+                        raise GMSError(log)
 
             elif self._isVector(input) != None:
                 # Linking does not work properly right now for GML -> no random access, so we import the vector data

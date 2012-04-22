@@ -7,29 +7,77 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
-		<ows:Identifier>r.surf.fractal</ows:Identifier>
-		<ows:Title>Creates a fractal surface of a given fractal dimension.</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.fractal.html</ows:Abstract>
-		<ows:Metadata xlink:title="raster" />
-		<ows:Metadata xlink:title="surface" />
-		<ows:Metadata xlink:title="fractal" />
+		<ows:Identifier>t.rast.extract</ows:Identifier>
+		<ows:Title>Extract a subset of a space time raster dataset</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.extract.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="extract" />
 		<DataInputs>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>dimension</ows:Identifier>
-				<ows:Title>Fractal dimension of surface (2 &lt; D &lt; 3)</ows:Title>
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>2.05</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>number</ows:Identifier>
-				<ows:Title>Number of intermediate images to produce</ows:Title>
+				<ows:Identifier>expression</ows:Identifier>
+				<ows:Title>The r.mapcalc expression assigned to all extracted raster maps</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>base</ows:Identifier>
+				<ows:Title>Name of base raster map</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>nprocs</ows:Identifier>
+				<ows:Title>The number of r.mapcalc processes to run in parallel</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>0</DefaultValue>
+					<DefaultValue>1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-n</ows:Identifier>
+				<ows:Title>Register Null maps</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -72,34 +120,22 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Title>Name of the output space time raster dataset</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-strds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>image/geotiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

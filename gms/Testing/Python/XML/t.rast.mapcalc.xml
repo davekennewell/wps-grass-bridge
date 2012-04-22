@@ -7,92 +7,77 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
-		<ows:Identifier>v.surf.idw</ows:Identifier>
-		<ows:Title>Surface interpolation from vector point data by Inverse Distance Squared Weighting.</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.surf.idw.html</ows:Abstract>
-		<ows:Metadata xlink:title="vector" />
-		<ows:Metadata xlink:title="surface" />
-		<ows:Metadata xlink:title="interpolation" />
-		<ows:Metadata xlink:title="IDW" />
+		<ows:Identifier>t.rast.mapcalc</ows:Identifier>
+		<ows:Title>Perform r.mapcalc expressions on maps of sampled space time raster datasets</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.mapcalc.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="mapcalc" />
 		<DataInputs>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+			<Input minOccurs="1" maxOccurs="1024">
+				<ows:Identifier>inputs</ows:Identifier>
+				<ows:Title>Name of the input space time raster datasets</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>application/x-grass-strds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/dgn</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/shp</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-zipped-shp</MimeType>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Identifier>expression</ows:Identifier>
+				<ows:Title>The r.mapcalc expression applied to each time step of the sampled data</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1024">
+				<ows:Identifier>method</ows:Identifier>
+				<ows:Title>The method to be used for sampling the input dataset</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>start</ows:Value>
+						<ows:Value>during</ows:Value>
+						<ows:Value>overlap</ows:Value>
+						<ows:Value>contain</ows:Value>
+						<ows:Value>equal</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>during,overlap,contain,equal</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>base</ows:Identifier>
+				<ows:Title>Name of base raster map</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>nprocs</ows:Identifier>
+				<ows:Title>The number of r.mapcalc processes to run in parallel</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
 					<DefaultValue>1</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>column</ows:Identifier>
-				<ows:Title>Name of attribute column with values to interpolate</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>npoints</ows:Identifier>
-				<ows:Title>Number of interpolation points</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AnyValue/>
-					<DefaultValue>12</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-n</ows:Identifier>
-				<ows:Title>Slower but uses less memory and includes points from outside region in the interpolation</ows:Title>
+				<ows:Title>Register Null maps</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -103,8 +88,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-z</ows:Identifier>
-				<ows:Title>Use z coordinates for approximation (3D vector maps only)</ows:Title>
+				<ows:Identifier>-s</ows:Identifier>
+				<ows:Title>Check spatial overlap</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -154,34 +139,22 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Title>Name of the output space time raster dataset</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-strds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>image/geotiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

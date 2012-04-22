@@ -56,7 +56,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="2" maxOccurs="2">
 				<ows:Identifier>coordinate</ows:Identifier>
 				<ows:Title>Coordinate identifying the viewing position</ows:Title>
 				<LiteralData>

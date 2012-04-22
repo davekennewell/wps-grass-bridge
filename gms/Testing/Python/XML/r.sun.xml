@@ -352,7 +352,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>coefbh</ows:Identifier>
-				<ows:Title>Name of real-sky beam radiation coefficient input raster map [-]</ows:Title>
+				<ows:Title>Name of real-sky beam radiation coefficient (thick cloud) input raster map [0-1]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -395,7 +395,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>coefdh</ows:Identifier>
-				<ows:Title>Name of real-sky diffuse radiation coefficient input raster map [-]</ows:Title>
+				<ows:Title>Name of real-sky diffuse radiation coefficient (haze) input raster map [0-1]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

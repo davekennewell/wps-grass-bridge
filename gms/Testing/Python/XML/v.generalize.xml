@@ -19,7 +19,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Data source for direct OGR access</ows:Title>
+				<ows:Title>Or data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -68,7 +68,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. Layer name for direct OGR access.</ows:Title>
+				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -108,7 +108,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>network</ows:Value>
 						<ows:Value>displacement</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>douglas</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
@@ -122,10 +121,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 							<ows:MaximumValue>1000000000</ows:MaximumValue>
 						</ows:Range>
 					</ows:AllowedValues>
-					<DefaultValue>1.0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>look_ahead</ows:Identifier>
 				<ows:Title>Look-ahead parameter</ows:Title>
 				<LiteralData>
@@ -134,7 +132,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>7</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>reduction</ows:Identifier>
 				<ows:Title>Percentage of the points in the output of 'douglas_reduction' algorithm</ows:Title>
 				<LiteralData>
@@ -148,7 +146,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>50</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>slide</ows:Identifier>
 				<ows:Title>Slide of computed point toward the original point</ows:Title>
 				<LiteralData>
@@ -162,7 +160,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>0.5</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>angle_thresh</ows:Identifier>
 				<ows:Title>Minimum angle between two consecutive segments in Hermite method</ows:Title>
 				<LiteralData>
@@ -176,7 +174,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>3</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>degree_thresh</ows:Identifier>
 				<ows:Title>Degree threshold in network generalization</ows:Title>
 				<LiteralData>
@@ -185,7 +183,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>closeness_thresh</ows:Identifier>
 				<ows:Title>Closeness threshold in network generalization</ows:Title>
 				<LiteralData>
@@ -199,7 +197,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>betweeness_thresh</ows:Identifier>
 				<ows:Title>Betweeness threshold in network generalization</ows:Title>
 				<LiteralData>
@@ -208,7 +206,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>alpha</ows:Identifier>
 				<ows:Title>Snakes alpha parameter</ows:Title>
 				<LiteralData>
@@ -217,7 +215,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>1.0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>beta</ows:Identifier>
 				<ows:Title>Snakes beta parameter</ows:Title>
 				<LiteralData>
@@ -226,7 +224,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>1.0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>iterations</ows:Identifier>
 				<ows:Title>Number of iterations</ows:Title>
 				<LiteralData>

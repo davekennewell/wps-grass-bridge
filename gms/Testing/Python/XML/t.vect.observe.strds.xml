@@ -7,82 +7,86 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
-		<ows:Identifier>r.transect</ows:Identifier>
-		<ows:Title>Outputs raster map layer values lying along user defined transect line(s).</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.transect.html</ows:Abstract>
-		<ows:Metadata xlink:title="raster" />
-		<ows:Metadata xlink:title="transect" />
+		<ows:Identifier>t.vect.observe.strds</ows:Identifier>
+		<ows:Title>Observe specific locations in a space time raster dataset over a periode of time using vector points</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.vect.observe.strds.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="sampling" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>map</ows:Identifier>
-				<ows:Title>Raster map to be queried</ows:Title>
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of the input space time vector dataset</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>image/geotiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/png</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/gif</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/jpeg</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>application/x-grass-stvds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="4" maxOccurs="1024">
-				<ows:Identifier>line</ows:Identifier>
-				<ows:Title>Transect definition</ows:Title>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>strds</ows:Identifier>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>column</ows:Identifier>
+				<ows:Title>Name of the vector column to be created and to store sampled raster values, otherwise the space time raster name is used as column name</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name the new created space time vector dataset and the new vector map</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>null</ows:Identifier>
-				<ows:Title>Char string to represent no data cell</ows:Title>
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>*</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-g</ows:Identifier>
-				<ows:Title>Output easting and northing in first two columns of four column output</ows:Title>
+				<ows:Identifier>t_where</ows:Identifier>
+				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -118,15 +122,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 							<ows:UOM>degrees</ows:UOM>
 						</Supported>
 					</UOMs>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>grass_band_number</ows:Identifier>
-				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
-				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>

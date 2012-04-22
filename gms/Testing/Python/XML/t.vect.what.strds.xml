@@ -7,102 +7,93 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
-		<ows:Identifier>r.grow</ows:Identifier>
-		<ows:Title>Generates a raster map layer with contiguous areas grown by one cell.</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.grow.html</ows:Abstract>
-		<ows:Metadata xlink:title="raster" />
+		<ows:Identifier>t.vect.what.strds</ows:Identifier>
+		<ows:Title>Uploads raster map values at spatial and temporal positions of vector points to the tables. The maps are registered in space time datasets</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.vect.what.strds.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="sampling" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of input raster map</ows:Title>
+				<ows:Title>Name of the input space time vector dataset</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>image/geotiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/geotiff</MimeType>
+							<MimeType>application/x-grass-stvds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>strds</ows:Identifier>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
 						</Format>
 						<Format>
-							<MimeType>application/x-geotiff</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 						<Format>
-							<MimeType>image/png</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/gif</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/jpeg</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>radius</ows:Identifier>
-				<ows:Title>Radius of buffer in raster cells</ows:Title>
+				<ows:Identifier>column</ows:Identifier>
+				<ows:Title>Name of the vector column to be created and to store sampled raster values. The use of a column name forces t.vect.what.rast to sample only values from the first map found in an interval. Otherwise the raster map names are used as column names.</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>1.01</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>metric</ows:Identifier>
-				<ows:Title>Metric</ows:Title>
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>t_where</ows:Identifier>
+				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1024">
+				<ows:Identifier>sampling</ows:Identifier>
+				<ows:Title>The method to be used for sampling the input dataset</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>euclidean</ows:Value>
-						<ows:Value>maximum</ows:Value>
-						<ows:Value>manhattan</ows:Value>
+						<ows:Value>start</ows:Value>
+						<ows:Value>during</ows:Value>
+						<ows:Value>overlap</ows:Value>
+						<ows:Value>contain</ows:Value>
+						<ows:Value>equal</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>euclidean</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>old</ows:Identifier>
-				<ows:Title>Value to write for input cells which are non-NULL (-1 =&gt; NULL)</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>new</ows:Identifier>
-				<ows:Title>Value to write for "grown" cells</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-m</ows:Identifier>
-				<ows:Title>Radius is in map units rather than cells</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
+					<DefaultValue>start</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -141,47 +132,21 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>grass_band_number</ows:Identifier>
-				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
-				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

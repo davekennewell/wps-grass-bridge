@@ -163,7 +163,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="2">
 				<ows:Identifier>coord</ows:Identifier>
 				<ows:Title>Coordinate for which you want to calculate the horizon</ows:Title>
 				<LiteralData>

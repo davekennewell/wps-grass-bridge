@@ -59,7 +59,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>feature</ows:Identifier>
+				<ows:Identifier>type</ows:Identifier>
 				<ows:Title>Feature type</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
@@ -68,7 +68,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>line</ows:Value>
 						<ows:Value>area</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>line</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>column</ows:Identifier>
+				<ows:Title>Name must be SQL compliant</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>value</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -97,7 +105,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-z</ows:Identifier>
-				<ows:Title>Write raster values as z coordinate. Table is not created. Currently supported only for points.</ows:Title>
+				<ows:Title>Table is not created. Currently supported only for points.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -109,7 +117,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-b</ows:Identifier>
-				<ows:Title>Do not build vector topology (recommended for massive point conversion)</ows:Title>
+				<ows:Title>Recommended for massive point conversion</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

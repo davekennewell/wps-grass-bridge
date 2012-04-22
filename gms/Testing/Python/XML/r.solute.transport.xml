@@ -627,20 +627,20 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>maxit</ows:Identifier>
-				<ows:Title>Maximum number of iteration used to solver the linear equation system</ows:Title>
+				<ows:Title>Maximum number of iteration used to solve the linear equation system</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>100000</DefaultValue>
+					<DefaultValue>10000</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>error</ows:Identifier>
-				<ows:Title>Error break criteria for iterative solvers (jacobi, sor, cg or bicgstab)</ows:Title>
+				<ows:Title>Error break criteria for iterative solver</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>0.0000000001</DefaultValue>
+					<DefaultValue>0.000001</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.flow</ows:Identifier>
-		<ows:Title>Construction of slope curves (flowlines), flowpath lengths, and flowline densities (upslope areas) from a elevation raster map.</ows:Title>
+		<ows:Title>Computes flowlines, flowpath lengths, and flowaccumulation (contributing areas) from a elevation raster map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.flow.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="hydrology" />
@@ -282,7 +282,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>flowpath</ows:Identifier>
+				<ows:Identifier>flowlength</ows:Identifier>
 				<ows:Title>Name for output flowpath length raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
@@ -316,8 +316,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>density</ows:Identifier>
-				<ows:Title>Name for output flowline density raster map</ows:Title>
+				<ows:Identifier>flowaccumulation</ows:Identifier>
+				<ows:Title>Name for output flowaccumulation raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
