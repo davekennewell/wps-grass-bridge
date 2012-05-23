@@ -100,15 +100,25 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
 
     ############################################################################
     def _createInputFiles(self):
-        """Add the filpath located in the value string of ZOO WPS as new filename"""
+        """ Generate input file names and write the content of the input map into files on hard disk """
         count = 0
         for input in self.inputParameter.complexDataList:
-            input.pathToFile= self._inputs[input.identifier]["value"]
-            self.LogInfo("Added input filename " + input.pathToFile)
+            filename = os.path.join(self.gisdbase, input.identifier + "_" + str(count))
+            try:
+                infile = open(filename, 'w')
+                infile.write(self._inputs[input.identifier]["value"])
+                infile.close()
+            except:
+                self.LogError("Unable to create input files")
+                raise
+            self._inputs[input.identifier]["value"] = filename
+            input.pathToFile= filename
+            self.LogInfo("Created input filename " + filename)
+            count = count + 1
  
     ############################################################################
     def _createOutputFiles(self):
-        """Create the output file names which are used to identify the outputs"""
+        """ Create the output file names which are used to identify the outputs """
         count = 0
         for output in self.inputParameter.complexOutputList:
             filename = os.path.join(self.gisdbase, output.identifier + "_" + str(count))
