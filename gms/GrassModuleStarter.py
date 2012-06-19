@@ -593,7 +593,7 @@ class GrassModuleStarter(ModuleLogging):
             # Vector maps are imported when the location is created. Linking does not work properly currently
             self._updateInputMap(input, str(input.identifier))
  
-        if self._isSTDS(input) != None:
+        elif self._isSTDS(input) != None:
 	    stype = self._isSTDS(input)
 	    if stype == "STRDS":
             	parameter = [self._createGrassModulePath("t.rast.import"), "input=" + input.pathToFile, "extrdir=unused", "location=" + GRASS_WORK_LOCATION , "-c", "output=undefined"]
