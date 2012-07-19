@@ -58,6 +58,14 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>prefix</ows:Identifier>
+				<ows:Title>Prefix for output raster map(s)</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>size</ows:Identifier>
 				<ows:Title>The size of moving window (odd and &gt;= 3)</ows:Title>
@@ -170,35 +178,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>prefix</ows:Identifier>
-				<ows:Title>Prefix for output raster map(s)</ows:Title>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>t.info</ows:Identifier>
+		<ows:Title>Lists information about space time datasets and maps.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.info.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="info" />
+		<DataInputs>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of an existing space time or map dataset</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>type</ows:Identifier>
+				<ows:Title>Type of the dataset, default is strds (space time raster dataset)</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>strds</ows:Value>
+						<ows:Value>str3ds</ows:Value>
+						<ows:Value>stvds</ows:Value>
+						<ows:Value>rast</ows:Value>
+						<ows:Value>rast3d</ows:Value>
+						<ows:Value>vect</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>strds</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-g</ows:Identifier>
+				<ows:Title>Print information in shell style</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-s</ows:Identifier>
+				<ows:Title>Print information about the temporal DBMI interface and exit</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>

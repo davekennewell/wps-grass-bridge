@@ -24,7 +24,7 @@ class r_walk(WPSProcess):
     self.addLiteralInput(identifier = 'max_cost', title = 'An optional maximum cumulative cost', minOccurs = 0, maxOccurs = 1, type = type(0), default = 0)
     self.addLiteralInput(identifier = 'null_cost', title = 'Cost assigned to null cells. By default, null cells are excluded', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'percent_memory', title = 'Percent of map to keep in memory', minOccurs = 0, maxOccurs = 1, type = type(0), default = 100)
-    self.addLiteralInput(identifier = 'walk_coeff', title = 'Coefficients for walking energy formula parameters a,b,c,d', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "0.72,6.0,1.9998,-1.9998")
+    self.addLiteralInput(identifier = 'walk_coeff', title = 'Coefficients for walking energy formula parameters a,b,c,d', minOccurs = 0, maxOccurs = 4, type = type("string"), default = "0.72,6.0,1.9998,-1.9998")
     self.addLiteralInput(identifier = 'lambda', title = 'Lambda coefficients for combining walking energy and friction cost', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 1.0)
     self.addLiteralInput(identifier = 'slope_factor', title = 'Slope factor determines travel energy cost per height step', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = -0.2125)
     self.addLiteralInput(identifier = '-k', title = 'Use the Knights move; slower, but more accurate', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])

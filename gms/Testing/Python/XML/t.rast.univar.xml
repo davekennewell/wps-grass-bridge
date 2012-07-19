@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.univar</ows:Identifier>
-		<ows:Title>Calculates univariate statistics from the non-null cells for each registered raster map of a space time raster dataset</ows:Title>
+		<ows:Title>Calculates univariate statistics from the non-null cells for each registered raster map of a space time raster dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.univar.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="statistics" />
@@ -46,7 +46,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>fs</ows:Identifier>
-				<ows:Title>The field separator character between the output columns</ows:Title>
+				<ows:Title>Field separator character between the output columns</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

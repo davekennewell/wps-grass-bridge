@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.topology</ows:Identifier>
-		<ows:Title>List and modify temporal topology of a space time dataset</ows:Title>
+		<ows:Title>Lists and modifies temporal topology of a space time dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.topology.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="topology" />

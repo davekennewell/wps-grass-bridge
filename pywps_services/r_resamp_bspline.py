@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_resamp_bspline(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.resamp.bspline', title = 'Bicubic or bilinear spline interpolation with Tykhonov regularization.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'resample'}, {'type': 'simple', 'title': 'interpolation'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.bspline.html')
+    WPSProcess.__init__(self, identifier = 'r.resamp.bspline', title = 'Performs bicubic or bilinear spline interpolation with Tykhonov regularization.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'resample'}, {'type': 'simple', 'title': 'interpolation'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.bspline.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of input raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
@@ -19,7 +19,8 @@ class r_resamp_bspline(WPSProcess):
     self.addLiteralInput(identifier = 'se', title = 'Length of each spline step in the east-west direction. Default: 1.5 * ewres.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'sn', title = 'Length of each spline step in the north-south direction. Default: 1.5 * nsres.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'method', title = 'Spline interpolation algorithm', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "bicubic", allowedValues = ['bilinear', 'bicubic'])
-    self.addLiteralInput(identifier = 'lambda', title = 'Tykhonov regularization parameter (affects smoothing)', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.005)
+    self.addLiteralInput(identifier = 'lambda', title = 'Tykhonov regularization parameter (affects smoothing)', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.01)
+    self.addLiteralInput(identifier = 'memory', title = 'Maximum memory to be used (in MB)', minOccurs = 0, maxOccurs = 1, type = type(0), default = 300)
     self.addLiteralInput(identifier = '-n', title = 'No title available', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-c', title = 'Find the best Tykhonov regularizing parameter using a "leave-one-out" cross validation method', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = 'grass_resolution_ns', title = 'Resolution of the mapset in north-south direction in meters or degrees', abstract = 'This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
@@ -29,7 +30,7 @@ class r_resamp_bspline(WPSProcess):
     # complex outputs
     self.addComplexOutput(identifier = 'output', title = 'Name for output raster map', formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
 
-    self.addComplexOutput(identifier = 'grid', title = 'Output vector with interpolation grid', formats = [{'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/3.1.1/base/gml.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/xml', 'schema': 'http://schemas.opengis.net/gml/3.1.1/base/gml.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd', 'encoding': 'UTF-8'}])
+    self.addComplexOutput(identifier = 'grid', title = 'Name for output vector map with interpolation grid', formats = [{'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/3.1.1/base/gml.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/xml', 'schema': 'http://schemas.opengis.net/gml/3.1.1/base/gml.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd', 'encoding': 'UTF-8'}])
 
   def execute(self):
     starter = PyWPSGrassModuleStarter()

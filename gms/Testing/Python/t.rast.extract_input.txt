@@ -1,0 +1,34 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/usr/local/grass-7.0.svn
+ GRASS_ADDON_PATH=GrassAddons
+ GRASS_VERSION=7.0.svn
+ Module=t.rast.extract
+ LOCATION=
+ LinkInput=TRUE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=input
+ MaxOccurs=1
+ PathToFile=TestData/strds_export.tar.bz2
+ MimeType=application/X-GRASS-STRDS-TAR-BZIP
+ Encoding=
+ Schema=
+
+[ComplexOutput]
+ Identifier=output
+ MaxOccurs=1
+ PathToFile=/tmp/strds_extracted.tar.bz2
+ MimeType=application/X-GRASS-STRDS-TAR-BZIP
+ Encoding=
+ Schema=
+
+[LiteralData]
+ Identifier=nprocs
+ DataType=integer
+ Value=1

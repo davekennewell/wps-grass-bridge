@@ -23,7 +23,7 @@
 </wps:Input>
 </wps:DataInputs>
 <wps:ResponseForm>
-<wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="false">
+<wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="true">
 <wps:Output asReference="true" mimeType="text/xml" schema="http://schemas.opengis.net/gml/2.1.2/feature.xsd"><ows:Identifier>output</ows:Identifier>
 </wps:Output>
 </wps:ResponseDocument>

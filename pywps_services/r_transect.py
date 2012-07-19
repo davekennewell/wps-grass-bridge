@@ -15,7 +15,7 @@ class r_transect(WPSProcess):
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'map', title = 'Raster map to be queried', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
-    self.addLiteralInput(identifier = 'line', title = 'Transect definition', minOccurs = 1, maxOccurs = 1024, type = type("string"), allowedValues = '*')
+    self.addLiteralInput(identifier = 'line', title = 'Transect definition', minOccurs = 4, maxOccurs = 1024, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = 'null', title = 'Char string to represent no data cell', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "*")
     self.addLiteralInput(identifier = '-g', title = 'Output easting and northing in first two columns of four column output', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = 'grass_resolution_ns', title = 'Resolution of the mapset in north-south direction in meters or degrees', abstract = 'This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')

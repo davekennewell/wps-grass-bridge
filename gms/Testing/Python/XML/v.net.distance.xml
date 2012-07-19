@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.net.distance</ows:Identifier>
-		<ows:Title>Finds the shortest paths from a feature 'to' to every feature 'from' and various information about this relation are uploaded to the attribute table.</ows:Title>
+		<ows:Title>Finds the shortest paths from a point 'from' to every feature 'to' and various information about this relation are uploaded to the attribute table.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.net.distance.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="network" />
@@ -72,6 +72,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>1</DefaultValue>
 				</LiteralData>
 			</Input>
+			<Input minOccurs="0" maxOccurs="1024">
+				<ows:Identifier>type</ows:Identifier>
+				<ows:Title>Arc type</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>line</ows:Value>
+						<ows:Value>boundary</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>line,boundary</DefaultValue>
+				</LiteralData>
+			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>nlayer</ows:Identifier>
 				<ows:Title>Node layer</ows:Title>
@@ -79,6 +91,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 					<DefaultValue>2</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>from_layer</ows:Identifier>
+				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -97,6 +118,28 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>to_layer</ows:Identifier>
+				<ows:Title>To layer number or name</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1024">
+				<ows:Identifier>to_type</ows:Identifier>
+				<ows:Title>To feature type</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>point</ows:Value>
+						<ows:Value>line</ows:Value>
+						<ows:Value>boundary</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>point</DefaultValue>
+				</LiteralData>
+			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>to_cats</ows:Identifier>
 				<ows:Title>Example: 1,3,7-9,13</ows:Title>
@@ -111,19 +154,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1024">
-				<ows:Identifier>to_type</ows:Identifier>
-				<ows:Title>To feature type</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>point</ows:Value>
-						<ows:Value>line</ows:Value>
-						<ows:Value>boundary</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>point</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -164,46 +194,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 		</DataInputs>
 		<ProcessOutputs>
-			<Output>
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output vector map</ows:Title>
-				<ComplexOutput>
-					<Default>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
-						</Format>
-					</Supported>
-				</ComplexOutput>
-			</Output>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
 				<ows:Title>Name for output vector map</ows:Title>

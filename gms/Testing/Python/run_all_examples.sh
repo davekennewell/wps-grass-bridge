@@ -58,3 +58,13 @@ echo "28  Running module v.out.vtk"
 python ../../GrassModuleStarter.py -f v.out.vtk2_input.txt  -l 28.log  -o 28_stdout.log  -e 28_stderr.log
 echo "29  Running module v.sample"
 python ../../GrassModuleStarter.py -f v.sample_gml_input.txt -l 29.log  -o 29_stdout.log  -e 29_stderr.log
+echo "30  Running module t.info"
+python ../../GrassModuleStarter.py -f t.info_input.txt -l 30.log  -o 30_stdout.log  -e 30_stderr.log
+echo "31  Running module t.rast.extract"
+python ../../GrassModuleStarter.py -f t.rast.extract_input.txt -l 31.log  -o 31_stdout.log  -e 31_stderr.log
+echo "32  Running module t.rast.aggregate"
+python ../../GrassModuleStarter.py -f t.rast.aggregate_input.txt -l 32.log  -o 32_stdout.log  -e 32_stderr.log
+echo "33  Running module t.rast.univar"
+python ../../GrassModuleStarter.py -f t.rast.univar_input.txt -l 33.log  -o 33_stdout.log  -e 33_stderr.log
+echo "34  Running module t.sample"
+python ../../GrassModuleStarter.py -f t.sample_input.txt -l 34.log  -o 34_stdout.log  -e 34_stderr.log

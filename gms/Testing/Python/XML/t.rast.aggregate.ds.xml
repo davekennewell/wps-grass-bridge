@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.aggregate.ds</ows:Identifier>
-		<ows:Title>Aggregated data of an existing space time raster dataset using the temporal topology of a second space time dataset</ows:Title>
+		<ows:Title>Aggregated data of an existing space time raster dataset using the temporal topology of a second space time dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.aggregate.ds.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="aggregation" />
@@ -37,7 +37,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>sample</ows:Identifier>
-				<ows:Title>The time intervals from this space time dataset (raster, vector or raster3d) are used for aggregation computation.</ows:Title>
+				<ows:Title>Time intervals from this space time dataset (raster, vector or raster3d) are used for aggregation computation</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -130,6 +130,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>overlap</ows:Value>
 						<ows:Value>contain</ows:Value>
 						<ows:Value>equal</ows:Value>
+						<ows:Value>follows</ows:Value>
+						<ows:Value>precedes</ows:Value>
 					</ows:AllowedValues>
 					<DefaultValue>start</DefaultValue>
 				</LiteralData>

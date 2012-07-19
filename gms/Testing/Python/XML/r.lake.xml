@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.lake</ows:Identifier>
-		<ows:Title>Fills lake from seed at given level.</ows:Title>
+		<ows:Title>Fills lake at given point to given level.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.lake.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="hydrology" />
@@ -74,7 +74,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>seed</ows:Identifier>
-				<ows:Title>Name of raster map with seed (at least 1 cell &gt; 0)</ows:Title>
+				<ows:Title>Name of input raster map with given starting point(s) (at least 1 cell &gt; 0)</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

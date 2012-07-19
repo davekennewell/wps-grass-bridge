@@ -2905,11 +2905,11 @@ AABAS1Cl9UA=
 </wps:DataInputs>
 <wps:ResponseForm>
 <wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="false">
-<wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>flowpath</ows:Identifier>
+<wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>flowlength</ows:Identifier>
 </wps:Output>
 <wps:Output asReference="true" mimeType="text/xml" schema="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"><ows:Identifier>flowline</ows:Identifier>
 </wps:Output>
-<wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>density</ows:Identifier>
+<wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>flowaccumulation</ows:Identifier>
 </wps:Output>
 </wps:ResponseDocument>
 </wps:ResponseForm>

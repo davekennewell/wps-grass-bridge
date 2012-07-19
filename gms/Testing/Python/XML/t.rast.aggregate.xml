@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.aggregate</ows:Identifier>
-		<ows:Title>Create a new space time raster dataset from the aggregated data of an existing space time raster dataset</ows:Title>
+		<ows:Title>Creates a new space time raster dataset from the aggregated data of an existing space time raster dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.aggregate.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="aggregation" />
@@ -45,7 +45,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>granularity</ows:Identifier>
-				<ows:Title>The aggregation granularity, format absolute time "x years, x months, x weeks, x days, x hours, x minutes, x seconds" or a double value for relative time</ows:Title>
+				<ows:Title>Aggregation granularity, format absolute time "x years, x months, x weeks, x days, x hours, x minutes, x seconds" or a double value for relative time</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -102,6 +102,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>overlap</ows:Value>
 						<ows:Value>contain</ows:Value>
 						<ows:Value>equal</ows:Value>
+						<ows:Value>follows</ows:Value>
+						<ows:Value>precedes</ows:Value>
 					</ows:AllowedValues>
 					<DefaultValue>start</DefaultValue>
 				</LiteralData>
@@ -112,15 +114,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>nprocs</ows:Identifier>
-				<ows:Title>The number of r.mapcalc processes to run in parallel</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AnyValue/>
-					<DefaultValue>2</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

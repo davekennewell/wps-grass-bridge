@@ -85,13 +85,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
+						<ows:Value>map</ows:Value>
 						<ows:Value>meters</ows:Value>
 						<ows:Value>kilometers</ows:Value>
 						<ows:Value>feet</ows:Value>
+						<ows:Value>surveyfeet</ows:Value>
 						<ows:Value>miles</ows:Value>
 						<ows:Value>nautmiles</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>meters</DefaultValue>
+					<DefaultValue>map</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

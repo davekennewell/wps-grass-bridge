@@ -14,8 +14,8 @@ class r_plane(WPSProcess):
     WPSProcess.__init__(self, identifier = 'r.plane', title = 'Creates raster plane map given dip (inclination), aspect (azimuth) and one point.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'elevation'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.plane.html')
 
     # Literal and complex inputs
-    self.addLiteralInput(identifier = 'dip', title = 'Dip of plane. Value must be between -90 and 90 degrees', minOccurs = 1, maxOccurs = 1, type = type(0.0), default = 0.0)
-    self.addLiteralInput(identifier = 'azimuth', title = 'Azimuth of the plane. Value must be between 0 and 360 degrees', minOccurs = 1, maxOccurs = 1, type = type(0.0), default = 0.0)
+    self.addLiteralInput(identifier = 'dip', title = 'Dip of plane in degrees', minOccurs = 1, maxOccurs = 1, type = type(0.0), default = 0.0)
+    self.addLiteralInput(identifier = 'azimuth', title = 'Azimuth of the plane in degrees', minOccurs = 1, maxOccurs = 1, type = type(0.0), default = 0.0)
     self.addLiteralInput(identifier = 'easting', title = 'Easting coordinate of a point on the plane', minOccurs = 1, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'northing', title = 'Northing coordinate of a point on the plane', minOccurs = 1, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'elevation', title = 'Elevation coordinate of a point on the plane', minOccurs = 1, maxOccurs = 1, type = type(0.0), allowedValues = '*')
@@ -24,7 +24,7 @@ class r_plane(WPSProcess):
     self.addLiteralInput(identifier = 'grass_resolution_ew', title = 'Resolution of the mapset in east-west direction in meters or degrees', abstract = 'This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
 
     # complex outputs
-    self.addComplexOutput(identifier = 'name', title = 'Name of raster plane to be created', formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
+    self.addComplexOutput(identifier = 'output', title = 'Name for output raster map', formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
 
   def execute(self):
     starter = PyWPSGrassModuleStarter()

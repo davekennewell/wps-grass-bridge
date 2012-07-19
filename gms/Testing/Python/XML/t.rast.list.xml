@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.list</ows:Identifier>
-		<ows:Title>List registered maps of a space time raster dataset</ows:Title>
+		<ows:Title>Lists registered maps of a space time raster dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.list.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="raster" />
@@ -38,7 +38,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>order</ows:Identifier>
-				<ows:Title>Order the space time dataset by category.</ows:Title>
+				<ows:Title>Order the space time dataset by category</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -104,7 +104,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>method</ows:Identifier>
-				<ows:Title>Which method should be used for data listing</ows:Title>
+				<ows:Title>Method used for data listing</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -119,7 +119,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>fs</ows:Identifier>
-				<ows:Title>The field separator character between the columns, default is tabular "\t"</ows:Title>
+				<ows:Title>Field separator character between the columns, default is tabular "\t"</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

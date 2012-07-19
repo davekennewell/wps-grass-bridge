@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.extract</ows:Identifier>
-		<ows:Title>Extract a subset of a space time raster dataset</ows:Title>
+		<ows:Title>Extracts a subset of a space time raster datasets.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.extract.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="extract" />
@@ -45,15 +45,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>expression</ows:Identifier>
-				<ows:Title>The r.mapcalc expression assigned to all extracted raster maps</ows:Title>
+				<ows:Title>r.mapcalc expression assigned to all extracted raster maps</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>base</ows:Identifier>
-				<ows:Title>Name of base raster map</ows:Title>
+				<ows:Title>The base name of the new created raster maps. This name will be extended with a numerical prefix</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -61,7 +61,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>nprocs</ows:Identifier>
-				<ows:Title>The number of r.mapcalc processes to run in parallel</ows:Title>
+				<ows:Title>Number of r.mapcalc processes to run in parallel</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>

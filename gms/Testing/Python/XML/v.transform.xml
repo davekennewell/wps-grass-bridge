@@ -186,6 +186,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>false</DefaultValue>
 				</LiteralData>
 			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-b</ows:Identifier>
+				<ows:Title>Do not build topology for output</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>

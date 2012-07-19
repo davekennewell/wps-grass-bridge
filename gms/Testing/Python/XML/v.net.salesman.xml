@@ -171,6 +171,22 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexOutput>
 			</Output>
+			<Output>
+				<ows:Identifier>sequence</ows:Identifier>
+				<ows:Title>Name for output file holding node sequence ("-" for stdout)</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
 		</ProcessOutputs>
 	</ProcessDescription>
 </wps:ProcessDescriptions>

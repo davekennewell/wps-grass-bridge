@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.series</ows:Identifier>
-		<ows:Title>Perform different aggregation algorithms from r.series on all or a subset of raster maps in a space time raster dataset</ows:Title>
+		<ows:Title>Performs different aggregation algorithms from r.series on all or a subset of raster maps in a space time raster dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.series.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="series" />
@@ -37,7 +37,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>method</ows:Identifier>
-				<ows:Title>Aggregate operation to be peformed on the raster maps</ows:Title>
+				<ows:Title>Aggregate operation to be performed on the raster maps</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -69,7 +69,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>order</ows:Identifier>
-				<ows:Title>Sort the maps by category.</ows:Title>
+				<ows:Title>Sort the maps by category</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -101,7 +101,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-t</ows:Identifier>
-				<ows:Title>Assign the space time raster dataset start and end time to the output map</ows:Title>
+				<ows:Title>Do not assign the space time raster dataset start and end time to the output map</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
