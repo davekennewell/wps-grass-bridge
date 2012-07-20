@@ -68,3 +68,5 @@ echo "33  Running module t.rast.univar"
 python ../../GrassModuleStarter.py -f t.rast.univar_input.txt -l 33.log  -o 33_stdout.log  -e 33_stderr.log
 echo "34  Running module t.sample"
 python ../../GrassModuleStarter.py -f t.sample_input.txt -l 34.log  -o 34_stdout.log  -e 34_stderr.log
+echo "35  Running module v.build"
+python ../../GrassModuleStarter.py -f v.build_gml_input.txt -l 35.log  -o 35_stdout.log  -e 35_stderr.log

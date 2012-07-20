@@ -842,6 +842,36 @@ class GrassModuleStarter(ModuleLogging):
                 self.outputMap[i.identifier] = outputName
 
             self.outputCounter += 1
+            
+    def _parse_key_val(self, s):
+        """!Parse a string into a dictionary, where entries are separated
+        by newlines and the key and value are separated by `sep' (default: `=')
+    
+        @param s string to be parsed
+    
+        @return parsed input (dictionary of keys/values)
+        
+        This method was lend from GRASS 7 Python library lib/python/core.py
+        """
+        result = {}
+        sep = "="
+    
+        if not s:
+            return result
+        
+        lines = s.splitlines()
+        
+        for line in lines:
+            kv = line.split(sep, 1)
+            k = kv[0].strip()
+            if len(kv) > 1:
+                v = kv[1].strip()
+            else:
+                v = None
+                
+            result[k] = v
+        
+        return result
 
     ############################################################################
     def _exportOutput(self):
@@ -864,15 +894,34 @@ class GrassModuleStarter(ModuleLogging):
 
                 # export the data via ogr
                 elif self._isVector(output) != None:
-                    parameter = [self._createGrassModulePath("v.out.ogr"), 
-                                 "input=" + outputName, "format=" + self._isVector(output), 
-                                 "dsn=" + output.pathToFile]
+                    # First we need to check for empty vectors since v.out.ogr is not able
+                    # to export empty maps
+                    parameter = [self._createGrassModulePath("v.info"), 
+                                 "map=" + outputName, "-t"]
                     errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
-
                     if errorid != 0:
-                        log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
+                        log = "Unable to check vector map " + outputName + "    error:\n" + stderr_buff
                         self.LogError(log)
                         raise GMSError(log)
+
+                    kv = self._parse_key_val(stdout_buff)
+
+                    if kv["primitives"] == '0':
+                        # Create an empty file
+                        empty_file = open(output.pathToFile, "w")
+                        empty_file.close()
+                        self.LogWarning("Empty vector map for export detected. Will create an empty file.")
+                    else:
+                        # Export the vector map
+                        parameter = [self._createGrassModulePath("v.out.ogr"), 
+                                     "input=" + outputName, "format=" + self._isVector(output), 
+                                     "dsn=" + output.pathToFile]
+                        errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
+    
+                        if errorid != 0:
+                            log = "Unable to export " + outputName + "   v.out.ogr error:\n" + stderr_buff
+                            self.LogError(log)
+                            raise GMSError(log)
 
                 # Export the space time dataset
                 elif self._isSTDS(output) != None:
@@ -919,7 +968,7 @@ class GrassModuleStarter(ModuleLogging):
         except:
             log = "Unable to export " + outputName
             self.LogError(log)
-            raise GMSError(log)
+            raise
 
     ############################################################################
     def _createGrassModulePath(self, grassModule):

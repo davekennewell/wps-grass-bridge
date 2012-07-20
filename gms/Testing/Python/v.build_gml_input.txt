@@ -1,0 +1,34 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/usr/local/grass-7.0.svn
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=v.build
+ LOCATION=
+ LinkInput=FALSE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=map
+ MaxOccurs=1
+ PathToFile=TestData/state_nc.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
+
+[LiteralData]
+ Identifier=option
+ DataType=string
+ Value=build
+
+[ComplexOutput]
+ Identifier=error
+ PathToFile=/tmp/state_nc_topo_build.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
+
