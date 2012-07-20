@@ -1,0 +1,41 @@
+[System]
+ WorkDir=/tmp
+ OutputDir=/tmp
+
+[GRASS]
+ GISBASE=/usr/local/grass-7.0.svn
+ GRASS_ADDON_PATH=
+ GRASS_VERSION=7.0.svn
+ Module=v.clean
+ LOCATION=
+ LinkInput=FALSE
+ IgnoreProjection=FALSE
+ UseXYLocation=FALSE
+
+[ComplexData]
+ Identifier=input
+ MaxOccurs=1
+ PathToFile=TestData/state_nc.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
+
+[LiteralData]
+ Identifier=tool
+ DataType=string
+ Value=snap,bpol,prune
+
+[ComplexOutput]
+ Identifier=error
+ PathToFile=/tmp/state_nc_clean_error.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
+
+[ComplexOutput]
+ Identifier=output
+ PathToFile=/tmp/state_nc_clean.gml
+ MimeType=text/xml
+ Encoding=UTF-8
+ Schema=http://schemas.opengis.net/gml/2.1.2/feature.xsd
+

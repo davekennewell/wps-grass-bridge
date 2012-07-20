@@ -70,3 +70,5 @@ echo "34  Running module t.sample"
 python ../../GrassModuleStarter.py -f t.sample_input.txt -l 34.log  -o 34_stdout.log  -e 34_stderr.log
 echo "35  Running module v.build"
 python ../../GrassModuleStarter.py -f v.build_gml_input.txt -l 35.log  -o 35_stdout.log  -e 35_stderr.log
+echo "36  Running module v.clean"
+python ../../GrassModuleStarter.py -f v.clean_gml_input.txt -l 36.log  -o 36_stdout.log  -e 36_stderr.log
