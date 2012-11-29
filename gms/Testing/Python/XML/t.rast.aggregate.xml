@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.aggregate</ows:Identifier>
-		<ows:Title>Creates a new space time raster dataset from the aggregated data of an existing space time raster dataset.</ows:Title>
+		<ows:Title>Temporally aggregates the maps of a space time raster dataset by a user defined granularity.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.aggregate.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="aggregation" />
@@ -45,7 +45,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>granularity</ows:Identifier>
-				<ows:Title>Aggregation granularity, format absolute time "x years, x months, x weeks, x days, x hours, x minutes, x seconds" or a double value for relative time</ows:Title>
+				<ows:Title>Aggregation granularity, format absolute time "x years, x months, x weeks, x days, x hours, x minutes, x seconds" or an integer value for relative time</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -111,10 +111,45 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>base</ows:Identifier>
 				<ows:Title>Name of base raster map</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/png</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/gif</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/jpeg</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-n</ows:Identifier>
@@ -161,6 +196,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 							<ows:UOM>degrees</ows:UOM>
 						</Supported>
 					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_band_number</ows:Identifier>
+				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
+				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>

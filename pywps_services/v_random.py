@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class v_random(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'v.random', title = 'Generates randomly 2D/3D vector points map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'vector'}, {'type': 'simple', 'title': 'statistics'}, {'type': 'simple', 'title': 'random'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/v.random.html')
+    WPSProcess.__init__(self, identifier = 'v.random', title = 'Generates randomly 2D/3D vector points map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'vector'}, {'type': 'simple', 'title': 'sampling'}, {'type': 'simple', 'title': 'statistics'}, {'type': 'simple', 'title': 'random'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/v.random.html')
 
     # Literal and complex inputs
     self.addLiteralInput(identifier = 'n', title = 'Number of points to be created', minOccurs = 1, maxOccurs = 1, type = type(0), allowedValues = '*')

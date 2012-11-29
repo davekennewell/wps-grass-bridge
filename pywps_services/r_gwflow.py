@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_gwflow(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.gwflow', title = 'Numerical calculation program for transient, confined and unconfined groundwater flow in two dimensions.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'groundwater flow'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.gwflow.html')
+    WPSProcess.__init__(self, identifier = 'r.gwflow', title = 'Numerical calculation program for transient, confined and unconfined groundwater flow in two dimensions.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'groundwater flow'}, {'type': 'simple', 'title': 'hydrology'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.gwflow.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'phead', title = 'Name of input raster map with initial piezometric head in [m]', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

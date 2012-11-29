@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class t_sample(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 't.sample', title = 'Samples the input space time dataset(s) with a sample space time dataset and print the result to stdout.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'temporal'}, {'type': 'simple', 'title': 'sample'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/t.sample.html')
+    WPSProcess.__init__(self, identifier = 't.sample', title = 'Samples the input space time dataset(s) with a sample space time dataset and print the result to stdout.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'temporal'}, {'type': 'simple', 'title': 'sampling'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/t.sample.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'inputs', title = 'Name of the input space time datasets', minOccurs = 1, maxOccurs = 1024, formats = [{'mimeType': 'application/x-grass-strds-tar'}, {'mimeType': 'application/x-grass-strds-tar-gz'}, {'mimeType': 'application/x-grass-strds-tar-bzip'}, {'mimeType': 'application/x-grass-stvds-tar'}, {'mimeType': 'application/x-grass-stvds-tar-gz'}, {'mimeType': 'application/x-grass-stvds-tar-bzip'}])

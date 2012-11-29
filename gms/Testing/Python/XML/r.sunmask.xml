@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Either exact sun position (A) is specified, or date/time to calculate the sun position (B) by r.sunmask itself.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.sunmask.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="solar" />
 		<ows:Metadata xlink:title="sun position" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">

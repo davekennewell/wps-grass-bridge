@@ -16,7 +16,7 @@ class r_slope_aspect(WPSProcess):
     # Literal and complex inputs
     self.addComplexInput(identifier = 'elevation', title = 'Name of input elevation raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
     self.addLiteralInput(identifier = 'format', title = 'Format for reporting the slope', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "degrees", allowedValues = ['degrees', 'percent'])
-    self.addLiteralInput(identifier = 'prec', title = 'Type of output aspect and slope maps', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "float", allowedValues = ['default', 'double', 'float', 'int'])
+    self.addLiteralInput(identifier = 'precision', title = 'Type of output aspect and slope maps', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "FCELL", allowedValues = ['CELL', 'FCELL', 'DCELL'])
     self.addLiteralInput(identifier = 'zfactor', title = 'Multiplicative factor to convert elevation units to meters', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 1.0)
     self.addLiteralInput(identifier = 'min_slp_allowed', title = 'Minimum slope val. (in percent) for which aspect is computed', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.0)
     self.addLiteralInput(identifier = '-a', title = 'Do not align the current region to the elevation layer', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])

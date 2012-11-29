@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_random_surface(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.random.surface', title = 'Generates random surface(s) with spatial dependence.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'random'}, {'type': 'simple', 'title': 'surface'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.random.surface.html')
+    WPSProcess.__init__(self, identifier = 'r.random.surface', title = 'Generates random surface(s) with spatial dependence.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'random'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.random.surface.html')
 
     # Literal and complex inputs
     self.addLiteralInput(identifier = 'distance', title = 'Maximum distance of spatial correlation (value &#62;= 0.0)', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.0)

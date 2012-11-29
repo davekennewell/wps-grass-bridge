@@ -31,7 +31,7 @@ class v_generalize(WPSProcess):
     self.addLiteralInput(identifier = 'iterations', title = 'Number of iterations', minOccurs = 0, maxOccurs = 1, type = type(0), default = 1)
     self.addLiteralInput(identifier = 'cats', title = 'Example: 1,3,7-9,13', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = 'where', title = 'Example: income &#60; 1000 and inhab &#62;= 10000', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
-    self.addLiteralInput(identifier = '-c', title = 'Copy attributes', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
+    self.addLiteralInput(identifier = '-t', title = 'Do not copy attributes', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
 
     # complex outputs
     self.addComplexOutput(identifier = 'output', title = 'Name for output vector map', formats = [{'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/3.1.1/base/gml.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/xml', 'schema': 'http://schemas.opengis.net/gml/3.1.1/base/gml.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'application/xml', 'schema': 'http://schemas.opengis.net/gml/2.1.2/feature.xsd', 'encoding': 'UTF-8'}, {'mimeType': 'text/xml', 'schema': 'http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd', 'encoding': 'UTF-8'}])

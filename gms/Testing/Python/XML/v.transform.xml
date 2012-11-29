@@ -134,14 +134,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>0.0</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>table</ows:Identifier>
-				<ows:Title>Name of table containing transformation parameters</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>columns</ows:Identifier>
 				<ows:Title>Format: parameter:column, e.g. xshift:xs,yshift:ys,zrot:zr</ows:Title>

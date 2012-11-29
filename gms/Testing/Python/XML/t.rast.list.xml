@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Lists registered maps of a space time raster dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.list.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="map management" />
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="list" />
 		<DataInputs>

@@ -23,7 +23,6 @@ class v_transform(WPSProcess):
     self.addLiteralInput(identifier = 'yscale', title = 'Scaling factor for y coordinates', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 1.0)
     self.addLiteralInput(identifier = 'zscale', title = 'Scaling factor for z coordinates', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 1.0)
     self.addLiteralInput(identifier = 'zrot', title = 'Rotation around z axis in degrees counterclockwise', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.0)
-    self.addLiteralInput(identifier = 'table', title = 'Name of table containing transformation parameters', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = 'columns', title = 'Format: parameter:column, e.g. xshift:xs,yshift:ys,zrot:zr', minOccurs = 0, maxOccurs = 1024, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = '-t', title = 'Shift all z values to bottom=0', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-m', title = 'Print the transformation matrix to stdout', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])

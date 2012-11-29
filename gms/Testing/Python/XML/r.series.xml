@@ -11,6 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Makes each output cell value a function of the values assigned to the corresponding cells in the input raster map layers.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.series.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="aggregation" />
 		<ows:Metadata xlink:title="series" />
 		<DataInputs>
 			<Input minOccurs="0" maxOccurs="1024">
@@ -58,7 +59,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>file</ows:Identifier>
-				<ows:Title>Input file with raster map names and optional weights per line, field separator between name and weight is |</ows:Title>
+				<ows:Title>Input file with one raster map name and optional one weight per line, field separator between name and weight is |</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -94,6 +95,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>slope</ows:Value>
 						<ows:Value>offset</ows:Value>
 						<ows:Value>detcoeff</ows:Value>
+						<ows:Value>tvalue</ows:Value>
 						<ows:Value>quart1</ows:Value>
 						<ows:Value>quart3</ows:Value>
 						<ows:Value>perc90</ows:Value>

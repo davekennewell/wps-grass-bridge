@@ -250,8 +250,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-c</ows:Identifier>
-				<ows:Title>Copy attributes</ows:Title>
+				<ows:Identifier>-t</ows:Identifier>
+				<ows:Title>Do not copy attributes</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

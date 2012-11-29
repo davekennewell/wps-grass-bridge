@@ -55,16 +55,17 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>type</ows:Identifier>
-				<ows:Title>Type of the raster map to be created</ows:Title>
+				<ows:Title>Type of raster map to be created</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>int</ows:Value>
-						<ows:Value>float</ows:Value>
-						<ows:Value>double</ows:Value>
+						<ows:Value>CELL</ows:Value>
+						<ows:Value>FCELL</ows:Value>
+						<ows:Value>DCELL</ows:Value>
 					</ows:AllowedValues>
+					<DefaultValue>FCELL</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

@@ -11,8 +11,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Generates random cell values with spatial dependence.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.random.cells.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
+		<ows:Metadata xlink:title="sampling" />
 		<ows:Metadata xlink:title="random" />
-		<ows:Metadata xlink:title="cell" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>distance</ows:Identifier>

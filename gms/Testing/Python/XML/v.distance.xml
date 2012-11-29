@@ -11,12 +11,13 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Finds the nearest element in vector map 'to' for elements in vector map 'from'.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.distance.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
+		<ows:Metadata xlink:title="distance" />
 		<ows:Metadata xlink:title="database" />
 		<ows:Metadata xlink:title="attribute table" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>from</ows:Identifier>
-				<ows:Title>Name of existing vector map (from)</ows:Title>
+				<ows:Title>Or data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -65,7 +66,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>from_layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -79,14 +80,17 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
 						<ows:Value>point</ows:Value>
+						<ows:Value>line</ows:Value>
+						<ows:Value>boundary</ows:Value>
 						<ows:Value>centroid</ows:Value>
+						<ows:Value>area</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>point</DefaultValue>
+					<DefaultValue>point,line,area</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>to</ows:Identifier>
-				<ows:Title>Name of existing vector map (to)</ows:Title>
+				<ows:Title>Or data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -135,7 +139,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>to_layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

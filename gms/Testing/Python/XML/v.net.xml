@@ -128,7 +128,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>alayer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -137,7 +137,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>nlayer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -171,6 +171,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-c</ows:Identifier>
 				<ows:Title>For operation 'nodes'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-s</ows:Identifier>
+				<ows:Title>For operation 'connect'. By default, a new line from the point to the network is created.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

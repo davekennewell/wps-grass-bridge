@@ -11,15 +11,38 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Lists information about space time datasets and maps.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.info.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
-		<ows:Metadata xlink:title="info" />
+		<ows:Metadata xlink:title="metadata" />
 		<DataInputs>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of an existing space time or map dataset</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
+				<ows:Title>Name of an existing space time dataset or map</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>type</ows:Identifier>

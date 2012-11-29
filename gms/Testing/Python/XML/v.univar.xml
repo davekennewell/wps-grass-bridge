@@ -64,7 +64,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -83,10 +83,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>centroid</ows:Value>
 						<ows:Value>area</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>point,line,boundary,centroid,area</DefaultValue>
+					<DefaultValue>point,line,area</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>column</ows:Identifier>
 				<ows:Title>Name of attribute column</ows:Title>
 				<LiteralData>
@@ -131,6 +131,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-e</ows:Identifier>
 				<ows:Title>Calculate extended statistics</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-d</ows:Identifier>
+				<ows:Title>Calculate geometry distances instead of table data.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

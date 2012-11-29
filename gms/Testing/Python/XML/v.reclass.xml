@@ -11,7 +11,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Title>Changes vector category values for an existing vector map according to results of SQL queries or a value in attribute table column.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.reclass.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
-		<ows:Metadata xlink:title="reclass" />
+		<ows:Metadata xlink:title="reclassification" />
 		<ows:Metadata xlink:title="attributes" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
@@ -65,7 +65,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

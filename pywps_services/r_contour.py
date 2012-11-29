@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_contour(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.contour', title = 'Produces a vector map of specified contours from a raster map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'DEM'}, {'type': 'simple', 'title': 'contours'}, {'type': 'simple', 'title': 'vector'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.contour.html')
+    WPSProcess.__init__(self, identifier = 'r.contour', title = 'Produces a vector map of specified contours from a raster map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'contours'}, {'type': 'simple', 'title': 'vector'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.contour.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of input raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

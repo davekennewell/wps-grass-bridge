@@ -13,6 +13,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="algebra" />
 		<ows:Metadata xlink:title="statistics" />
+		<ows:Metadata xlink:title="aggregation" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>

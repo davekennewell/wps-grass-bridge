@@ -13,9 +13,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="distance" />
 		<DataInputs>
-			<Input minOccurs="2" maxOccurs="2">
-				<ows:Identifier>maps</ows:Identifier>
-				<ows:Title>Maps for computing inter-class distances</ows:Title>
+			<Input minOccurs="2" maxOccurs="1024">
+				<ows:Identifier>map</ows:Identifier>
+				<ows:Title>Name of two input raster maps for computing inter-class distances</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -57,8 +57,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>fs</ows:Identifier>
-				<ows:Title>Output field separator</ows:Title>
+				<ows:Identifier>separator</ows:Identifier>
+				<ows:Title>Special characters: newline, space, comma, tab</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

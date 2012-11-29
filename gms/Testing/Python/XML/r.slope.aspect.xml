@@ -69,17 +69,16 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>prec</ows:Identifier>
+				<ows:Identifier>precision</ows:Identifier>
 				<ows:Title>Type of output aspect and slope maps</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>default</ows:Value>
-						<ows:Value>double</ows:Value>
-						<ows:Value>float</ows:Value>
-						<ows:Value>int</ows:Value>
+						<ows:Value>CELL</ows:Value>
+						<ows:Value>FCELL</ows:Value>
+						<ows:Value>DCELL</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>float</DefaultValue>
+					<DefaultValue>FCELL</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

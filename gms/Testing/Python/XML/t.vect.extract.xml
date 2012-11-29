@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>t.vect.extract</ows:Identifier>
+		<ows:Title>Extracts a subset of a space time vector dataset.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.vect.extract.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="extract" />
+		<DataInputs>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of the input space time vector dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>expression</ows:Identifier>
+				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>layer</ows:Identifier>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1024">
+				<ows:Identifier>type</ows:Identifier>
+				<ows:Title>Feature type</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>point</ows:Value>
+						<ows:Value>line</ows:Value>
+						<ows:Value>boundary</ows:Value>
+						<ows:Value>centroid</ows:Value>
+						<ows:Value>area</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>point,line,boundary,centroid,area</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>base</ows:Identifier>
+				<ows:Title>Base name of the new created vector maps</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>nprocs</ows:Identifier>
+				<ows:Title>The number of v.extract processes to run in parallel. Use only if database backend is used which supports concurrent writing</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-n</ows:Identifier>
+				<ows:Title>Register empty maps</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name of the output space time vector dataset</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-stvds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>

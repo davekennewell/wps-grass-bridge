@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class t_rast_list(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 't.rast.list', title = 'Lists registered maps of a space time raster dataset.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'temporal'}, {'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'list'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.list.html')
+    WPSProcess.__init__(self, identifier = 't.rast.list', title = 'Lists registered maps of a space time raster dataset.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'temporal'}, {'type': 'simple', 'title': 'map management'}, {'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'list'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.list.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of the input space time raster dataset', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'application/x-grass-strds-tar'}, {'mimeType': 'application/x-grass-strds-tar-gz'}, {'mimeType': 'application/x-grass-strds-tar-bzip'}])
