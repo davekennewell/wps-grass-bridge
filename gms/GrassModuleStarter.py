@@ -486,8 +486,6 @@ class GrassModuleStarter(ModuleLogging):
                     self.gisrc.locationName = GRASS_WORK_LOCATION
                     self.gisrc.rewriteFile()
                     success = True
-                    if self._isVector(input):
-                        importedInput = input
                     break
 
         # In case of textual input, use the default location
@@ -518,9 +516,6 @@ class GrassModuleStarter(ModuleLogging):
             link = False
         # Import the files
         for i in list:
-            # Jump over already imported files
-            if i == importedInput:
-                continue
             self._importInput(i, link)
 
     ############################################################################
@@ -594,15 +589,13 @@ class GrassModuleStarter(ModuleLogging):
                 raise GMSError(log)
 
         elif self._isVector(input) != None:
-            parameter = [self._createGrassModulePath("v.in.ogr"), "dsn=" + input.pathToFile, "location=" + GRASS_WORK_LOCATION , "-ce", "output=" + str(input.identifier)] # we need the correct name for import
+            parameter = [self._createGrassModulePath("v.in.ogr"), "dsn=" + input.pathToFile, "location=" + GRASS_WORK_LOCATION , "-ie"] 
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
-                log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile) + " GDAL log: " + stderr_buff
+                log = "GDLA error while import. Unable to create input location from input " + str(input.pathToFile) + " OGR log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
-            # Vector maps are imported when the location is created. Linking does not work properly currently
-            self._updateInputMap(input, str(input.identifier))
 
         elif self._isSTDS(input) != None:
             stype, compression = self._isSTDS(input)
@@ -714,7 +707,7 @@ class GrassModuleStarter(ModuleLogging):
             errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
 
             if errorid != 0:
-                log = "Unable to import " + inputName + " GDAL log: " + stderr_buff
+                log = "Unable to import " + inputName + " OGR log: " + stderr_buff
                 self.LogError(log)
                 raise GMSError(log)
 
