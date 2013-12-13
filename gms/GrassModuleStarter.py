@@ -83,7 +83,8 @@ GRASS_LOCATION_NAME = "startLocation"
 GRASS_WORK_LOCATION = "workLocation"
 GRASS_MAPSET_NAME = "PERMANENT"
 # This keyword list contains all grass related WPS keywords
-GRASS_WPS_KEYWORD_LIST = ["grass_resolution_ns", "grass_resolution_ew", "grass_band_number"]
+GRASS_WPS_KEYWORD_LIST = ["grass_resolution_ns", "grass_resolution_ew",
+                          "grass_band_number", "multi_output"]
 # All supported import raster formats
 RASTER_MIMETYPES = [{"MIMETYPE":"IMAGE/TIFF", "GDALID":"GTiff"},
                            {"MIMETYPE":"IMAGE/PNG", "GDALID":"PNG"}, \
@@ -102,7 +103,8 @@ VECTOR_MIMETYPES = [{"MIMETYPE":"TEXT/XML", "SCHEMA":"GML", "GDALID":"GML"}, \
                            {"MIMETYPE":"APPLICATION/XML", "SCHEMA":"KML", "GDALID":"KML"}, \
                            {"MIMETYPE":"APPLICATION/DGN", "SCHEMA":"", "GDALID":"DGN"}, \
                            #{"MIMETYPE":"APPLICATION/X-ZIPPED-SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}, \
-                           {"MIMETYPE":"APPLICATION/SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}]
+                           {"MIMETYPE":"APPLICATION/SHP", "SCHEMA":"", "GDALID":"ESRI_Shapefile"}, \
+                           {"MIMETYPE":"APPLICATION/DXF", "SCHEMA":"", "GDALID":"DXF"}]
 # All supported space time dataset formats
 STDS_MIMETYPES = [ {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR", "STDSID":"STRDS", "COMPRESSION":"NO"}, \
                            {"MIMETYPE":"APPLICATION/X-GRASS-STRDS-TAR-GZ", "STDSID":"STRDS", "COMPRESSION":"GZIP"}, \
@@ -909,6 +911,10 @@ class GrassModuleStarter(ModuleLogging):
                         parameter = [self._createGrassModulePath("v.out.ogr"), 
                                      "input=" + outputName, "format=" + self._isVector(output), 
                                      "dsn=" + output.pathToFile]
+                        self.LogWarning("MUlti output: " +  str(self.inputParameter.multiOutput))
+                        
+                        if self.inputParameter.multiOutput:
+                            parameter.append("-m")
                         errorid, stdout_buff, stderr_buff = self._runProcess(parameter)
     
                         if errorid != 0:

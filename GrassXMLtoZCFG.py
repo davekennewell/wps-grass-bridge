@@ -60,7 +60,7 @@ class GrassXMLtoZcfg():
     def __closeOutput(self):
         self.__output.close()
         
-    def convert(self):
+    def convert(self, multi=False):
         """Start the conversion from WPS XML to ZOO-WPS config file zcfg"""
         try:
             doc = wps.CreateFromDocument(file(self.__grassXMLFileName).read())
@@ -75,7 +75,7 @@ class GrassXMLtoZcfg():
                 self.__output.write("statusSupported = true\n")
                 self.__output.write("serviceProvider = " + str(i.Identifier.value()).replace(".", "_") + "\n")
                 self.__output.write("serviceType = Python\n")
-                self.__writeDataInputs(i)
+                self.__writeDataInputs(i, multi)
                 self.__writeProcessOutputs(i)
 
                 self.__writePythonFile(str(i.Identifier.value()), str(i.Identifier.value()).replace(".", "_"))
@@ -84,7 +84,7 @@ class GrassXMLtoZcfg():
         finally:
             self.__closeOutput()
             
-    def __writeDataInputs(self,  process):
+    def __writeDataInputs(self,  process, multi):
         """Write all data inputs into the zcfg file"""
         self.__output.write("<DataInputs>\n")
         for i in process.DataInputs.Input:
@@ -95,8 +95,24 @@ class GrassXMLtoZcfg():
                 self.__writeComplexData(i.ComplexData)
             if i.LiteralData != None:
                 self.__writeLiteralData(i.LiteralData)
+        if multi:
+            self.__multiOutputs()
         self.__output.write("</DataInputs>\n")
-  
+
+    def __multiOutputs(self):
+        """Add option to return MULTI features instead SINGLE"""
+        self.__output.write("  [multi_output]\n")
+        self.__output.write("  Title = Return MULTI features instead SINGLE\n")
+        self.__output.write("  Abstract =\n")
+        self.__output.write("  minOccurs = 0\n")
+        self.__output.write("  maxOccurs = 1\n")
+        self.__output.write("  <LiteralData>\n")
+        self.__output.write("    DataType = boolean\n")
+        self.__output.write("    <Default>\n")
+        self.__output.write("      value = false\n")
+        self.__output.write("    </Default>\n")
+        self.__output.write("  </LiteralData>\n")
+
     def __writeProcessOutputs(self,  process):
         """Write all process outputs into the zcfg file"""
         for i in process.ProcessOutputs.Output:
@@ -165,9 +181,15 @@ def main():
     usage = "usage: %prog [-help,--help] --xmlfile inputfile.xml --zcfgfile output.txt]"
     description = "Use %prog to convert Grass 7.0 WPS XML process description files into ZOO-WPS server config files."
     parser = OptionParser(usage=usage, description=description)
-    parser.add_option("-x", "--xmlfile", dest="xmlfile", help="The path to the grass WPS input xml file", metavar="FILE")
-    parser.add_option("-z", "--zcfgfile", dest="zcfgfile", help="Path to the new created zcfg file", metavar="FILE")
-    parser.add_option("-p", "--pythonfile", dest="pythonfile", help="Path to the new created python file", metavar="FILE")
+    parser.add_option("-x", "--xmlfile", dest="xmlfile", metavar="FILE" ,
+                      help="The path to the grass WPS input xml file")
+    parser.add_option("-z", "--zcfgfile", dest="zcfgfile", metavar="FILE",
+                      help="Path to the new created zcfg file")
+    parser.add_option("-p", "--pythonfile", dest="pythonfile", metavar="FILE",
+                      help="Path to the new created python file")
+    parser.add_option("-m", "--multioptput", dest="multi",
+                      action="store_true", metavar="FILE",
+                      help="Path to the new created python file")
 
     (options, args) = parser.parse_args()
 
@@ -179,7 +201,7 @@ def main():
     converter.setGrassXMLFileName(options.xmlfile)
     converter.setZcfgFileName(options.zcfgfile)
     converter.setPythonFileName(options.pythonfile)
-    converter.convert()
+    converter.convert(options.multi)
     
     exit(0)
 

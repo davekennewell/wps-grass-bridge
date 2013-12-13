@@ -141,7 +141,11 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
                         else:
                             data.type = "string"
 
-                        self.inputParameter.literalDataList.append(data)
+                        if self._inputs[input].identifier == 'multi_output':
+                            if self._inputs[input].getValue().upper() == 'TRUE':
+                                self.inputParameter.multiOutput = True
+                        else:
+                            self.inputParameter.literalDataList.append(data)
                         self.LogInfo("Added literal input " + data.identifier + " with value " + str(data.value) + " of type " + str(type(data.value)))
 
                 # Check for complex data

@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 # Author:	Soeren Gebbert
 #               Parts of this code are from the great pyWPS from Jachym Cepicky:
 #               http://pywps.wald.intevation.org/
@@ -29,7 +29,7 @@ from ProcessLogging import *
 class ComplexData():
     """This class saves the complex in- and output data
     of a wps execution request"""
-    ############################################################################
+    ###########################################################################
     def __init__(self, fileobj=None):
         self.identifier = ""
         self.maxOccurs= ""
@@ -41,7 +41,7 @@ class ComplexData():
             self.__file = fileobj
             self.__parseFile()
 
-    ############################################################################
+    ###########################################################################
     def __parseFile(self):
         for i in range(6):
             string = self.__file.readline()
@@ -71,7 +71,7 @@ class ComplexData():
 ###############################################################################
 ###############################################################################
 ###############################################################################
-    
+
 class ComplexOutput(ComplexData):
     """The same as ComplexData, but used for name convenience"""
     pass
@@ -83,7 +83,7 @@ class ComplexOutput(ComplexData):
 class LiteralData():
     """This class saves the literal in- and output data
     of a wps execution request"""
-    ############################################################################
+    ###########################################################################
     def __init__(self, fileobj=None):
         self.identifier = ""
         self.value = ""
@@ -92,7 +92,7 @@ class LiteralData():
             self.__file = fileobj
             self.__parseFile()
 
-    ############################################################################
+    ###########################################################################
     def __parseFile(self):
         for i in range(3):
             string = self.__file.readline()
@@ -117,7 +117,7 @@ class LiteralData():
 class InputParameter(ProcessLogging):
     """This class parses and stores the key-value input parameter of
     a wps execusion request"""
-    ############################################################################
+    ###########################################################################
     def __init__(self, logfile):
 
         ProcessLogging.__init__(self, logfile)
@@ -134,9 +134,10 @@ class InputParameter(ProcessLogging):
         self.linkInput = "TRUE"
         self.ignoreProjection = "FALSE"
         self.useXYLocation = "FALSE"
+        self.multiOutput = False
         self.__fileName = ""
 
-    ############################################################################
+    ###########################################################################
     def parseFile(self, filename):
         """Parse the key-value pairs and call the appropriate subroutines and
         classes"""
@@ -171,9 +172,15 @@ class InputParameter(ProcessLogging):
 
             if string.upper().find("[LITERALDATA]") != -1:
                 #print string.upper()
-                self.literalDataList.append(LiteralData(self.__file))
+                LD = LiteralData(self.__file)
+                if LD.identifier == 'multi_output':
+                    self.LogWarning("multi_output: " + LD.value.upper())
+                    if LD.value.upper() == 'TRUE':
+                        self.multiOutput = True
+                else:
+                    self.literalDataList.append(LD)
 
-    ############################################################################
+    ###########################################################################
     def __parseSystem(self):
         """Parse and store the sytem relevant variables"""
         for i in range(2):
@@ -190,7 +197,7 @@ class InputParameter(ProcessLogging):
                     #print self.outputDir
 
 
-    ############################################################################
+    ###########################################################################
     def __parseGrass(self):
         """Parse and store the grass relevant variables"""
         for i in range(8):

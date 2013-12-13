@@ -29,7 +29,7 @@ class GrassXMLtoPyWPS(wps.GrassXMLtoDict):
     def __init__(self):
         wps.GrassXMLtoDict.__init__(self)
         
-    def convert(self):
+    def convert(self, multi):
         try:
             self._parseXML()
 
@@ -88,6 +88,17 @@ class GrassXMLtoPyWPS(wps.GrassXMLtoDict):
                 if input.has_key("ComplexData"):
                     self._output.write(", formats = " + str(input["ComplexData"]["Supported"]))
                 self._output.write(")\n")
+
+            if multi:
+                self._output.write("    self.addLiteralInput(")
+                self._output.write("identifier = \'multi_output\', ")
+                self._output.write("title = \'Return MULTI features instead SINGLE\', ")
+#                self._output.write("abstract = \'\', ")
+                self._output.write("minOccurs = 0, maxOccurs = 1, ")
+                self._output.write("type = type(True), ")
+                self._output.write("default = False, ")
+                self._output.write("allowedValues = [True, False])\n")
+                
 
             # For now only complex outputs are supported
             self._output.write("\n    # complex outputs\n")
@@ -149,8 +160,13 @@ def main():
     usage = "usage: %prog [-help,--help] --xmlfile module.xml --pythonfile module.py]"
     description = "Use %prog to convert Grass 7.0 WPS XML process description files into Py-WPS server python process files."
     parser = OptionParser(usage=usage, description=description)
-    parser.add_option("-x", "--xmlfile", dest="xmlfile", help="The path to the grass WPS input xml file", metavar="FILE")
-    parser.add_option("-p", "--pythonfile", dest="pythonfile", help="Path to the new created PyWPS python process file", metavar="FILE")
+    parser.add_option("-x", "--xmlfile", dest="xmlfile", metavar="FILE",
+                      help="The path to the grass WPS input xml file")
+    parser.add_option("-p", "--pythonfile", dest="pythonfile", metavar="FILE",
+                      help="Path to the new created PyWPS python process file")
+    parser.add_option("-m", "--multioptput", dest="multi",
+                      action="store_true", metavar="FILE",
+                      help="Path to the new created python file")
 
     (options, args) = parser.parse_args()
 
@@ -161,7 +177,7 @@ def main():
     converter = GrassXMLtoPyWPS()
     converter.setXMLFileName(options.xmlfile)
     converter.setOutputFileName(options.pythonfile)
-    converter.convert()
+    converter.convert(options.multi)
     
     exit(0)
 

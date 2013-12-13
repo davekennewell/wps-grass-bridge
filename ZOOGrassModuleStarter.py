@@ -166,7 +166,11 @@ class ZOOGrassModuleStarter(GrassModuleStarter):
                     input.identifier = key
                     input.value = self._inputs[key]["value"]
                     input.type = self._inputs[key]["DataType"]
-                    self.inputParameter.literalDataList.append(input)
+                    if input.identifier == 'multi_output':
+                        if input.value.upper() == 'TRUE':
+                            self.inputParameter.multiOutput = True
+                    else:
+                        self.inputParameter.literalDataList.append(input)                    
         # Only complex outputs are currently supported by grass
 	for key in self._outputs.keys():
             if self._outputs[key]["inRequest"].lower() == 'true':

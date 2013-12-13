@@ -36,7 +36,7 @@
 [LiteralData]
  Identifier=method
  DataType=string
- Value=bilinear
+ Value=linear
 
 [ComplexOutput]
  Identifier=output
