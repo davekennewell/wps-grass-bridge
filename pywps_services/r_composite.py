@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_composite(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.composite', title = 'Combines red, green and blue raster maps into a single composite raster map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'composite'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.composite.html')
+    WPSProcess.__init__(self, identifier = 'r.composite', title = 'Combines red, green and blue raster maps into a single composite raster map.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'composite'}, {'type': 'simple', 'title': 'RGB'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.composite.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'red', title = 'Name of raster map to be used for &#60;red&#62;', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

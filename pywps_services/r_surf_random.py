@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_surf_random(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.surf.random', title = 'Produces a raster map of uniform random deviates whose range can be expressed by the user.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'random'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.random.html')
+    WPSProcess.__init__(self, identifier = 'r.surf.random', title = 'Produces a raster surface map of uniform random deviates with defined range.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'surface'}, {'type': 'simple', 'title': 'random'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.random.html')
 
     # Literal and complex inputs
     self.addLiteralInput(identifier = 'min', title = 'Minimum random value', minOccurs = 0, maxOccurs = 1, type = type(0), default = 0)

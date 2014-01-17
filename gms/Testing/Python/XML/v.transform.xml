@@ -8,10 +8,11 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.transform</ows:Identifier>
-		<ows:Title>Performs an affine transformation (shift, scale and rotate, or GPCs) on vector map.</ows:Title>
+		<ows:Title>Performs an affine transformation (shift, scale and rotate) on vector map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.transform.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="transformation" />
+		<ows:Metadata xlink:title="GCP" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -62,7 +63,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
 				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -145,18 +146,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-t</ows:Identifier>
 				<ows:Title>Shift all z values to bottom=0</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-m</ows:Identifier>
-				<ows:Title>Print the transformation matrix to stdout</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

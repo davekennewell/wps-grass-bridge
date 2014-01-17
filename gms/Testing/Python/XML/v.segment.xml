@@ -62,7 +62,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
 				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -71,7 +71,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>1</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>file</ows:Identifier>
 				<ows:Title>'-' for standard input</ows:Title>
 				<ComplexData maximumMegabytes="2048">

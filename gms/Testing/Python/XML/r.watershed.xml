@@ -12,6 +12,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.watershed.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="hydrology" />
+		<ows:Metadata xlink:title="watershed" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>elevation</ows:Identifier>

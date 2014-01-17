@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_his(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.his', title = 'Generates red, green and blue raster map layers combining hue, intensity and saturation (HIS) values from user-specified input raster map layers.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'color transformation'}, {'type': 'simple', 'title': 'RGB'}, {'type': 'simple', 'title': 'HIS'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.his.html')
+    WPSProcess.__init__(self, identifier = 'r.his', title = 'Generates red, green and blue raster map layers combining hue, intensity and saturation (HIS) values from user-specified input raster map layers.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'color transformation'}, {'type': 'simple', 'title': 'RGB'}, {'type': 'simple', 'title': 'HIS'}, {'type': 'simple', 'title': 'IHS'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.his.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'h_map', title = 'Name of layer to be used for HUE', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.surf.gauss</ows:Identifier>
-		<ows:Title>GRASS module to produce a raster map layer of gaussian deviates whose mean and standard deviation can be expressed by the user. It uses a gaussian random number generator.</ows:Title>
+		<ows:Title>Mean and standard deviation of gaussian deviates can be expressed by the user.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.surf.gauss.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="surface" />
@@ -72,7 +72,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name of the output random surface</ows:Title>
+				<ows:Title>Name for output raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

@@ -99,6 +99,19 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>filter</ows:Identifier>
+				<ows:Title>Filtering option</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>both</ows:Value>
+						<ows:Value>positive</ows:Value>
+						<ows:Value>negative</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>both</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-e</ows:Identifier>
 				<ows:Title>Estimate point density and distance for the input vector points within the current region extends and quit</ows:Title>
 				<LiteralData>

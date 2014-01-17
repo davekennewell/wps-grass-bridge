@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.mapcalc</ows:Identifier>
-		<ows:Title>Performs r.mapcalc expressions on maps of sampled space time raster datasets.</ows:Title>
+		<ows:Title>Perform spatio-temporal mapcalc expressions on temporal sampled maps of space time raster datasets.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.mapcalc.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="algebra" />
@@ -37,7 +37,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>expression</ows:Identifier>
-				<ows:Title>r.mapcalc expression applied to each time step of the sampled data</ows:Title>
+				<ows:Title>Spatio-temporal mapcalc expression</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -57,7 +57,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>follows</ows:Value>
 						<ows:Value>precedes</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>during,overlap,contain,equal</DefaultValue>
+					<DefaultValue>equal</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">

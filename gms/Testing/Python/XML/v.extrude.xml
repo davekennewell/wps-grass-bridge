@@ -8,10 +8,11 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.extrude</ows:Identifier>
-		<ows:Title>Extrudes flat vector features to 3D with defined height.</ows:Title>
+		<ows:Title>Optionally the height can be derived from sampling of elevation raster map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.extrude.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
+		<ows:Metadata xlink:title="sampling" />
 		<ows:Metadata xlink:title="3D" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
@@ -63,13 +64,29 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
 				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 					<DefaultValue>-1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>cats</ows:Identifier>
+				<ows:Title>Example: 1,3,7-9,13</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
@@ -80,10 +97,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AllowedValues>
 						<ows:Value>point</ows:Value>
 						<ows:Value>line</ows:Value>
-						<ows:Value>boundary</ows:Value>
 						<ows:Value>area</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>point,line,boundary,area</DefaultValue>
+					<DefaultValue>point,line,area</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -96,8 +112,24 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>height</ows:Identifier>
+				<ows:Title>Fixed height for 3D vector features</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>hcolumn</ows:Identifier>
+				<ows:Title>Name of attribute column with feature height</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>elevation</ows:Identifier>
-				<ows:Title>Elevation raster for height extraction</ows:Title>
+				<ows:Title>Elevation raster map for height extraction</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -139,18 +171,32 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>height</ows:Identifier>
-				<ows:Title>Fixed height for 3D vector objects</ows:Title>
+				<ows:Identifier>method</ows:Identifier>
+				<ows:Title>Sampling interpolation method</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:float">float</ows:DataType>
-					<ows:AnyValue/>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>nearest</ows:Value>
+						<ows:Value>linear</ows:Value>
+						<ows:Value>cubic</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>nearest</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>hcolumn</ows:Identifier>
-				<ows:Title>Name of attribute column with object heights</ows:Title>
+				<ows:Identifier>scale</ows:Identifier>
+				<ows:Title>Scale factor sampled raster values</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1.0</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>null_value</ows:Identifier>
+				<ows:Title>Height for sampled raster NULL values</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>

@@ -12,6 +12,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.composite.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="composite" />
+		<ows:Metadata xlink:title="RGB" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>red</ows:Identifier>

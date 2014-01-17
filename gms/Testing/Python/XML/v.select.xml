@@ -63,7 +63,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>alayer</ows:Identifier>
 				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -136,7 +136,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>blayer</ows:Identifier>
 				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -167,25 +167,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
 						<ows:Value>overlap</ows:Value>
-						<ows:Value>equals</ows:Value>
-						<ows:Value>disjoint</ows:Value>
-						<ows:Value>intersects</ows:Value>
-						<ows:Value>touches</ows:Value>
-						<ows:Value>crosses</ows:Value>
-						<ows:Value>within</ows:Value>
-						<ows:Value>contains</ows:Value>
-						<ows:Value>overlaps</ows:Value>
-						<ows:Value>relate</ows:Value>
 					</ows:AllowedValues>
 					<DefaultValue>overlap</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>relate</ows:Identifier>
-				<ows:Title>Intersection Matrix Pattern used for 'relate' operator</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

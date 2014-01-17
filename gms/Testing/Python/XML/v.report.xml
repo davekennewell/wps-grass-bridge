@@ -63,7 +63,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
 				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -101,27 +101,14 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-r</ows:Identifier>
-				<ows:Title>Reverse sort the result</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-s</ows:Identifier>
+				<ows:Identifier>sort</ows:Identifier>
 				<ows:Title>Sort the result</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
+						<ows:Value>asc</ows:Value>
+						<ows:Value>desc</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
 				</LiteralData>
 			</Input>
 		</DataInputs>

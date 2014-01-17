@@ -14,6 +14,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="algebra" />
 		<ows:Metadata xlink:title="statistics" />
 		<ows:Metadata xlink:title="aggregation" />
+		<ows:Metadata xlink:title="filter" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -101,7 +102,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>method</ows:Identifier>
 				<ows:Title>Neighborhood operation</ows:Title>
 				<LiteralData>
@@ -115,6 +116,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>range</ows:Value>
 						<ows:Value>stddev</ows:Value>
 						<ows:Value>sum</ows:Value>
+						<ows:Value>count</ows:Value>
 						<ows:Value>variance</ows:Value>
 						<ows:Value>diversity</ows:Value>
 						<ows:Value>interspersion</ows:Value>
@@ -167,7 +169,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>quantile</ows:Identifier>
 				<ows:Title>Quantile to calculate for method=quantile</ows:Title>
 				<LiteralData>
@@ -253,35 +255,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>image/tiff</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>image/tiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

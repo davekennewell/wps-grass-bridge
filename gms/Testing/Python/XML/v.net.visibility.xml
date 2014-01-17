@@ -8,11 +8,11 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.net.visibility</ows:Identifier>
-		<ows:Title>Visibility graph construction.</ows:Title>
+		<ows:Title>Performs visibility graph construction.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.net.visibility.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="network" />
-		<ows:Metadata xlink:title="path" />
+		<ows:Metadata xlink:title="shortest path" />
 		<ows:Metadata xlink:title="visibility" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">

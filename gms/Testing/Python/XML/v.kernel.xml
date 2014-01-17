@@ -8,14 +8,14 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.kernel</ows:Identifier>
-		<ows:Title>Generates a raster density map from vector point data using a moving kernel or optionally generates a vector density map on a vector network.</ows:Title>
+		<ows:Title>Density is computed using a moving kernel. Optionally generates a vector density map on a vector network.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.kernel.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="kernel density" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Input vector with training points</ows:Title>
+				<ows:Title>No title available</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -64,7 +64,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>net</ows:Identifier>
-				<ows:Title>Input network vector map</ows:Title>
+				<ows:Title>No title available</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -113,15 +113,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Output raster/vector map</ows:Title>
+				<ows:Title>Outputs vector map if network map is given, otherwise raster map</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>stddeviation</ows:Identifier>
-				<ows:Title>Standard deviation in map units</ows:Title>
+				<ows:Identifier>radius</ows:Identifier>
+				<ows:Title>Kernel radius in map units</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -230,7 +230,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-m</ows:Identifier>
-				<ows:Title>In network mode, multiply the result by number of input points.</ows:Title>
+				<ows:Title>In network mode, multiply the result by number of input points</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

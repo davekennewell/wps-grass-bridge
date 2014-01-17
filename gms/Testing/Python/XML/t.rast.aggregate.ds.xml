@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>t.rast.aggregate.ds</ows:Identifier>
-		<ows:Title>Aggregated data of an existing space time raster dataset using the temporal topology of a second space time dataset.</ows:Title>
+		<ows:Title>Aggregated data of an existing space time raster dataset using the time intervals of a second space time dataset.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.aggregate.ds.html</ows:Abstract>
 		<ows:Metadata xlink:title="temporal" />
 		<ows:Metadata xlink:title="aggregation" />
@@ -80,8 +80,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name of the output space time raster dataset</ows:Title>
+				<ows:Identifier>base</ows:Identifier>
+				<ows:Title>Name of base raster map</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -136,14 +136,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>start</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>base</ows:Identifier>
-				<ows:Title>Name of base raster map</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-n</ows:Identifier>
 				<ows:Title>Register Null maps</ows:Title>
@@ -195,18 +187,23 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>stdout</ows:Identifier>
-				<ows:Title>Module output on stdout</ows:Title>
-				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name of the output space time raster dataset</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>text/plain</MimeType>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>text/plain</MimeType>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

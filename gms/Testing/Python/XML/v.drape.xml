@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.drape</ows:Identifier>
-		<ows:Title>Converts vector map to 3D by sampling of elevation raster map.</ows:Title>
+		<ows:Title>Converts 2D vector features to 3D by sampling of elevation raster map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.drape.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
@@ -64,13 +64,29 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
 				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
 					<DefaultValue>-1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>cats</ows:Identifier>
+				<ows:Title>Example: 1,3,7-9,13</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
@@ -83,15 +99,12 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>line</ows:Value>
 						<ows:Value>boundary</ows:Value>
 						<ows:Value>centroid</ows:Value>
-						<ows:Value>area</ows:Value>
-						<ows:Value>face</ows:Value>
-						<ows:Value>kernel</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>point,line,boundary,centroid,area,face,kernel</DefaultValue>
+					<DefaultValue>point,line,boundary,centroid</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>rast</ows:Identifier>
+				<ows:Identifier>elevation</ows:Identifier>
 				<ows:Title>Elevation raster map for height extraction</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -135,12 +148,12 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>method</ows:Identifier>
-				<ows:Title>Sampling method</ows:Title>
+				<ows:Title>Sampling interpolation method</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
 						<ows:Value>nearest</ows:Value>
-						<ows:Value>bilinear</ows:Value>
+						<ows:Value>linear</ows:Value>
 						<ows:Value>cubic</ows:Value>
 					</ows:AllowedValues>
 					<DefaultValue>nearest</DefaultValue>
@@ -148,7 +161,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>scale</ows:Identifier>
-				<ows:Title>Scale sampled raster values</ows:Title>
+				<ows:Title>Scale factor sampled raster values</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -156,16 +169,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>where</ows:Identifier>
-				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>null_value</ows:Identifier>
-				<ows:Title>Will set Z to this value, if value from raster map can not be read</ows:Title>
+				<ows:Title>Height for sampled raster NULL values</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

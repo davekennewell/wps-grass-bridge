@@ -8,10 +8,11 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.kappa</ows:Identifier>
-		<ows:Title>Calculate error matrix and kappa parameter for accuracy assessment of classification result.</ows:Title>
+		<ows:Title>Calculates error matrix and kappa parameter for accuracy assessment of classification result.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.kappa.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="statistics" />
+		<ows:Metadata xlink:title="classification" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>classification</ows:Identifier>
@@ -181,7 +182,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output file containing error matrix and kappa</ows:Title>
+				<ows:Title>If not given, print to startdard output</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

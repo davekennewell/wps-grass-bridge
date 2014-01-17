@@ -8,14 +8,14 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.stats</ows:Identifier>
-		<ows:Title>Generates area statistics for raster map layers.</ows:Title>
+		<ows:Title>Generates area statistics for raster map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.stats.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="statistics" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1024">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of input raster map(s)</ows:Title>
+				<ows:Title>Name of raster map(s) to report on</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -76,7 +76,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>nsteps</ows:Identifier>
-				<ows:Title>Number of fp subranges to collect stats from</ows:Title>
+				<ows:Title>Number of floating-point subranges to collect stats from</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -84,32 +84,19 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-1</ows:Identifier>
-				<ows:Title>One cell (range) per line</ows:Title>
+				<ows:Identifier>sort</ows:Identifier>
+				<ows:Title>Default: sorted by categories or intervals</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
+						<ows:Value>asc</ows:Value>
+						<ows:Value>desc</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-A</ows:Identifier>
-				<ows:Title>Print averaged values instead of intervals</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-a</ows:Identifier>
-				<ows:Title>Print area totals</ows:Title>
+				<ows:Title>Print area totals in square meters</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -121,7 +108,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-c</ows:Identifier>
-				<ows:Title>Print cell counts</ows:Title>
+				<ows:Title>Print cell counts (sortable)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -133,7 +120,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-p</ows:Identifier>
-				<ows:Title>Print APPROXIMATE percents (total percent may not be 100%)</ows:Title>
+				<ows:Title>Print approximate (total percent may not be 100%) percents</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -146,6 +133,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-l</ows:Identifier>
 				<ows:Title>Print category labels</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-1</ows:Identifier>
+				<ows:Title>One cell (range) per line</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -180,8 +179,20 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-A</ows:Identifier>
+				<ows:Title>Print averaged values instead of intervals (floating-point maps only)</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-r</ows:Identifier>
-				<ows:Title>Print raw indexes of fp ranges (fp maps only)</ows:Title>
+				<ows:Title>Print raw indexes of floating-point ranges (floating-point maps only)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -193,7 +204,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-n</ows:Identifier>
-				<ows:Title>Suppress reporting of any NULLs</ows:Title>
+				<ows:Title>Do not report no data value</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -205,7 +216,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-N</ows:Identifier>
-				<ows:Title>Suppress reporting of NULLs when all values are NULL</ows:Title>
+				<ows:Title>Do not report cells where all maps have no data</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -217,7 +228,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-C</ows:Identifier>
-				<ows:Title>Report for cats fp ranges (fp maps only)</ows:Title>
+				<ows:Title>Report for cats floating-point ranges (floating-point maps only)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -229,7 +240,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-i</ows:Identifier>
-				<ows:Title>Read fp map as integer (use map's quant rules)</ows:Title>
+				<ows:Title>Read floating-point map as integer (use map's quant rules)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

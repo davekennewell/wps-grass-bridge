@@ -13,10 +13,11 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="cost surface" />
 		<ows:Metadata xlink:title="cumulative costs" />
+		<ows:Metadata xlink:title="cost allocation" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of raster map containing grid cell cost information</ows:Title>
+				<ows:Title>Name of input raster map containing grid cell cost information</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -199,24 +200,24 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
-				<ows:Identifier>coordinate</ows:Identifier>
-				<ows:Title>Map grid coordinates of a starting point (E,N)</ows:Title>
+				<ows:Identifier>start_coordinates</ows:Identifier>
+				<ows:Title>Coordinates of starting point(s) (E,N)</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
-				<ows:Identifier>stop_coordinate</ows:Identifier>
-				<ows:Title>Map grid coordinates of a stopping point (E,N)</ows:Title>
+				<ows:Identifier>stop_coordinates</ows:Identifier>
+				<ows:Title>Coordinates of stopping point(s) (E,N)</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>max_cost</ows:Identifier>
-				<ows:Title>Optional maximum cumulative cost</ows:Title>
+				<ows:Title>Maximum cumulative cost</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -236,7 +237,12 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<ows:Title>Percent of map to keep in memory</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AnyValue/>
+					<ows:AllowedValues>
+						<ows:Range ows:rangeClosure="closed">
+							<ows:MinimumValue>0</ows:MinimumValue>
+							<ows:MaximumValue>100</ows:MaximumValue>
+						</ows:Range>
+					</ows:AllowedValues>
 					<DefaultValue>40</DefaultValue>
 				</LiteralData>
 			</Input>
@@ -278,7 +284,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-i</ows:Identifier>
-				<ows:Title>Only print info about disk space and memory requirements</ows:Title>
+				<ows:Title>Print info about disk space and memory requirements and exit</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -371,7 +377,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>nearest</ows:Identifier>
-				<ows:Title>Name of output raster map with nearest start point</ows:Title>
+				<ows:Title>Name for output raster map with nearest start point</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -405,7 +411,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>outdir</ows:Identifier>
-				<ows:Title>Name of output raster map to contain movement directions</ows:Title>
+				<ows:Title>Name for output raster map to contain movement directions</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

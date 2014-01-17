@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="sun energy" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>elevin</ows:Identifier>
+				<ows:Identifier>elev_in</ows:Identifier>
 				<ows:Title>Name of the input elevation raster map [meters]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -58,7 +58,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>aspin</ows:Identifier>
+				<ows:Identifier>asp_in</ows:Identifier>
 				<ows:Title>Name of the input aspect map (terrain aspect or azimuth of the solar panel) [decimal degrees]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -110,7 +110,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>slopein</ows:Identifier>
+				<ows:Identifier>slope_in</ows:Identifier>
 				<ows:Title>Name of the input slope raster map (terrain slope or solar panel inclination) [decimal degrees]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -162,7 +162,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>linkein</ows:Identifier>
+				<ows:Identifier>linke_in</ows:Identifier>
 				<ows:Title>Name of the Linke atmospheric turbidity coefficient input raster map [-]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -266,7 +266,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>latin</ows:Identifier>
+				<ows:Identifier>lat_in</ows:Identifier>
 				<ows:Title>Name of input raster map containing latitudes [decimal degrees]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -309,7 +309,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>longin</ows:Identifier>
+				<ows:Identifier>long_in</ows:Identifier>
 				<ows:Title>Name of input raster map containing longitudes [decimal degrees]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -352,7 +352,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>coefbh</ows:Identifier>
+				<ows:Identifier>coef_bh</ows:Identifier>
 				<ows:Title>Name of real-sky beam radiation coefficient (thick cloud) input raster map [0-1]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -395,7 +395,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>coefdh</ows:Identifier>
+				<ows:Identifier>coef_dh</ows:Identifier>
 				<ows:Title>Name of real-sky diffuse radiation coefficient (haze) input raster map [0-1]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -481,7 +481,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>horizonstep</ows:Identifier>
+				<ows:Identifier>horizon_step</ows:Identifier>
 				<ows:Title>Angle step size for multidirectional horizon [degrees]</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -511,7 +511,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>declin</ows:Identifier>
+				<ows:Identifier>declination</ows:Identifier>
 				<ows:Title>Declination value (overriding the internally computed value) [radians]</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -532,7 +532,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>dist</ows:Identifier>
+				<ows:Identifier>distance_step</ows:Identifier>
 				<ows:Title>Sampling distance step coefficient (0.5-1.5)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -541,7 +541,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>numpartitions</ows:Identifier>
+				<ows:Identifier>num_partitions</ows:Identifier>
 				<ows:Title>Read the input files in this number of chunks</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
@@ -550,7 +550,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>civiltime</ows:Identifier>
+				<ows:Identifier>civil_time</ows:Identifier>
 				<ows:Title>Civil time zone value, if none, the time will be local solar time</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -558,8 +558,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-s</ows:Identifier>
-				<ows:Title>Incorporate the shadowing effect of terrain</ows:Title>
+				<ows:Identifier>-p</ows:Identifier>
+				<ows:Title>Do not incorporate the shadowing effect of terrain</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -697,40 +697,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>insol_time</ows:Identifier>
-				<ows:Title>Output insolation time raster map [h] (mode 2 only)</ows:Title>
-				<ComplexOutput>
-					<Default>
-						<Format>
-							<MimeType>image/tiff</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>image/tiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>image/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-geotiff</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-erdas-hfa</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/netcdf</MimeType>
-						</Format>
-						<Format>
-							<MimeType>application/x-netcdf</MimeType>
-						</Format>
-					</Supported>
-				</ComplexOutput>
-			</Output>
-			<Output>
 				<ows:Identifier>diff_rad</ows:Identifier>
 				<ows:Title>Output diffuse irradiance [W.m-2] (mode 1) or irradiation raster map [Wh.m-2.day-1] (mode 2)</ows:Title>
 				<ComplexOutput>
@@ -801,6 +767,40 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Output>
 				<ows:Identifier>glob_rad</ows:Identifier>
 				<ows:Title>Output global (total) irradiance/irradiation [W.m-2] (mode 1) or irradiance/irradiation raster map [Wh.m-2.day-1] (mode 2)</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>insol_time</ows:Identifier>
+				<ows:Title>Output insolation time raster map [h] (mode 2 only)</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

@@ -19,7 +19,7 @@ class t_sample(WPSProcess):
     self.addLiteralInput(identifier = 'intype', title = 'Type of the input space time dataset', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "strds", allowedValues = ['strds', 'stvds', 'str3ds'])
     self.addLiteralInput(identifier = 'samtype', title = 'Type of the sample space time dataset', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "strds", allowedValues = ['strds', 'stvds', 'str3ds'])
     self.addLiteralInput(identifier = 'method', title = 'The method to be used for sampling the input dataset', minOccurs = 0, maxOccurs = 1024, type = type("string"), default = "during,overlap,contain,equal", allowedValues = ['start', 'during', 'overlap', 'contain', 'equal', 'follows', 'precedes'])
-    self.addLiteralInput(identifier = 'fs', title = 'Field separator character between the output columns, default is tabular " | ". Do not use "," as this char is reserved to list several map ids in a sample granule', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
+    self.addLiteralInput(identifier = 'separator', title = 'Separator character between the output columns, default is tabular " | ". Do not use "," as this char is reserved to list several map ids in a sample granule', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = '-c', title = 'Print column names', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-s', title = 'Check spatial overlap to perform spatio-temporal sampling', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
 

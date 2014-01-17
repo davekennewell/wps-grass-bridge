@@ -726,7 +726,7 @@ class GrassModuleStarter(ModuleLogging):
                 extrdir = tempfile.mkdtemp(dir = self.gisdbase)
                 parameter = [self._createGrassModulePath("t.rast.import"),
                                  "input=" + input.pathToFile, "extrdir=" + extrdir,
-                                 "output=" + inputName]
+                                 "output=" + inputName, "-r"]
                 if link == True:
                     parameter.append("-l")
                     
@@ -977,17 +977,25 @@ class GrassModuleStarter(ModuleLogging):
         if os.name != "posix":
             grassModule = grassModule + ".exe"
 
+        pathList = []
+
         # Search the module in the bin directory
         grassModulePath = os.path.join(self.inputParameter.grassGisBase, "bin", grassModule)
+        pathList.append(grassModulePath)
+        self.LogInfo("Looking for ##%s##"%grassModulePath)
 
-        if os.path.isfile(grassModulePath) == False:
+        if os.path.isfile(grassModulePath) is not True:
             grassModulePath = os.path.join(self.inputParameter.grassGisBase, "scripts", grassModule)
+            pathList.append(grassModulePath)
+            self.LogInfo("Looking for " + grassModulePath)
             # if the module was not found in the bin dir, test the script directory
-            if os.path.isfile(grassModulePath) == False:
+            if os.path.isfile(grassModulePath) is not True:
                 grassModulePath = os.path.join(self.inputParameter.grassAddonPath, grassModule)
+                pathList.append(grassModulePath)
+                self.LogInfo("Looking for " + grassModulePath)
                 # if the module was not found in the script dir, test the addon path
-                if os.path.isfile(grassModulePath) == False:
-                    log = "GRASS module " + grassModule + " not found in " + grassModulePath
+                if os.path.isfile(grassModulePath) is not True:
+                    log = "GRASS module " + grassModule + " not found in " + str(pathList)
                     self.LogError(log)
                     raise GMSError(log)
 

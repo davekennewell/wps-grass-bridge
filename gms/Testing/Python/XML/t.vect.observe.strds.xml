@@ -62,9 +62,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="1" maxOccurs="1024">
 				<ows:Identifier>strds</ows:Identifier>
-				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ows:Title>Name of the input space time raster datasets</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -84,9 +84,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>column</ows:Identifier>
-				<ows:Title>Name of the vector column to be created and to store sampled raster values, otherwise the space time raster name is used as column name</ows:Title>
+			<Input minOccurs="1" maxOccurs="1024">
+				<ows:Identifier>columns</ows:Identifier>
+				<ows:Title>Names of the vector columns to be created and to store sampled raster values, one name for each STRDS</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -170,7 +170,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>vector_output</ows:Identifier>
-				<ows:Title>Name of the new created vector map that stores the sampled values</ows:Title>
+				<ows:Title>Name of the new created vector map that stores the sampled values in different layers</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

@@ -248,7 +248,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>man</ows:Identifier>
-				<ows:Title>Name of mannings n raster map</ows:Title>
+				<ows:Title>Name of the Manning's n raster map</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -291,7 +291,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>man_value</ows:Identifier>
-				<ows:Title>Mannings n unique value</ows:Title>
+				<ows:Title>Manning's n unique value</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

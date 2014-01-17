@@ -119,8 +119,16 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>fs</ows:Identifier>
-				<ows:Title>Field separator character between the columns, default is tabular "\t"</ows:Title>
+				<ows:Identifier>granule</ows:Identifier>
+				<ows:Title>The granule to be used for listing. The granule must be specified as string eg.: absolute time "1 months" or relative time "1"</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>separator</ows:Identifier>
+				<ows:Title>Separator character between the columns, default is tabular "\t"</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

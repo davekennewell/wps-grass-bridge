@@ -14,7 +14,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="hydrology" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>elevation</ows:Identifier>
+				<ows:Identifier>input</ows:Identifier>
 				<ows:Title>Name of input elevation raster map</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -57,7 +57,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>type</ows:Identifier>
+				<ows:Identifier>format</ows:Identifier>
 				<ows:Title>Aspect direction format</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
@@ -129,7 +129,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>depressionless</ows:Identifier>
+				<ows:Identifier>output</ows:Identifier>
 				<ows:Title>Name for output depressionless elevation raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
@@ -163,7 +163,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>direction</ows:Identifier>
+				<ows:Identifier>outdir</ows:Identifier>
 				<ows:Title>Name for output flow direction map for depressionless elevation raster map</ows:Title>
 				<ComplexOutput>
 					<Default>

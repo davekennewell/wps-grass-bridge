@@ -19,6 +19,7 @@ class v_outlier(WPSProcess):
     self.addLiteralInput(identifier = 'son', title = 'Interpolation spline step value in north direction', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 10.0)
     self.addLiteralInput(identifier = 'lambda_i', title = 'Tykhonov regularization weight', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.1)
     self.addLiteralInput(identifier = 'thres_o', title = 'Threshold for the outliers', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 50.0)
+    self.addLiteralInput(identifier = 'filter', title = 'Filtering option', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "both", allowedValues = ['both', 'positive', 'negative'])
     self.addLiteralInput(identifier = '-e', title = 'Estimate point density and distance for the input vector points within the current region extends and quit', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
 
     # complex outputs

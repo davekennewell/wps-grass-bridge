@@ -8,14 +8,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.water.outlet</ows:Identifier>
-		<ows:Title>Creates watershed basins.</ows:Title>
+		<ows:Title>Creates watershed basins from a drainage direction map.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.water.outlet.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="hydrology" />
+		<ows:Metadata xlink:title="watershed" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of input raster map</ows:Title>
+				<ows:Title>Name of input drainage direction map</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -56,19 +57,11 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>easting</ows:Identifier>
-				<ows:Title>Easting grid coordinates</ows:Title>
+			<Input minOccurs="2" maxOccurs="2">
+				<ows:Identifier>coordinates</ows:Identifier>
+				<ows:Title>Coordinates of outlet point</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>northing</ows:Identifier>
-				<ows:Title>Northing grid coordinates</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
@@ -121,7 +114,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Title>Name for output watershed basin map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

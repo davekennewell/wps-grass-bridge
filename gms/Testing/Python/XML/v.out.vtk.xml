@@ -12,6 +12,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.out.vtk.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="export" />
+		<ows:Metadata xlink:title="VTK" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -58,22 +59,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						</Format>
 						<Format>
 							<MimeType>application/x-zipped-shp</MimeType>
-						</Format>
-					</Supported>
-				</ComplexData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Path to resulting VTK file</ows:Title>
-				<ComplexData maximumMegabytes="2048">
-					<Default>
-						<Format>
-							<MimeType>text/plain</MimeType>
-						</Format>
-					</Default>
-					<Supported>
-						<Format>
-							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexData>
@@ -148,9 +133,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>stdout</ows:Identifier>
-				<ows:Title>Module output on stdout</ows:Title>
-				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name for output VTK file</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

@@ -8,14 +8,14 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.shaded.relief</ows:Identifier>
-		<ows:Title>Creates shaded relief map from an elevation map (DEM).</ows:Title>
-		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.shaded.relief.html</ows:Abstract>
+		<ows:Title>No title available</ows:Title>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="elevation" />
+		<ows:Metadata xlink:title="terrain" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of input elevation raster map</ows:Title>
+				<ows:Title>Name of input raster map</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -95,7 +95,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>scale</ows:Identifier>
-				<ows:Title>Scale factor for converting horizontal units to elevation units</ows:Title>
+				<ows:Title>Scale factor for converting meters to elevation units</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -104,15 +104,13 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>units</ows:Identifier>
-				<ows:Title>Set scaling factor (applies to lat./long. locations only, none: scale=1)</ows:Title>
+				<ows:Title>Elevation units (overrides scale factor)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>none</ows:Value>
-						<ows:Value>meters</ows:Value>
-						<ows:Value>feet</ows:Value>
+						<ows:Value>intl</ows:Value>
+						<ows:Value>survey</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>none</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -164,7 +162,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Title>Default: &lt;input_map&gt;.shade</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

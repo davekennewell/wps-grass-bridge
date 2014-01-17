@@ -8,14 +8,15 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.volume</ows:Identifier>
-		<ows:Title>Calculates the volume of data "clumps", and (optionally) produces a GRASS vector points map containing the calculated centroids of these clumps.</ows:Title>
+		<ows:Title>Optionally produces a GRASS vector points map containing the calculated centroids of these clumps.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.volume.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="volume" />
+		<ows:Metadata xlink:title="clumps" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Existing raster map representing data that will be summed within clumps</ows:Title>
+				<ows:Title>Name of input raster map representing data that will be summed within clumps</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -58,7 +59,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>clump</ows:Identifier>
-				<ows:Title>Existing raster map, preferably the output of r.clump</ows:Title>
+				<ows:Title>Preferably the output of r.clump. If no clump map is given than MASK is used.</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -101,7 +102,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-f</ows:Identifier>
-				<ows:Title>Generate unformatted report</ows:Title>
+				<ows:Title>Generate unformatted report (items separated by colon)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -160,7 +161,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>centroids</ows:Identifier>
-				<ows:Title>Vector points map to contain clump centroids</ows:Title>
+				<ows:Title>Name for output vector points map to contain clump centroids</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -194,6 +195,22 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 							<MimeType>text/xml</MimeType>
 							<Encoding>UTF-8</Encoding>
 							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>If no output file given report is printed to standard output</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

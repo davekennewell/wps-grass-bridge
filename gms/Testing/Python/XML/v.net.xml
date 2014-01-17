@@ -12,7 +12,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.net.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="network" />
-		<ows:Metadata xlink:title="maintenance" />
+		<ows:Metadata xlink:title="network maintenance" />
 		<DataInputs>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -124,24 +124,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>report</ows:Value>
 						<ows:Value>nreport</ows:Value>
 					</ows:AllowedValues>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>alayer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-					<DefaultValue>1</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>nlayer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-					<DefaultValue>2</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

@@ -11,7 +11,7 @@ from PyWPSGrassModuleStarter import PyWPSGrassModuleStarter
 class r_watershed(WPSProcess):
 
   def __init__(self):
-    WPSProcess.__init__(self, identifier = 'r.watershed', title = 'Calculates hydrological parameters and RUSLE factors.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'hydrology'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.watershed.html')
+    WPSProcess.__init__(self, identifier = 'r.watershed', title = 'Calculates hydrological parameters and RUSLE factors.', version = 1, statusSupported = True, storeSupported = True, metadata = [{'type': 'simple', 'title': 'raster'}, {'type': 'simple', 'title': 'hydrology'}, {'type': 'simple', 'title': 'watershed'}], abstract = 'http://grass.osgeo.org/grass70/manuals/html70_user/r.watershed.html')
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'elevation', title = 'Name of input elevation raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])

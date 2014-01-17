@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>r.resamp.bspline</ows:Identifier>
-		<ows:Title>Performs bicubic or bilinear spline interpolation with Tykhonov regularization.</ows:Title>
+		<ows:Title>Performs cubic or linear spline interpolation with Tykhonov regularization.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.resamp.bspline.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="surface" />
@@ -123,10 +123,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>bilinear</ows:Value>
-						<ows:Value>bicubic</ows:Value>
+						<ows:Value>linear</ows:Value>
+						<ows:Value>cubic</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>bicubic</DefaultValue>
+					<DefaultValue>cubic</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">

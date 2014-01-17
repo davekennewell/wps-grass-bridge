@@ -12,6 +12,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.to.points.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="geometry" />
+		<ows:Metadata xlink:title="3D" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -62,7 +63,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>llayer</ows:Identifier>
 				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -82,8 +83,21 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 						<ows:Value>boundary</ows:Value>
 						<ows:Value>centroid</ows:Value>
 						<ows:Value>area</ows:Value>
+						<ows:Value>face</ows:Value>
+						<ows:Value>kernel</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>point,line,boundary,centroid</DefaultValue>
+					<DefaultValue>point,line,boundary,centroid,face</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>use</ows:Identifier>
+				<ows:Title>Use line nodes or vertices only</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>node</ows:Value>
+						<ows:Value>vertex</ows:Value>
+					</ows:AllowedValues>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -96,32 +110,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-n</ows:Identifier>
-				<ows:Title>Write line nodes</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-v</ows:Identifier>
-				<ows:Title>Write line vertices</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-i</ows:Identifier>
-				<ows:Title>Interpolate points between line vertices</ows:Title>
+				<ows:Title>Interpolate points between line vertices (only for use=vertex)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -147,7 +137,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output vector map where points will be written</ows:Title>
+				<ows:Title>Name for output vector map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

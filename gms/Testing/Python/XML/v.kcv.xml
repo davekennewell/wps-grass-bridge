@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="points" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>input</ows:Identifier>
+				<ows:Identifier>map</ows:Identifier>
 				<ows:Title>Or data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -63,29 +63,24 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
-					<DefaultValue>-1</DefaultValue>
+					<DefaultValue>1</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>k</ows:Identifier>
-				<ows:Title>Number of partitions</ows:Title>
+				<ows:Title>Must be &gt; 1</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Range ows:rangeClosure="closed">
-							<ows:MinimumValue>1</ows:MinimumValue>
-							<ows:MaximumValue>32767</ows:MaximumValue>
-						</ows:Range>
-					</ows:AllowedValues>
+					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>column</ows:Identifier>
 				<ows:Title>Name for new column to which partition number is written</ows:Title>
 				<LiteralData>
@@ -109,41 +104,18 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Name for output vector map</ows:Title>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/3.1.1/base/gml.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>application/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/gml/2.1.2/feature.xsd</Schema>
-						</Format>
-						<Format>
-							<MimeType>text/xml</MimeType>
-							<Encoding>UTF-8</Encoding>
-							<Schema>http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd</Schema>
+							<MimeType>text/plain</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

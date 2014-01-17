@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
  service="WPS" version="1.0.0" xml:lang="en-US"> 
 	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
 		<ows:Identifier>v.surf.bspline</ows:Identifier>
-		<ows:Title>Bicubic or bilinear spline interpolation with Tykhonov regularization.</ows:Title>
+		<ows:Title>Performs bicubic or bilinear spline interpolation with Tykhonov regularization.</ows:Title>
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/v.surf.bspline.html</ows:Abstract>
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="surface" />
@@ -65,8 +65,17 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>sparse</ows:Identifier>
-				<ows:Title>Name of input vector map of sparse points</ows:Title>
+				<ows:Identifier>layer</ows:Identifier>
+				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>sparse_input</ows:Identifier>
+				<ows:Title>Or data source for direct OGR access</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -180,10 +189,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
-						<ows:Value>bilinear</ows:Value>
-						<ows:Value>bicubic</ows:Value>
+						<ows:Value>linear</ows:Value>
+						<ows:Value>cubic</ows:Value>
 					</ows:AllowedValues>
-					<DefaultValue>bilinear</DefaultValue>
+					<DefaultValue>linear</DefaultValue>
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
@@ -195,18 +204,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<DefaultValue>0.01</DefaultValue>
 				</LiteralData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
-					<ows:AnyValue/>
-					<DefaultValue>1</DefaultValue>
-				</LiteralData>
-			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>column</ows:Identifier>
-				<ows:Title>Name of attribute column with values to approximate</ows:Title>
+				<ows:Title>If not given and input is 3D vector map then z-coordinates are used.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -266,18 +266,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-e</ows:Identifier>
 				<ows:Title>Estimate point density and distance for the input vector points within the current region extends and quit</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-z</ows:Identifier>
-				<ows:Title>Use z coordinates for approximation (3D vector maps only)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>
@@ -375,7 +363,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>raster</ows:Identifier>
+				<ows:Identifier>raster_output</ows:Identifier>
 				<ows:Title>Name for output raster map</ows:Title>
 				<ComplexOutput>
 					<Default>

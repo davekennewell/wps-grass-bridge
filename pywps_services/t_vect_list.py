@@ -19,7 +19,7 @@ class t_vect_list(WPSProcess):
     self.addLiteralInput(identifier = 'columns', title = 'Select columns to be printed to stdout', minOccurs = 0, maxOccurs = 1024, type = type("string"), default = "id,name,layer,mapset,start_time,end_time", allowedValues = ['id', 'name', 'layer', 'creator', 'mapset', 'temporal_type', 'creation_time', 'start_time', 'end_time', 'north', 'south', 'west', 'east', 'points', 'lines', 'boundaries', 'centroids', 'faces', 'kernels', 'primitives', 'nodes', 'areas', 'islands', 'holes', 'volumes'])
     self.addLiteralInput(identifier = 'where', title = 'Example: start_time &#62; 2001-01-01 12:30:00', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = 'method', title = 'Method used for data listing', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "cols", allowedValues = ['cols', 'comma', 'delta', 'deltagaps', 'gran'])
-    self.addLiteralInput(identifier = 'fs', title = 'Field separator character between the columns, default is tabular "\t"', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
+    self.addLiteralInput(identifier = 'separator', title = 'Separator character between the columns, default is tabular "\t"', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = '-h', title = 'Print column names', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
 
     # complex outputs

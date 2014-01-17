@@ -13,7 +13,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="vector" />
 		<ows:Metadata xlink:title="surface" />
 		<ows:Metadata xlink:title="interpolation" />
-		<ows:Metadata xlink:title="RST" />
+		<ows:Metadata xlink:title="3D" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
@@ -64,7 +64,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					</Supported>
 				</ComplexData>
 			</Input>
-			<Input minOccurs="1" maxOccurs="1">
+			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
 				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
 				<LiteralData>
@@ -75,7 +75,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>zcolumn</ows:Identifier>
-				<ows:Title>Name of the attribute column with values to be used for approximation</ows:Title>
+				<ows:Title>If not given and input is 2D vector map then category values are used. If input is 3D vector map then z-coordinates are used.</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -90,7 +90,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>maskmap</ows:Identifier>
+				<ows:Identifier>mask</ows:Identifier>
 				<ows:Title>Name of raster map used as mask</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -253,18 +253,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-z</ows:Identifier>
-				<ows:Title>Use z coordinates for approximation (3D vector maps only)</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>grass_resolution_ns</ows:Identifier>
 				<ows:Title>Resolution of the mapset in north-south direction in meters or degrees</ows:Title>
 				<ows:Abstract>This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
@@ -312,8 +300,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>elev</ows:Identifier>
-				<ows:Title>Name for output surface raster map (elevation)</ows:Title>
+				<ows:Identifier>elevation</ows:Identifier>
+				<ows:Title>Name for output surface elevation raster map</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -596,7 +584,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>treefile</ows:Identifier>
+				<ows:Identifier>treeseg</ows:Identifier>
 				<ows:Title>Name for output vector map showing quadtree segmentation</ows:Title>
 				<ComplexOutput>
 					<Default>
@@ -636,7 +624,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexOutput>
 			</Output>
 			<Output>
-				<ows:Identifier>overfile</ows:Identifier>
+				<ows:Identifier>overwin</ows:Identifier>
 				<ows:Title>Name for output vector map showing overlapping windows</ows:Title>
 				<ComplexOutput>
 					<Default>
