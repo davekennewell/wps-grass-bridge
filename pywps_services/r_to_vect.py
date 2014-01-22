@@ -16,7 +16,7 @@ class r_to_vect(WPSProcess):
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of input raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
     self.addLiteralInput(identifier = 'type', title = 'Feature type', minOccurs = 1, maxOccurs = 1, type = type("string"), allowedValues = ['point', 'line', 'area'])
-    self.addLiteralInput(identifier = 'column', title = 'Name must be SQL compliant', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "value")
+    self.addLiteralInput(identifier = 'column', title = 'Name of attribute column to store value', abstract = 'Name must be SQL compliant', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "value")
     self.addLiteralInput(identifier = '-s', title = 'Smooth corners of area features', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-v', title = 'Use raster values as categories instead of unique sequence (CELL only)', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-z', title = 'Table is not created. Currently supported only for points.', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])

@@ -15,7 +15,7 @@ class r_terraflow(WPSProcess):
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'elevation', title = 'Name of input elevation raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
-    self.addLiteralInput(identifier = 'd8cut', title = 'If flow accumulation is larger than this value it is routed using SFD (D8) direction (meaningfull only for MFD flow). If no answer is given it defaults to infinity.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
+    self.addLiteralInput(identifier = 'd8cut', title = 'Routing using SFD (D8) direction', abstract = 'If flow accumulation is larger than this value it is routed using SFD (D8) direction (meaningfull only for MFD flow). If no answer is given it defaults to infinity.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'memory', title = 'Maximum runtime memory size (in MB)', minOccurs = 0, maxOccurs = 1, type = type(0), default = 300)
     self.addLiteralInput(identifier = 'stream_dir', title = 'Directory to hold temporary files (they can be large)', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = 'stats', title = 'Name of file containing runtime statistics', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')

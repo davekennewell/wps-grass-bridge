@@ -5,7 +5,7 @@
   <wps:Input> 
     <ows:Identifier>input</ows:Identifier> 
     <ows:Title>Name of the input space time raster dataset</ows:Title> 
-    <wps:Reference xlink:href="http://127.0.0.1/wps/wpsinputs/temperature_mean_1950_2010_yearly.tar.gz" /> 
+    <wps:Reference xlink:href="http://127.0.0.1/wps/inputs/temperature_mean_1950_2010_yearly.tar.gz" /> 
   </wps:Input>
   <wps:Input>
     <ows:Identifier>-t</ows:Identifier>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>t.rast.gapfill</ows:Identifier>
+		<ows:Title>Replace gaps in a space time raster dataset with interpolated raster maps.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.gapfill.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="interpolation" />
+		<DataInputs>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>where</ows:Identifier>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework</ows:Title>
+				<ows:Abstract>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>basename</ows:Identifier>
+				<ows:Title>Base name of the new generated output maps"</ows:Title>
+				<ows:Abstract>A numerical suffix separated by an underscore will be attached to create a unique identifier</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>nprocs</ows:Identifier>
+				<ows:Title>Number of interpolation processes to run in parallel</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-t</ows:Identifier>
+				<ows:Title>Assign the space time raster dataset start and end time to the output map</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ns</ows:Identifier>
+				<ows:Title>Resolution of the mapset in north-south direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ew</ows:Identifier>
+				<ows:Title>Resolution of the mapset in east-west direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>

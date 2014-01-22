@@ -72,7 +72,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>column</ows:Identifier>
-				<ows:Title>Name must be SQL compliant</ows:Title>
+				<ows:Title>Name of attribute column to store value</ows:Title>
+				<ows:Abstract>Name must be SQL compliant</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

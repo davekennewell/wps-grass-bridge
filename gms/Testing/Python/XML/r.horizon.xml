@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="sun position" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>elevin</ows:Identifier>
+				<ows:Identifier>elev_in</ows:Identifier>
 				<ows:Title>Name of the input elevation raster map [meters]</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
@@ -66,7 +66,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>horizonstep</ows:Identifier>
+				<ows:Identifier>horizon_step</ows:Identifier>
 				<ows:Title>Angle step size for multidirectional horizon [degrees]</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -165,7 +165,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="2">
-				<ows:Identifier>coord</ows:Identifier>
+				<ows:Identifier>coordinate</ows:Identifier>
 				<ows:Title>Coordinate for which you want to calculate the horizon</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -173,7 +173,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>dist</ows:Identifier>
+				<ows:Identifier>distance</ows:Identifier>
 				<ows:Title>Sampling distance step coefficient (0.5-1.5)</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -241,9 +241,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>stdout</ows:Identifier>
-				<ows:Title>Module output on stdout</ows:Title>
-				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name of file for output (use output=- for stdout)</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>

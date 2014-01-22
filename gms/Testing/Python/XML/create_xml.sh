@@ -82,7 +82,6 @@ r.resample --wps-process-description > r.resample.xml
 r.rescale --wps-process-description > r.rescale.xml
 r.ros --wps-process-description > r.ros.xml
 r.series --wps-process-description > r.series.xml
-r.shaded.relief --wps-process-description > r.shaded.relief.xml
 r.sim.sediment --wps-process-description > r.sim.sediment.xml
 r.sim.water --wps-process-description > r.sim.water.xml
 r.slope.aspect --wps-process-description > r.slope.aspect.xml
@@ -169,9 +168,14 @@ v.to.rast --wps-process-description > v.to.rast.xml
 v.transform --wps-process-description > v.transform.xml
 v.univar --wps-process-description > v.univar.xml
 v.voronoi --wps-process-description > v.voronoi.xml
+t.rast.accdetect --wps-process-description > t.rast.accdetect.xml
+t.rast.accumulate --wps-process-description > t.rast.accumulate.xml
 t.rast.aggregate --wps-process-description > t.rast.aggregate.xml
 t.rast.aggregate.ds --wps-process-description > t.rast.aggregate.ds.xml
+t.rast.neighbors --wps-process-description > t.rast.neighbors.xml
 t.rast.extract --wps-process-description > t.rast.extract.xml
+t.rast.gapfill --wps-process-description > t.rast.gapfill.xml
+t.rast.colors --wps-process-description > t.rast.colors.xml
 t.rast.list --wps-process-description > t.rast.list.xml
 t.rast.mapcalc --wps-process-description > t.rast.mapcalc.xml
 t.rast.series --wps-process-description > t.rast.series.xml

@@ -109,18 +109,35 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		</DataInputs>
 		<ProcessOutputs>
 			<Output>
-				<ows:Identifier>stdout</ows:Identifier>
-				<ows:Title>Module output on stdout</ows:Title>
-				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ows:Identifier>output</ows:Identifier>
+				<ows:Title>Name for output raster map(s)</ows:Title>
 				<ComplexOutput>
 					<Default>
 						<Format>
-							<MimeType>text/plain</MimeType>
+							<MimeType>image/tiff</MimeType>
 						</Format>
 					</Default>
 					<Supported>
 						<Format>
-							<MimeType>text/plain</MimeType>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
 						</Format>
 					</Supported>
 				</ComplexOutput>

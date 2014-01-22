@@ -59,7 +59,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>column</ows:Identifier>
-				<ows:Title>The use of a column name forces t.vect.what.rast to sample only values from the first map found in an interval. Otherwise the raster map names are used as column names</ows:Title>
+				<ows:Title>Name of the vector column to be created and to store sampled raster values</ows:Title>
+				<ows:Abstract>The use of a column name forces t.vect.what.rast to sample only values from the first map found in an interval. Otherwise the raster map names are used as column names</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -100,7 +101,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>where</ows:Identifier>
-				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword</ows:Title>
+				<ows:Abstract>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -108,7 +110,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>t_where</ows:Identifier>
-				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework</ows:Title>
+				<ows:Abstract>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

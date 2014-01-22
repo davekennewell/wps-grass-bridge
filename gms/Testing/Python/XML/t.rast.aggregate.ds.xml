@@ -80,8 +80,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>base</ows:Identifier>
-				<ows:Title>Name of base raster map</ows:Title>
+				<ows:Identifier>basename</ows:Identifier>
+				<ows:Title>Base name of the new generated output maps"</ows:Title>
+				<ows:Abstract>A numerical suffix separated by an underscore will be attached to create a unique identifier</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

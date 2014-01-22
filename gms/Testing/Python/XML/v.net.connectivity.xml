@@ -16,7 +16,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -65,7 +66,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>alayer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Arc layer</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -74,7 +76,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>nlayer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Node layer</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -107,7 +110,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>set1_cats</ows:Identifier>
-				<ows:Title>Example: 1,3,7-9,13</ows:Title>
+				<ows:Title>Set1 category values</ows:Title>
+				<ows:Abstract>Example: 1,3,7-9,13</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -115,7 +119,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>set1_where</ows:Identifier>
-				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<ows:Title>Set1 WHERE conditions of SQL statement without 'where' keyword</ows:Title>
+				<ows:Abstract>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -123,7 +128,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>set2_cats</ows:Identifier>
-				<ows:Title>Set2 category values</ows:Title>
+				<ows:Title>Category values</ows:Title>
+				<ows:Abstract>Set2 category values</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -131,7 +137,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>set2_where</ows:Identifier>
-				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<ows:Title>Set2 WHERE conditions of SQL statement without 'where' keyword</ows:Title>
+				<ows:Abstract>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

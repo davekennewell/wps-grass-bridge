@@ -16,7 +16,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -65,7 +66,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number or name ('-1' for all layers)</ows:Title>
+				<ows:Abstract>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -86,7 +88,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1024">
 				<ows:Identifier>parameters</ows:Identifier>
-				<ows:Title>If the distribution is uniform, only one parameter, the maximum, is needed. For a normal distribution, two parameters, the mean and standard deviation, are required.</ows:Title>
+				<ows:Title>Parameter(s) of distribution</ows:Title>
+				<ows:Abstract>If the distribution is uniform, only one parameter, the maximum, is needed. For a normal distribution, two parameters, the mean and standard deviation, are required.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

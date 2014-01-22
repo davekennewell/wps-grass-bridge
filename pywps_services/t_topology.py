@@ -16,7 +16,7 @@ class t_topology(WPSProcess):
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of the input space time dataset', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'application/x-grass-strds-tar'}, {'mimeType': 'application/x-grass-strds-tar-gz'}, {'mimeType': 'application/x-grass-strds-tar-bzip'}, {'mimeType': 'application/x-grass-stvds-tar'}, {'mimeType': 'application/x-grass-stvds-tar-gz'}, {'mimeType': 'application/x-grass-stvds-tar-bzip'}])
     self.addLiteralInput(identifier = 'type', title = 'Type of the input space time dataset', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "strds", allowedValues = ['strds', 'stvds', 'str3ds'])
-    self.addLiteralInput(identifier = 'where', title = 'Example: start_time &#62; 2001-01-01 12:30:00', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
+    self.addLiteralInput(identifier = 'where', title = 'WHERE conditions of SQL statement without where keyword used in the temporal GIS framework', abstract = 'Example: start_time &#62; 2001-01-01 12:30:00', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = '-m', title = 'Print temporal relationships and exit', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-s', title = 'Print spatio-temporal relationships and exit', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
 

@@ -108,7 +108,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>where</ows:Identifier>
-				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework</ows:Title>
+				<ows:Abstract>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

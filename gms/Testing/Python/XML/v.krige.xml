@@ -17,7 +17,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Name of point vector map containing sample data</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Name of point vector map containing sample data</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -85,7 +86,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>model</ows:Identifier>
-				<ows:Title>Leave empty to test all models (requires automap)</ows:Title>
+				<ows:Title>Variogram model(s)</ows:Title>
+				<ows:Abstract>Leave empty to test all models (requires automap)</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -113,7 +115,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>block</ows:Identifier>
-				<ows:Title>Block size. Used by block kriging.</ows:Title>
+				<ows:Title>Block size (square block)</ows:Title>
+				<ows:Abstract>Block size. Used by block kriging.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -121,7 +124,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>range</ows:Identifier>
-				<ows:Title>Automatically fixed if not set</ows:Title>
+				<ows:Title>Range value</ows:Title>
+				<ows:Abstract>Automatically fixed if not set</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -129,7 +133,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>nugget</ows:Identifier>
-				<ows:Title>Automatically fixed if not set</ows:Title>
+				<ows:Title>Nugget value</ows:Title>
+				<ows:Abstract>Automatically fixed if not set</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -137,7 +142,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>sill</ows:Identifier>
-				<ows:Title>Automatically fixed if not set</ows:Title>
+				<ows:Title>Sill value</ows:Title>
+				<ows:Abstract>Automatically fixed if not set</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -183,7 +189,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>If omitted, will be &lt;input name&gt;_kriging</ows:Title>
+				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Abstract>If omitted, will be &lt;input name&gt;_kriging</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -217,7 +224,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>output_var</ows:Identifier>
-				<ows:Title>If omitted, will be &lt;input name&gt;_kriging.var</ows:Title>
+				<ows:Title>Name for output variance raster map</ows:Title>
+				<ows:Abstract>If omitted, will be &lt;input name&gt;_kriging.var</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>

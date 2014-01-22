@@ -15,10 +15,10 @@ class r_stats(WPSProcess):
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of raster map(s) to report on', minOccurs = 1, maxOccurs = 1024, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
-    self.addLiteralInput(identifier = 'separator', title = 'Special characters: newline, space, comma, tab', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "space")
+    self.addLiteralInput(identifier = 'separator', title = 'Field separator', abstract = 'Special characters: newline, space, comma, tab', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "space")
     self.addLiteralInput(identifier = 'nv', title = 'String representing no data cell value', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "*")
     self.addLiteralInput(identifier = 'nsteps', title = 'Number of floating-point subranges to collect stats from', minOccurs = 0, maxOccurs = 1, type = type(0), default = 255)
-    self.addLiteralInput(identifier = 'sort', title = 'Default: sorted by categories or intervals', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = ['asc', 'desc'])
+    self.addLiteralInput(identifier = 'sort', title = 'Sort output statistics by cell counts', abstract = 'Default: sorted by categories or intervals', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = ['asc', 'desc'])
     self.addLiteralInput(identifier = '-a', title = 'Print area totals in square meters', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-c', title = 'Print cell counts (sortable)', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-p', title = 'Print approximate (total percent may not be 100%) percents', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])

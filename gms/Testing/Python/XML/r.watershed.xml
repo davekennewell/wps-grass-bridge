@@ -59,7 +59,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>depression</ows:Identifier>
-				<ows:Title>All non-NULL and non-zero cells are considered as real depressions</ows:Title>
+				<ows:Title>Name of input depressions raster map</ows:Title>
+				<ows:Abstract>All non-NULL and non-zero cells are considered as real depressions</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -145,7 +146,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>disturbed_land</ows:Identifier>
-				<ows:Title>For USLE</ows:Title>
+				<ows:Title>Name of input raster map percent of disturbed land</ows:Title>
+				<ows:Abstract>For USLE</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -188,7 +190,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>blocking</ows:Identifier>
-				<ows:Title>For USLE. All non-NULL and non-zero cells are considered as blocking terrain.</ows:Title>
+				<ows:Title>Name of input raster map blocking overland surface flow</ows:Title>
+				<ows:Abstract>For USLE. All non-NULL and non-zero cells are considered as blocking terrain.</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -239,7 +242,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>max_slope_length</ows:Identifier>
-				<ows:Title>For USLE</ows:Title>
+				<ows:Title>Maximum length of surface flow in map units</ows:Title>
+				<ows:Abstract>For USLE</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -247,7 +251,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>convergence</ows:Identifier>
-				<ows:Title>1 = most diverging flow, 10 = most converging flow. Recommended: 5</ows:Title>
+				<ows:Title>Convergence factor for MFD (1-10)</ows:Title>
+				<ows:Abstract>1 = most diverging flow, 10 = most converging flow. Recommended: 5</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -372,7 +377,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>accumulation</ows:Identifier>
-				<ows:Title>Number of cells that drain through each cell</ows:Title>
+				<ows:Title>Name for output accumulation raster map</ows:Title>
+				<ows:Abstract>Number of cells that drain through each cell</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -406,7 +412,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>tci</ows:Identifier>
-				<ows:Title>Name for output raster map</ows:Title>
+				<ows:Title>Topographic index ln(a / tan(b))</ows:Title>
+				<ows:Abstract>Name for output raster map</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -542,7 +549,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>half_basin</ows:Identifier>
-				<ows:Title>Each half-basin is given a unique value</ows:Title>
+				<ows:Title>Name for output half basins raster map</ows:Title>
+				<ows:Abstract>Each half-basin is given a unique value</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -576,7 +584,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>length_slope</ows:Identifier>
-				<ows:Title>Slope length and steepness (LS) factor for USLE</ows:Title>
+				<ows:Title>Name for output slope length raster map</ows:Title>
+				<ows:Abstract>Slope length and steepness (LS) factor for USLE</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
@@ -610,7 +619,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>slope_steepness</ows:Identifier>
-				<ows:Title>Slope steepness (S) factor for USLE</ows:Title>
+				<ows:Title>Name for output slope steepness raster map</ows:Title>
+				<ows:Abstract>Slope steepness (S) factor for USLE</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>

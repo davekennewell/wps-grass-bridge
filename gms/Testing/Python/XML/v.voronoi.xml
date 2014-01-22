@@ -16,7 +16,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of input vector point map</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -65,7 +66,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number or name ('-1' for all layers)</ows:Title>
+				<ows:Abstract>A single vector map can be connected to multiple database tables. This number determines which table to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -74,7 +76,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>smoothness</ows:Identifier>
-				<ows:Title>Applies to input areas only. Smaller values produce smoother output but can cause numerical instability.</ows:Title>
+				<ows:Title>Factor for output smoothness</ows:Title>
+				<ows:Abstract>Applies to input areas only. Smaller values produce smoother output but can cause numerical instability.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -83,7 +86,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>thin</ows:Identifier>
-				<ows:Title>Applies only to skeleton extraction. Default = -1 will extract the center line.</ows:Title>
+				<ows:Title>Maximum dangle length of skeletons</ows:Title>
+				<ows:Abstract>Applies only to skeleton extraction. Default = -1 will extract the center line.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

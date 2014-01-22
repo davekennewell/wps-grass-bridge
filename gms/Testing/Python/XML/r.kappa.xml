@@ -182,7 +182,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ProcessOutputs>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>If not given, print to startdard output</ows:Title>
+				<ows:Title>Name for output file containing error matrix and kappa</ows:Title>
+				<ows:Abstract>If not given, print to startdard output</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>

@@ -69,7 +69,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>units</ows:Identifier>
-				<ows:Title>Default: square map units</ows:Title>
+				<ows:Title>Output units</ows:Title>
+				<ows:Abstract>Default: square map units</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>

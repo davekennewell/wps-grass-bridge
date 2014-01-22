@@ -58,7 +58,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>separator</ows:Identifier>
-				<ows:Title>Special characters: newline, space, comma, tab</ows:Title>
+				<ows:Title>Field separator</ows:Title>
+				<ows:Abstract>Special characters: newline, space, comma, tab</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

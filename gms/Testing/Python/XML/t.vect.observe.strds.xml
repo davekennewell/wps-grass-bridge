@@ -15,7 +15,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -94,7 +95,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>where</ows:Identifier>
-				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword</ows:Title>
+				<ows:Abstract>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -102,7 +104,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>t_where</ows:Identifier>
-				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework</ows:Title>
+				<ows:Abstract>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

@@ -58,7 +58,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>separator</ows:Identifier>
-				<ows:Title>Special characters: newline, space, comma, tab</ows:Title>
+				<ows:Title>Field separator</ows:Title>
+				<ows:Abstract>Special characters: newline, space, comma, tab</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -85,7 +86,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>sort</ows:Identifier>
-				<ows:Title>Default: sorted by categories or intervals</ows:Title>
+				<ows:Title>Sort output statistics by cell counts</ows:Title>
+				<ows:Abstract>Default: sorted by categories or intervals</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>

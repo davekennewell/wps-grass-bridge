@@ -24,7 +24,7 @@ class r_kappa(WPSProcess):
     self.addLiteralInput(identifier = 'grass_band_number', title = 'Band to select for processing (default is all bands)', abstract = 'This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
 
     # complex outputs
-    self.addComplexOutput(identifier = 'output', title = 'If not given, print to startdard output', formats = [{'mimeType': 'text/plain'}])
+    self.addComplexOutput(identifier = 'output', title = 'Name for output file containing error matrix and kappa', abstract = 'If not given, print to startdard output', formats = [{'mimeType': 'text/plain'}])
 
   def execute(self):
     starter = PyWPSGrassModuleStarter()

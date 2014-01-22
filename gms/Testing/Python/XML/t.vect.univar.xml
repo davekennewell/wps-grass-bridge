@@ -38,7 +38,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number or name</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -55,7 +56,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>twhere</ows:Identifier>
-				<ows:Title>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework</ows:Title>
+				<ows:Abstract>Example: start_time &gt; '2001-01-01 12:30:00'</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -63,7 +65,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>where</ows:Identifier>
-				<ows:Title>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Title>
+				<ows:Title>WHERE conditions of SQL statement without 'where' keyword</ows:Title>
+				<ows:Abstract>Example: income &lt; 1000 and inhab &gt;= 10000</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

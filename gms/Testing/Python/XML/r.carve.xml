@@ -58,7 +58,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>vect</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of input vector map containing stream(s)</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -107,7 +108,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>width</ows:Identifier>
-				<ows:Title>Default is raster cell width</ows:Title>
+				<ows:Title>Stream width (in meters)</ows:Title>
+				<ows:Abstract>Default is raster cell width</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

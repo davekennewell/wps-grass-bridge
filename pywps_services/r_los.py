@@ -15,7 +15,7 @@ class r_los(WPSProcess):
 
     # Literal and complex inputs
     self.addComplexInput(identifier = 'input', title = 'Name of input elevation raster map', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
-    self.addLiteralInput(identifier = 'coordinate', title = 'Coordinate identifying the viewing position', minOccurs = 2, maxOccurs = 2, type = type("string"), allowedValues = '*')
+    self.addLiteralInput(identifier = 'coordinates', title = 'Coordinates of the viewing position', minOccurs = 2, maxOccurs = 2, type = type(0.0), allowedValues = '*')
     self.addComplexInput(identifier = 'patt_map', title = 'Binary (1/0) raster map to use as a mask', minOccurs = 0, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
     self.addLiteralInput(identifier = 'obs_elev', title = 'Viewing position height above the ground', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 1.75)
     self.addLiteralInput(identifier = 'max_dist', title = 'Maximum distance from the viewing point (meters)', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 10000.0)

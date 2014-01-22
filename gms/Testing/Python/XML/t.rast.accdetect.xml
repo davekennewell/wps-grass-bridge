@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>t.rast.accdetect</ows:Identifier>
+		<ows:Title>Detect accumulation pattern in temporally accumulated space time raster datasets created by t.rast.accumulate.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.accdetect.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="accumulation" />
+		<DataInputs>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>minimum</ows:Identifier>
+				<ows:Title>Input space time raster dataset that specifies the minimum values to detect the accumulation pattern</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>maximum</ows:Identifier>
+				<ows:Title>Input space time raster dataset that specifies the maximum values to detect the accumulation pattern</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>start</ows:Identifier>
+				<ows:Title>The temporal starting point to begin the accumulation, eg '2001-01-01'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>stop</ows:Identifier>
+				<ows:Title>The temporal date to stop the accumulation, eg '2009-01-01'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>cycle</ows:Identifier>
+				<ows:Title>The temporal cycle to restart the accumulation, eg '12 months'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>offset</ows:Identifier>
+				<ows:Title>The temporal offset to the begin of the next cycle, eg '6 months'</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>basename</ows:Identifier>
+				<ows:Title>Base name of the new generated output maps"</ows:Title>
+				<ows:Abstract>A numerical suffix separated by an underscore will be attached to create a unique identifier</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="2">
+				<ows:Identifier>range</ows:Identifier>
+				<ows:Title>The minimum and maximum value of the occurrence of accumulated values, these values will be used if the min/max space time raster datasets are not specified</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="3">
+				<ows:Identifier>staend</ows:Identifier>
+				<ows:Title>The user defined values that indicate start, intermediate and end status in the indicator output space time raster dataset</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+					<DefaultValue>1,2,3</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-n</ows:Identifier>
+				<ows:Title>Register empty maps in the output space time raster datasets, otherwise they will be deleted</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-r</ows:Identifier>
+				<ows:Title>Reverse time direction in cyclic accumulation</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ns</ows:Identifier>
+				<ows:Title>Resolution of the mapset in north-south direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ew</ows:Identifier>
+				<ows:Title>Resolution of the mapset in east-west direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>occurrence</ows:Identifier>
+				<ows:Title>The output space time raster dataset that stores the occurrence of the the accumulation pattern using the provided data range</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+			<Output>
+				<ows:Identifier>indicator</ows:Identifier>
+				<ows:Title>The output space time raster dataset that stores the indication of the start, intermediate and end of the specified data range</ows:Title>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>

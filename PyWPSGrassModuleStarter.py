@@ -302,8 +302,8 @@ class PyWPSGrassModuleStarter(GrassModuleStarter):
             
             try:
                 self._outputs[output.identifier].setValue(filename)
-            except:
-                self.LogError("Unable to attach output file")
+            except Exception, e:
+                self.LogError("Unable to attach output file, error is: %s"%(str(e)))
                 raise
             self.LogInfo("Attached output file " + filename)  
 

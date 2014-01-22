@@ -58,10 +58,10 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="2" maxOccurs="2">
-				<ows:Identifier>coordinate</ows:Identifier>
-				<ows:Title>Coordinate identifying the viewing position</ows:Title>
+				<ows:Identifier>coordinates</ows:Identifier>
+				<ows:Title>Coordinates of the viewing position</ows:Title>
 				<LiteralData>
-					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>

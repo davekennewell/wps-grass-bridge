@@ -5,12 +5,12 @@
   <wps:Input> 
     <ows:Identifier>input</ows:Identifier> 
     <ows:Title>The space time dataset</ows:Title> 
-    <wps:Reference xlink:href="http://127.0.0.1/wps/wpsinputs/temperature_mean_1950_2010_yearly.tar.gz" /> 
+    <wps:Reference xlink:href="http://127.0.0.1/wps/inputs/temperature_mean_1950_2010_yearly.tar.gz" /> 
   </wps:Input>
 </wps:DataInputs>
 <wps:ResponseForm>
 <wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="false">
-  <wps:Output asReference="true" mimeType="text/plain" schema=""><ows:Identifier>stdout</ows:Identifier>
+  <wps:Output asReference="false" mimeType="text/plain" schema=""><ows:Identifier>stdout</ows:Identifier>
   </wps:Output>
 </wps:ResponseDocument>
 </wps:ResponseForm>

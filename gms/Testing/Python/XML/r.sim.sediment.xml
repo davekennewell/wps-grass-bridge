@@ -371,7 +371,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>observation</ows:Identifier>
-				<ows:Title>Name of the sampling locations vector points map</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Name of the sampling locations vector points map</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

@@ -17,7 +17,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>from</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of existing vector map (from)</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -66,7 +67,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>from_layer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number or name (from)</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -75,7 +77,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>from_type</ows:Identifier>
-				<ows:Title>Feature type</ows:Title>
+				<ows:Title>Feature type (from)</ows:Title>
+				<ows:Abstract>Feature type</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -90,7 +93,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>to</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Title>Name of existing vector map (to)</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -139,7 +143,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>to_layer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number or name (to)</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -148,7 +153,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>to_type</ows:Identifier>
-				<ows:Title>Feature type</ows:Title>
+				<ows:Title>Feature type (to)</ows:Title>
+				<ows:Abstract>Feature type</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>

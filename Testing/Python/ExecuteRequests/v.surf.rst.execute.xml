@@ -98,7 +98,7 @@
 </wps:Output>
 <wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>elev</ows:Identifier>
 </wps:Output>
-<wps:Output asReference="true" mimeType="text/xml" schema="http://schemas.opengis.net/gml/2.1.2/feature.xsd"><ows:Identifier>treefile</ows:Identifier>
+<wps:Output asReference="true" mimeType="text/xml" schema="http://schemas.opengis.net/gml/2.1.2/feature.xsd"><ows:Identifier>treeseg</ows:Identifier>
 </wps:Output>
 <wps:Output asReference="true" mimeType="image/tiff" schema=""><ows:Identifier>aspect</ows:Identifier>
 </wps:Output>

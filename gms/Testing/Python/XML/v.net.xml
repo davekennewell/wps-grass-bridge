@@ -16,7 +16,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>Required for operation 'nodes', 'connect', 'report' and 'nreport'</ows:Title>
+				<ows:Title>Name of input vector line map (arcs)</ows:Title>
+				<ows:Abstract>Required for operation 'nodes', 'connect', 'report' and 'nreport'</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -65,7 +66,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>points</ows:Identifier>
-				<ows:Title>Required for operation 'connect' and 'arcs'</ows:Title>
+				<ows:Title>Name of input vector point map (nodes)</ows:Title>
+				<ows:Abstract>Required for operation 'connect' and 'arcs'</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -128,7 +130,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>thresh</ows:Identifier>
-				<ows:Title>Required for operation 'connect'. Connect points in given threshold.</ows:Title>
+				<ows:Title>Threshold</ows:Title>
+				<ows:Abstract>Required for operation 'connect'. Connect points in given threshold.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -136,7 +139,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>file</ows:Identifier>
-				<ows:Title>Required for operation 'arcs'. '-' for standard input.</ows:Title>
+				<ows:Title>Name of input file</ows:Title>
+				<ows:Abstract>Required for operation 'arcs'. '-' for standard input.</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

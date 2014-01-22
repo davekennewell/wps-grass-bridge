@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:wps="http://www.opengis.net/wps/1.0.0"
+xmlns:ows="http://www.opengis.net/ows/1.1"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+ http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd"
+ service="WPS" version="1.0.0" xml:lang="en-US"> 
+	<ProcessDescription wps:processVersion="1" storeSupported="true" statusSupported="true">
+		<ows:Identifier>t.rast.colors</ows:Identifier>
+		<ows:Title>Creates/modifies the color table associated with each raster map of the space time raster dataset.</ows:Title>
+		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/t.rast.colors.html</ows:Abstract>
+		<ows:Metadata xlink:title="temporal" />
+		<ows:Metadata xlink:title="color table" />
+		<DataInputs>
+			<Input minOccurs="1" maxOccurs="1">
+				<ows:Identifier>input</ows:Identifier>
+				<ows:Title>Name of the input space time raster dataset</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>application/x-grass-strds-tar</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-gz</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-grass-strds-tar-bzip</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>color</ows:Identifier>
+				<ows:Title>Name of color table (see r.color help)</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>raster</ows:Identifier>
+				<ows:Title>Raster map from which to copy color table</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>image/tiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-geotiff</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/png</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/gif</MimeType>
+						</Format>
+						<Format>
+							<MimeType>image/jpeg</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-erdas-hfa</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/netcdf</MimeType>
+						</Format>
+						<Format>
+							<MimeType>application/x-netcdf</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>volume</ows:Identifier>
+				<ows:Title>3D raster map from which to copy color table</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>rules</ows:Identifier>
+				<ows:Title>Path to rules file</ows:Title>
+				<ComplexData maximumMegabytes="2048">
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-r</ows:Identifier>
+				<ows:Title>Remove existing color tables</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-w</ows:Identifier>
+				<ows:Title>Only write new color table if one doesn't already exist</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-l</ows:Identifier>
+				<ows:Title>List available rules then exit</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-n</ows:Identifier>
+				<ows:Title>Invert colors</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-g</ows:Identifier>
+				<ows:Title>Logarithmic scaling</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-a</ows:Identifier>
+				<ows:Title>Logarithmic-absolute scaling</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>-e</ows:Identifier>
+				<ows:Title>Histogram equalization</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>true</ows:Value>
+						<ows:Value>false</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>false</DefaultValue>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ns</ows:Identifier>
+				<ows:Title>Resolution of the mapset in north-south direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_resolution_ew</ows:Identifier>
+				<ows:Title>Resolution of the mapset in east-west direction in meters or degrees</ows:Title>
+				<ows:Abstract>This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:float">float</ows:DataType>
+					<UOMs>
+						<Default>
+							<ows:UOM>meters</ows:UOM>
+						</Default>
+						<Supported>
+							<ows:UOM>meters</ows:UOM>
+							<ows:UOM>degrees</ows:UOM>
+						</Supported>
+					</UOMs>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+			<Input minOccurs="0" maxOccurs="1">
+				<ows:Identifier>grass_band_number</ows:Identifier>
+				<ows:Title>Band to select for processing (default is all bands)</ows:Title>
+				<ows:Abstract>This parameter defines band number of the input raster files which should be processed. As default all bands are processed and used as single and multiple inputs for raster modules.</ows:Abstract>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
+					<ows:AnyValue/>
+				</LiteralData>
+			</Input>
+		</DataInputs>
+		<ProcessOutputs>
+			<Output>
+				<ows:Identifier>stdout</ows:Identifier>
+				<ows:Title>Module output on stdout</ows:Title>
+				<ows:Abstract>The output of the module written to stdout</ows:Abstract>
+				<ComplexOutput>
+					<Default>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Default>
+					<Supported>
+						<Format>
+							<MimeType>text/plain</MimeType>
+						</Format>
+					</Supported>
+				</ComplexOutput>
+			</Output>
+		</ProcessOutputs>
+	</ProcessDescription>
+</wps:ProcessDescriptions>

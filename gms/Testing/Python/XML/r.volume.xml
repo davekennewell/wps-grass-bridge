@@ -59,7 +59,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>clump</ows:Identifier>
-				<ows:Title>Preferably the output of r.clump. If no clump map is given than MASK is used.</ows:Title>
+				<ows:Title>Name of input clump raster map</ows:Title>
+				<ows:Abstract>Preferably the output of r.clump. If no clump map is given than MASK is used.</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -201,7 +202,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>If no output file given report is printed to standard output</ows:Title>
+				<ows:Title>Name for output file to hold the report</ows:Title>
+				<ows:Abstract>If no output file given report is printed to standard output</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>

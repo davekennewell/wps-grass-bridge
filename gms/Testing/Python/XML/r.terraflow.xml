@@ -58,7 +58,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>d8cut</ows:Identifier>
-				<ows:Title>If flow accumulation is larger than this value it is routed using SFD (D8) direction (meaningfull only for MFD flow). If no answer is given it defaults to infinity.</ows:Title>
+				<ows:Title>Routing using SFD (D8) direction</ows:Title>
+				<ows:Abstract>If flow accumulation is larger than this value it is routed using SFD (D8) direction (meaningfull only for MFD flow). If no answer is given it defaults to infinity.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

@@ -343,7 +343,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>observation</ows:Identifier>
-				<ows:Title>Name of the sampling locations vector points map</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Name of the sampling locations vector points map</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -427,7 +428,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>hmax</ows:Identifier>
-				<ows:Title>Diffusion increases after this water depth is reached</ows:Title>
+				<ows:Title>Threshold water depth [m]</ows:Title>
+				<ows:Abstract>Diffusion increases after this water depth is reached</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>

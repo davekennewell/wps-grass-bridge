@@ -18,7 +18,7 @@ class v_random(WPSProcess):
     self.addLiteralInput(identifier = 'zmin', title = 'Minimum z height (needs -z flag or column name)', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.0)
     self.addLiteralInput(identifier = 'zmax', title = 'Maximum z height (needs -z flag or column name)', minOccurs = 0, maxOccurs = 1, type = type(0.0), default = 0.0)
     self.addLiteralInput(identifier = 'seed', title = 'The seed to initialize the random generator. If not set the process id is used.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
-    self.addLiteralInput(identifier = 'column', title = 'Writes z values to column', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
+    self.addLiteralInput(identifier = 'column', title = 'Name of column for z values', abstract = 'Writes z values to column', minOccurs = 0, maxOccurs = 1, type = type("string"), allowedValues = '*')
     self.addLiteralInput(identifier = 'column_type', title = 'Type of column for z values', minOccurs = 0, maxOccurs = 1, type = type("string"), default = "double precision", allowedValues = ['integer', 'double precision'])
     self.addLiteralInput(identifier = '-z', title = 'Create 3D output', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = '-d', title = 'Use drand48() function instead of rand()', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])

@@ -17,10 +17,10 @@ class r_topmodel(WPSProcess):
     self.addComplexInput(identifier = 'parameters', title = 'Name of TOPMODEL parameters file', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'text/plain'}])
     self.addComplexInput(identifier = 'topidxstats', title = 'Name of topographic index statistics file', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'text/plain'}])
     self.addComplexInput(identifier = 'input', title = 'Name of rainfall and potential evapotranspiration data file', minOccurs = 1, maxOccurs = 1, formats = [{'mimeType': 'text/plain'}])
-    self.addLiteralInput(identifier = 'timestep', title = 'Generate output for this time step.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
-    self.addLiteralInput(identifier = 'topidxclass', title = 'Generate output for this topographic index class.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
-    self.addComplexInput(identifier = 'topidx', title = 'Must be clipped to the catchment boundary. Used for generating outtopidxstats.', minOccurs = 0, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
-    self.addLiteralInput(identifier = 'ntopidxclasses', title = 'Used for generating outtopidxstats.', minOccurs = 0, maxOccurs = 1, type = type(0), default = 30)
+    self.addLiteralInput(identifier = 'timestep', title = 'Time step', abstract = 'Generate output for this time step.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
+    self.addLiteralInput(identifier = 'topidxclass', title = 'Topographic index class', abstract = 'Generate output for this topographic index class.', minOccurs = 0, maxOccurs = 1, type = type(0), allowedValues = '*')
+    self.addComplexInput(identifier = 'topidx', title = 'Name of input topographic index ln(a/tanB) raster map', abstract = 'Must be clipped to the catchment boundary. Used for generating outtopidxstats.', minOccurs = 0, maxOccurs = 1, formats = [{'mimeType': 'image/tiff'}, {'mimeType': 'image/geotiff'}, {'mimeType': 'application/geotiff'}, {'mimeType': 'application/x-geotiff'}, {'mimeType': 'image/png'}, {'mimeType': 'image/gif'}, {'mimeType': 'image/jpeg'}, {'mimeType': 'application/x-erdas-hfa'}, {'mimeType': 'application/netcdf'}, {'mimeType': 'application/x-netcdf'}])
+    self.addLiteralInput(identifier = 'ntopidxclasses', title = 'Number of topographic index classes', abstract = 'Used for generating outtopidxstats.', minOccurs = 0, maxOccurs = 1, type = type(0), default = 30)
     self.addLiteralInput(identifier = '-p', title = 'Preprocess only and stop after generating outtopidxstats', minOccurs = 0, maxOccurs = 1, type = type(True), default = False, allowedValues = [True, False])
     self.addLiteralInput(identifier = 'grass_resolution_ns', title = 'Resolution of the mapset in north-south direction in meters or degrees', abstract = 'This parameter defines the north-south resolution of the mapset in meter or degrees, which should be used to process the input and output raster data. To enable this setting, you need to specify north-south and east-west resolution.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
     self.addLiteralInput(identifier = 'grass_resolution_ew', title = 'Resolution of the mapset in east-west direction in meters or degrees', abstract = 'This parameter defines the east-west resolution of the mapset in meters or degrees, which should be used to process the input and output raster data.  To enable this setting, you need to specify north-south and east-west resolution.', minOccurs = 0, maxOccurs = 1, type = type(0.0), allowedValues = '*')
@@ -29,7 +29,7 @@ class r_topmodel(WPSProcess):
     # complex outputs
     self.addComplexOutput(identifier = 'output', title = 'Name for output file', formats = [{'mimeType': 'text/plain'}])
 
-    self.addComplexOutput(identifier = 'outtopidxstats', title = 'Requires topidx and ntopidxclasses.', formats = [{'mimeType': 'text/plain'}])
+    self.addComplexOutput(identifier = 'outtopidxstats', title = 'Name for output topographic index statistics file', abstract = 'Requires topidx and ntopidxclasses.', formats = [{'mimeType': 'text/plain'}])
 
   def execute(self):
     starter = PyWPSGrassModuleStarter()

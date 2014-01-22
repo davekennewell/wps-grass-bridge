@@ -60,7 +60,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>mask</ows:Identifier>
-				<ows:Title>Only cells that are not NULL and not zero are interpolated</ows:Title>
+				<ows:Title>Name of raster map to use for masking</ows:Title>
+				<ows:Abstract>Only cells that are not NULL and not zero are interpolated</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

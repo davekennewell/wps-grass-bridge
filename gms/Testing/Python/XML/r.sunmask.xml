@@ -163,7 +163,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>timezone</ows:Identifier>
-				<ows:Title>East positive, offset from GMT, also use to adjust daylight savings</ows:Title>
+				<ows:Title>Timezone</ows:Title>
+				<ows:Abstract>East positive, offset from GMT, also use to adjust daylight savings</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -171,7 +172,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>east</ows:Identifier>
-				<ows:Title>Default: map center</ows:Title>
+				<ows:Title>Easting coordinate (point of interest)</ows:Title>
+				<ows:Abstract>Default: map center</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -179,7 +181,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>north</ows:Identifier>
-				<ows:Title>Default: map center</ows:Title>
+				<ows:Title>Northing coordinate (point of interest)</ows:Title>
+				<ows:Abstract>Default: map center</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

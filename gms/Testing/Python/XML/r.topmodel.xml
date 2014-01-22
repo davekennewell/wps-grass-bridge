@@ -63,7 +63,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>timestep</ows:Identifier>
-				<ows:Title>Generate output for this time step.</ows:Title>
+				<ows:Title>Time step</ows:Title>
+				<ows:Abstract>Generate output for this time step.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -71,7 +72,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>topidxclass</ows:Identifier>
-				<ows:Title>Generate output for this topographic index class.</ows:Title>
+				<ows:Title>Topographic index class</ows:Title>
+				<ows:Abstract>Generate output for this topographic index class.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -79,7 +81,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>topidx</ows:Identifier>
-				<ows:Title>Must be clipped to the catchment boundary. Used for generating outtopidxstats.</ows:Title>
+				<ows:Title>Name of input topographic index ln(a/tanB) raster map</ows:Title>
+				<ows:Abstract>Must be clipped to the catchment boundary. Used for generating outtopidxstats.</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -122,7 +125,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>ntopidxclasses</ows:Identifier>
-				<ows:Title>Used for generating outtopidxstats.</ows:Title>
+				<ows:Title>Number of topographic index classes</ows:Title>
+				<ows:Abstract>Used for generating outtopidxstats.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:integer">integer</ows:DataType>
 					<ows:AnyValue/>
@@ -206,7 +210,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>outtopidxstats</ows:Identifier>
-				<ows:Title>Requires topidx and ntopidxclasses.</ows:Title>
+				<ows:Title>Name for output topographic index statistics file</ows:Title>
+				<ows:Abstract>Requires topidx and ntopidxclasses.</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>

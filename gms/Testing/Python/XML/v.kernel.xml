@@ -15,7 +15,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>input</ows:Identifier>
-				<ows:Title>No title available</ows:Title>
+				<ows:Title>Name of input vector map with training points</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -64,7 +64,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>net</ows:Identifier>
-				<ows:Title>No title available</ows:Title>
+				<ows:Title>Name of input network vector map</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -113,7 +113,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>output</ows:Identifier>
-				<ows:Title>Outputs vector map if network map is given, otherwise raster map</ows:Title>
+				<ows:Title>Name for output raster/vector map</ows:Title>
+				<ows:Abstract>Outputs vector map if network map is given, otherwise raster map</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>

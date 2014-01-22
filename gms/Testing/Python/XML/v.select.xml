@@ -16,7 +16,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>ainput</ows:Identifier>
-				<ows:Title>Name of input vector map (A)</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Name of input vector map (A)</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -65,7 +66,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>alayer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number (vector map A)</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -74,7 +76,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>atype</ows:Identifier>
-				<ows:Title>Feature type</ows:Title>
+				<ows:Title>Feature type (vector map A)</ows:Title>
+				<ows:Abstract>Feature type</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -89,7 +92,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>binput</ows:Identifier>
-				<ows:Title>Name of input vector map (B)</ows:Title>
+				<ows:Title>Name of input vector map</ows:Title>
+				<ows:Abstract>Name of input vector map (B)</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -138,7 +142,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>blayer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number (vector map B)</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -147,7 +152,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>btype</ows:Identifier>
-				<ows:Title>Feature type</ows:Title>
+				<ows:Title>Feature type (vector map B)</ows:Title>
+				<ows:Abstract>Feature type</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>
@@ -162,7 +168,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>operator</ows:Identifier>
-				<ows:Title>A feature is written to output if the result of operation 'ainput operator binput' is true. An input feature is considered to be true, if category of given layer is defined.</ows:Title>
+				<ows:Title>Operator defines required relation between features</ows:Title>
+				<ows:Abstract>A feature is written to output if the result of operation 'ainput operator binput' is true. An input feature is considered to be true, if category of given layer is defined.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AllowedValues>

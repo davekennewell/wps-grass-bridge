@@ -17,8 +17,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Metadata xlink:title="zonal statistics" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>vector</ows:Identifier>
-				<ows:Title>Or data source for direct OGR access</ows:Title>
+				<ows:Identifier>map</ows:Identifier>
+				<ows:Title>Name of vector map</ows:Title>
+				<ows:Abstract>Or data source for direct OGR access</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -67,7 +68,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>layer</ows:Identifier>
-				<ows:Title>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Title>
+				<ows:Title>Layer number or name</ows:Title>
+				<ows:Abstract>Vector features can have category values in different layers. This number determines which layer to use. When used with direct OGR access this is the layer name.</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:string">string</ows:DataType>
 					<ows:AnyValue/>
@@ -125,6 +127,29 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 					<ows:AnyValue/>
 				</LiteralData>
 			</Input>
+			<Input minOccurs="0" maxOccurs="1024">
+				<ows:Identifier>method</ows:Identifier>
+				<ows:Title>The methods to use</ows:Title>
+				<LiteralData>
+					<ows:DataType ows:reference="xs:string">string</ows:DataType>
+					<ows:AllowedValues>
+						<ows:Value>number</ows:Value>
+						<ows:Value>minimum</ows:Value>
+						<ows:Value>maximum</ows:Value>
+						<ows:Value>range</ows:Value>
+						<ows:Value>average</ows:Value>
+						<ows:Value>stddev</ows:Value>
+						<ows:Value>variance</ows:Value>
+						<ows:Value>coeff_var</ows:Value>
+						<ows:Value>sum</ows:Value>
+						<ows:Value>first_quartile</ows:Value>
+						<ows:Value>median</ows:Value>
+						<ows:Value>third_quartile</ows:Value>
+						<ows:Value>percentile</ows:Value>
+					</ows:AllowedValues>
+					<DefaultValue>number,minimum,maximum,range,average,stddev,variance,coeff_var,sum,first_quartile,median,third_quartile,percentile</DefaultValue>
+				</LiteralData>
+			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>percentile</ows:Identifier>
 				<ows:Title>Percentile to calculate (requires extended statistics flag)</ows:Title>
@@ -142,18 +167,6 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>-c</ows:Identifier>
 				<ows:Title>Continue if upload column(s) already exist</ows:Title>
-				<LiteralData>
-					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
-					<ows:AllowedValues>
-						<ows:Value>true</ows:Value>
-						<ows:Value>false</ows:Value>
-					</ows:AllowedValues>
-					<DefaultValue>false</DefaultValue>
-				</LiteralData>
-			</Input>
-			<Input minOccurs="0" maxOccurs="1">
-				<ows:Identifier>-e</ows:Identifier>
-				<ows:Title>Calculate extended statistics</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:boolean">boolean</ows:DataType>
 					<ows:AllowedValues>

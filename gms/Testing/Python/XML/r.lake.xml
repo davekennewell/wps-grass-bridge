@@ -12,6 +12,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 		<ows:Abstract>http://grass.osgeo.org/grass70/manuals/html70_user/r.lake.html</ows:Abstract>
 		<ows:Metadata xlink:title="raster" />
 		<ows:Metadata xlink:title="hydrology" />
+		<ows:Metadata xlink:title="hazard" />
+		<ows:Metadata xlink:title="flood" />
 		<DataInputs>
 			<Input minOccurs="1" maxOccurs="1">
 				<ows:Identifier>elevation</ows:Identifier>
@@ -57,7 +59,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</ComplexData>
 			</Input>
 			<Input minOccurs="1" maxOccurs="1">
-				<ows:Identifier>wl</ows:Identifier>
+				<ows:Identifier>water_level</ows:Identifier>
 				<ows:Title>Water level</ows:Title>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
@@ -65,8 +67,9 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 				</LiteralData>
 			</Input>
 			<Input minOccurs="0" maxOccurs="2">
-				<ows:Identifier>xy</ows:Identifier>
+				<ows:Identifier>coordinates</ows:Identifier>
 				<ows:Title>Seed point coordinates</ows:Title>
+				<ows:Abstract>Either this coordinates pair or a seed map have to be specified</ows:Abstract>
 				<LiteralData>
 					<ows:DataType ows:reference="xs:float">float</ows:DataType>
 					<ows:AnyValue/>
@@ -74,7 +77,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1">
 				<ows:Identifier>seed</ows:Identifier>
-				<ows:Title>Name of input raster map with given starting point(s) (at least 1 cell &gt; 0)</ows:Title>
+				<ows:Title>Input raster map with given starting point(s) (at least 1 cell &gt; 0)</ows:Title>
+				<ows:Abstract>Either this parameter or a coordinates pair have to be specified</ows:Abstract>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>

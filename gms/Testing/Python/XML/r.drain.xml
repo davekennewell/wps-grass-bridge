@@ -110,7 +110,7 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Input>
 			<Input minOccurs="0" maxOccurs="1024">
 				<ows:Identifier>start_points</ows:Identifier>
-				<ows:Title>No title available</ows:Title>
+				<ows:Title>Name of starting vector points map(s)</ows:Title>
 				<ComplexData maximumMegabytes="2048">
 					<Default>
 						<Format>
@@ -288,7 +288,8 @@ xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
 			</Output>
 			<Output>
 				<ows:Identifier>vector_output</ows:Identifier>
-				<ows:Title>Recommended for cost surface made using knight's move</ows:Title>
+				<ows:Title>Name for output drain vector map</ows:Title>
+				<ows:Abstract>Recommended for cost surface made using knight's move</ows:Abstract>
 				<ComplexOutput>
 					<Default>
 						<Format>
