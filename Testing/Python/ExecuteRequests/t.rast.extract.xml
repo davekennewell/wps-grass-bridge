@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wps:Execute service="WPS" version="1.0.0" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/1.0.0 http://schemas.opengis.net/wps/1.0.0/wpsExecute_request.xsd">
+<ows:Identifier>t.rast.extract</ows:Identifier>
+<wps:DataInputs>
+  <wps:Input> 
+    <ows:Identifier>input</ows:Identifier> 
+    <ows:Title>Name of the input space time raster dataset</ows:Title> 
+    <wps:Reference xlink:href="http://127.0.0.1/wps/inputs/temperature_mean_1950_2010_yearly.tar.gz" /> 
+  </wps:Input>
+  <wps:Input>
+    <ows:Identifier>where</ows:Identifier>
+    <ows:Title>WHERE conditions of SQL statement without 'where' keyword used in the temporal GIS framework</ows:Title>
+    <wps:Data>
+        <wps:LiteralData>start_time >= '1970-01-01'</wps:LiteralData>
+    </wps:Data>
+  </wps:Input>
+</wps:DataInputs>
+<wps:ResponseForm>
+<wps:ResponseDocument lineage="false" storeExecuteResponse="true" status="false">
+    <wps:Output asReference="true" mimeType="application/x-grass-strds-tar-gz" schema=""><ows:Identifier>output</ows:Identifier>
+</wps:Output>
+</wps:ResponseDocument>
+</wps:ResponseForm>
+</wps:Execute>
